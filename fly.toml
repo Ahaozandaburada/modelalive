@@ -1,4 +1,4 @@
-app = "modelalive-api"
+app = "modelalive"
 primary_region = "iad"
 
 [build]

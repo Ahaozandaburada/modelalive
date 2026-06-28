@@ -51,7 +51,7 @@ fly secrets set MODELALIVE_API_KEYS="ma_live_your_key"
 fly deploy
 ```
 
-Health check: `https://modelalive-api.fly.dev/v1/health`
+Health check: `https://modelalive.fly.dev/v1/health`
 
 ## Docker (self-host)
 
