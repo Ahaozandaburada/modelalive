@@ -4,8 +4,16 @@ from datetime import date
 from pathlib import Path
 
 from modelalive.exceptions import ModelDeprecatedError, ModelRetiredError
-from modelalive.registry import days_until, get_model_entry, registry_version
+from modelalive.normalize import normalize_model
+from modelalive.registry import (
+    days_until,
+    get_model_entry,
+    get_source,
+    registry_version,
+    resolve_alias,
+)
 from modelalive.types import AliveResult
+from modelalive.validate import effective_status
 
 
 def alive(
@@ -15,63 +23,73 @@ def alive(
     today: date | None = None,
 ) -> AliveResult:
     """Return lifecycle status for a model ID without raising."""
-    entry = get_model_entry(model, registry_path=registry_path)
+    queried = normalize_model(model)
+    canonical, alias_chain = resolve_alias(queried, registry_path=registry_path)
+    aliased = len(alias_chain) > 1
     version = registry_version(registry_path=registry_path)
 
+    entry = get_model_entry(canonical, registry_path=registry_path)
     if entry is None:
         return AliveResult(
-            model=model,
+            model=canonical,
+            queried_model=queried,
+            canonical_model=canonical,
+            aliased=aliased,
             alive=True,
             status="unknown",
-            message="Model not in registry — assumed alive. Register at modelalive.dev or pin a known ID.",
+            confidence="unknown",
+            message=(
+                "Model not in registry — assumed alive. "
+                "Open an issue to add it: https://github.com/Ahaozandaburada/modelalive/issues"
+            ),
             registry_version=version,
         )
 
-    status = entry.get("status", "unknown")
+    source_meta = get_source(entry.get("source", ""), registry_path=registry_path) or {}
+    status = effective_status(entry, today=today)
     retired_at = entry.get("retired_at")
     days_left = days_until(retired_at, today=today)
+    is_alive = status in {"active", "deprecated", "legacy", "unknown"}
+    confidence = "verified" if entry.get("source") else "unknown"
+
+    base = dict(
+        model=canonical,
+        queried_model=queried,
+        canonical_model=canonical,
+        aliased=aliased,
+        provider=entry.get("provider"),
+        deprecated_at=entry.get("deprecated_at"),
+        retired_at=retired_at,
+        replacement=entry.get("replacement"),
+        breaking_changes=list(entry.get("breaking_changes") or []),
+        migrate_url=entry.get("migrate_url"),
+        days_until_retirement=days_left,
+        registry_version=version,
+        source_url=source_meta.get("url"),
+        source_checked_at=source_meta.get("checked_at"),
+        confidence=confidence,
+    )
 
     if status == "retired":
         return AliveResult(
-            model=model,
+            **base,
             alive=False,
             status="retired",
-            provider=entry.get("provider"),
-            deprecated_at=entry.get("deprecated_at"),
-            retired_at=retired_at,
-            replacement=entry.get("replacement"),
-            breaking_changes=list(entry.get("breaking_changes") or []),
-            migrate_url=entry.get("migrate_url"),
-            days_until_retirement=days_left,
-            message=_retired_message(model, entry),
-            registry_version=version,
+            message=_retired_message(canonical, entry, aliased=aliased, queried=queried),
         )
 
     if status == "deprecated":
         return AliveResult(
-            model=model,
+            **base,
             alive=True,
             status="deprecated",
-            provider=entry.get("provider"),
-            deprecated_at=entry.get("deprecated_at"),
-            retired_at=retired_at,
-            replacement=entry.get("replacement"),
-            breaking_changes=list(entry.get("breaking_changes") or []),
-            migrate_url=entry.get("migrate_url"),
-            days_until_retirement=days_left,
-            message=_deprecated_message(model, entry, days_left),
-            registry_version=version,
+            message=_deprecated_message(canonical, entry, days_left, aliased=aliased, queried=queried),
         )
 
     return AliveResult(
-        model=model,
-        alive=True,
+        **base,
+        alive=is_alive,
         status="active",
-        provider=entry.get("provider"),
-        replacement=entry.get("replacement"),
-        breaking_changes=list(entry.get("breaking_changes") or []),
-        migrate_url=entry.get("migrate_url"),
-        registry_version=version,
     )
 
 
@@ -92,30 +110,54 @@ def check(
     return result
 
 
+def check_many(
+    models: list[str],
+    *,
+    registry_path: str | Path | None = None,
+    today: date | None = None,
+) -> list[AliveResult]:
+    return [alive(model, registry_path=registry_path, today=today) for model in models]
+
+
 def resolve(
     model: str,
     *,
     registry_path: str | Path | None = None,
     today: date | None = None,
 ) -> str:
-    """Return replacement model ID if retired/deprecated, else the original."""
+    """Return best model ID to use: replacement if retired/deprecated, else canonical."""
     result = alive(model, registry_path=registry_path, today=today)
     if result.replacement:
         return result.replacement
-    return model
+    return result.canonical_model or result.model
 
 
-def _retired_message(model: str, entry: dict) -> str:
+def _retired_message(
+    model: str,
+    entry: dict,
+    *,
+    aliased: bool,
+    queried: str,
+) -> str:
     replacement = entry.get("replacement")
+    alias_note = f" (alias {queried!r})" if aliased else ""
     if replacement:
-        return f"Model '{model}' was retired. Use '{replacement}' instead."
-    return f"Model '{model}' was retired."
+        return f"Model '{model}'{alias_note} was retired. Use '{replacement}' instead."
+    return f"Model '{model}'{alias_note} was retired."
 
 
-def _deprecated_message(model: str, entry: dict, days_left: int | None) -> str:
+def _deprecated_message(
+    model: str,
+    entry: dict,
+    days_left: int | None,
+    *,
+    aliased: bool,
+    queried: str,
+) -> str:
     replacement = entry.get("replacement")
     retired_at = entry.get("retired_at")
-    parts = [f"Model '{model}' is deprecated."]
+    alias_note = f" (alias {queried!r})" if aliased else ""
+    parts = [f"Model '{model}'{alias_note} is deprecated."]
     if retired_at:
         parts.append(f"Retires on {retired_at}.")
     if days_left is not None and days_left >= 0:

@@ -1,0 +1,31 @@
+name: Model Alive Check
+description: Fail CI if an LLM model ID is retired or deprecated
+branding:
+  icon: activity
+  color: red
+
+inputs:
+  models:
+    description: Space-separated model IDs to check
+    required: true
+  warn-deprecated:
+    description: Fail when models are deprecated (not just retired)
+    required: false
+    default: "false"
+
+runs:
+  using: composite
+  steps:
+    - name: Install modelalive
+      shell: bash
+      run: pip install modelalive
+
+    - name: Check models
+      shell: bash
+      run: |
+        set -e
+        ARGS=""
+        if [ "${{ inputs.warn-deprecated }}" = "true" ]; then
+          ARGS="--warn-deprecated"
+        fi
+        modelalive check $ARGS ${{ inputs.models }}

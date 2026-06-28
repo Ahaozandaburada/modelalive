@@ -4,13 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "modelalive"
-version = "0.1.0"
+version = "0.2.1"
 description = "Pre-flight check: is this LLM model ID still alive?"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
 authors = [{ name = "ModelAlive" }]
-keywords = ["llm", "openai", "anthropic", "deprecation", "model-id"]
+keywords = ["llm", "openai", "anthropic", "google", "gemini", "deprecation", "model-id"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",

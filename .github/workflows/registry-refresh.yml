@@ -1,0 +1,35 @@
+name: Registry refresh
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -e ".[http,dev]"
+
+      - name: Refresh sources
+        run: python scripts/refresh_sources.py
+
+      - name: Validate
+        run: modelalive validate --strict
+
+      - name: Test
+        run: pytest -q
+
+      - name: Open PR if changed
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore(registry): refresh provider sources"
+          title: "Registry source refresh"
+          body: "Automated weekly refresh of provider source checked_at dates."
