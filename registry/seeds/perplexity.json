@@ -1,0 +1,60 @@
+{
+  "sources": {
+    "perplexity": {
+      "url": "https://docs.perplexity.ai/guides/model-cards",
+      "checked_at": "2026-06-28"
+    }
+  },
+  "models": {
+    "sonar": {
+      "provider": "perplexity",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "sonar-pro": {
+      "provider": "perplexity",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "sonar-reasoning": {
+      "provider": "perplexity",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "sonar-reasoning-pro": {
+      "provider": "perplexity",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "llama-3.1-sonar-small-128k-online": {
+      "provider": "perplexity",
+      "status": "retired",
+      "retired_at": "2025-08-01",
+      "replacement": "sonar",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "llama-3.1-sonar-large-128k-online": {
+      "provider": "perplexity",
+      "status": "retired",
+      "retired_at": "2025-08-01",
+      "replacement": "sonar-pro",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    }
+  }
+}

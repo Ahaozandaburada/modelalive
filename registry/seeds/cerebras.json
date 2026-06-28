@@ -1,0 +1,43 @@
+{
+  "sources": {
+    "cerebras": {
+      "url": "https://inference-docs.cerebras.ai/models/overview",
+      "checked_at": "2026-06-28"
+    }
+  },
+  "models": {
+    "llama-3.3-70b": {
+      "provider": "cerebras",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://inference-docs.cerebras.ai/models/overview",
+      "source": "cerebras"
+    },
+    "llama3.1-8b": {
+      "provider": "cerebras",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://inference-docs.cerebras.ai/models/overview",
+      "source": "cerebras"
+    },
+    "qwen-3-32b": {
+      "provider": "cerebras",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://inference-docs.cerebras.ai/models/overview",
+      "source": "cerebras"
+    },
+    "llama-3.1-70b": {
+      "provider": "cerebras",
+      "status": "retired",
+      "retired_at": "2026-06-01",
+      "replacement": "llama-3.3-70b",
+      "breaking_changes": [],
+      "migrate_url": "https://inference-docs.cerebras.ai/models/overview",
+      "source": "cerebras"
+    }
+  }
+}

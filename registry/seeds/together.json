@@ -1,0 +1,97 @@
+{
+  "sources": {
+    "together": {
+      "url": "https://docs.together.ai/docs/deprecations",
+      "checked_at": "2026-06-28"
+    }
+  },
+  "models": {
+    "meta-llama/Llama-3.3-70B-Instruct-Turbo": {
+      "provider": "together",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "Qwen/Qwen3.5-9B": {
+      "provider": "together",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "MiniMaxAI/MiniMax-M3": {
+      "provider": "together",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-03-06",
+      "replacement": "Qwen/Qwen3.5-9B",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "meta-llama/Meta-Llama-3-70B-Instruct-Turbo": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-12-23",
+      "replacement": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "deepseek-ai/DeepSeek-R1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": ["Serverless endpoint removed — use on-demand dedicated or replacement model"],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "deepseek-ai/DeepSeek-V3.1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "moonshotai/Kimi-K2.5": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-05-21",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "Qwen/Qwen3.5-397B-A17B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-06-29",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "mistralai/Mixtral-8x7B-v0.1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-04-30",
+      "replacement": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    }
+  }
+}

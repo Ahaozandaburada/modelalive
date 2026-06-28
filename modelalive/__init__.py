@@ -11,6 +11,7 @@ from modelalive.expiring import list_expiring
 from modelalive.gate import gate, require_alive
 from modelalive.scan import scan_path
 from modelalive.types import AliveResult
+from modelalive.providers import list_provider_keys, provider_label
 from modelalive.validate import assert_registry_valid, validate_registry
 
 __all__ = [
@@ -31,5 +32,7 @@ __all__ = [
     "ModelExpiringSoonError",
     "validate_registry",
     "assert_registry_valid",
+    "list_provider_keys",
+    "provider_label",
 ]
-__version__ = "0.7.0"
+__version__ = "0.8.0"

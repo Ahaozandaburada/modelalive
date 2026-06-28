@@ -97,6 +97,13 @@ def test_check_config_project_file():
     assert result.returncode == 0
 
 
+def test_cli_providers():
+    result = run_cli("providers")
+    assert result.returncode == 0
+    assert "xai" in result.stdout
+    assert "together" in result.stdout
+
+
 def test_bedrock_alias_via_cli():
     result = run_cli("resolve", "anthropic.claude-sonnet-4-6-v1:0")
     assert result.returncode == 0

@@ -1,0 +1,103 @@
+{
+  "sources": {
+    "fireworks": {
+      "url": "https://docs.fireworks.ai/updates/changelog",
+      "checked_at": "2026-06-28"
+    }
+  },
+  "aliases": {
+    "accounts/fireworks/models/kimi-k2p5": "fireworks/kimi-k2p5",
+    "accounts/fireworks/models/kimi-k2p6": "fireworks/kimi-k2p6",
+    "accounts/fireworks/models/deepseek-v3p1": "fireworks/deepseek-v3p1",
+    "accounts/fireworks/models/llama-v3p3-70b-instruct": "fireworks/llama-v3p3-70b-instruct"
+  },
+  "models": {
+    "fireworks/kimi-k2p6": {
+      "provider": "fireworks",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/glm-5p1": {
+      "provider": "fireworks",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/gpt-oss-120b": {
+      "provider": "fireworks",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/minimax-m2p7": {
+      "provider": "fireworks",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/kimi-k2p5": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-06-01",
+      "replacement": "fireworks/kimi-k2p6",
+      "breaking_changes": ["Serverless deprecated — migrate to kimi-k2p6"],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/deepseek-v3p1": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/kimi-k2p6",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/deepseek-v3p2": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/kimi-k2p6",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/glm-5": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/glm-5p1",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/llama-v3p3-70b-instruct": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/gpt-oss-120b",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/minimax-m2p5": {
+      "provider": "fireworks",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-07-01",
+      "replacement": "fireworks/minimax-m2p7",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    }
+  }
+}

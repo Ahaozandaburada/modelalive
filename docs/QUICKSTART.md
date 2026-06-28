@@ -72,9 +72,15 @@ curl "http://localhost:8787/v1/alive?model=gemini-2.0-flash"
 curl "http://localhost:8787/v1/ensure?model=claude-sonnet-4-20250514"
 ```
 
-## Bedrock / fine-tuned IDs
+## Bedrock / OpenRouter / fine-tuned IDs
 
 ```python
-modelalive.alive("anthropic.claude-sonnet-4-6-v1:0")  # → active
-modelalive.alive("ft:gpt-4o-mini:org:name:id")        # → checks gpt-4o-mini
+modelalive.alive("anthropic.claude-sonnet-4-6-v1:0")  # Bedrock → active
+modelalive.alive("openai/gpt-4o")                     # OpenRouter → gpt-4o
+modelalive.alive("fireworks/kimi-k2p5")               # host-specific lifecycle
+modelalive.alive("ft:gpt-4o-mini:org:name:id")        # → gpt-4o-mini
+```
+
+```bash
+modelalive providers   # 17 inference surfaces
 ```

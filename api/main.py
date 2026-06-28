@@ -16,6 +16,7 @@ from modelalive.registry import (
     registry_hash,
     registry_version,
 )
+from modelalive.providers import list_provider_keys, provider_label
 from modelalive.validate import validate_registry
 
 app = FastAPI(
@@ -90,6 +91,15 @@ def health() -> dict[str, object]:
             payload["status"] = "degraded"
             payload["warning"] = f"Registry sources stale — oldest check is {age} days old"
     return payload
+
+
+@app.get("/v1/providers")
+def get_providers():
+    keys = list_provider_keys()
+    return {
+        "count": len(keys),
+        "providers": [{"key": k, "name": provider_label(k)} for k in keys],
+    }
 
 
 @app.get("/v1/sources")

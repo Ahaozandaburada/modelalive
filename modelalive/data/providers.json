@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "description": "Model Alive supported inference providers — universal LLM lifecycle registry",
+  "providers": {
+    "anthropic": {"name": "Anthropic", "kind": "first_party", "api_style": "anthropic"},
+    "openai": {"name": "OpenAI", "kind": "first_party", "api_style": "openai"},
+    "google": {"name": "Google Gemini", "kind": "first_party", "api_style": "openai"},
+    "xai": {"name": "xAI (Grok)", "kind": "first_party", "api_style": "openai"},
+    "mistral": {"name": "Mistral AI", "kind": "first_party", "api_style": "openai"},
+    "cohere": {"name": "Cohere", "kind": "first_party", "api_style": "openai"},
+    "deepseek": {"name": "DeepSeek", "kind": "first_party", "api_style": "openai"},
+    "meta": {"name": "Meta (Llama)", "kind": "model_vendor", "api_style": "openai"},
+    "groq": {"name": "Groq", "kind": "inference_host", "api_style": "openai"},
+    "together": {"name": "Together AI", "kind": "inference_host", "api_style": "openai"},
+    "fireworks": {"name": "Fireworks AI", "kind": "inference_host", "api_style": "openai"},
+    "cerebras": {"name": "Cerebras", "kind": "inference_host", "api_style": "openai"},
+    "bedrock": {"name": "AWS Bedrock", "kind": "cloud_gateway", "api_style": "bedrock"},
+    "azure": {"name": "Azure OpenAI", "kind": "cloud_gateway", "api_style": "azure"},
+    "openrouter": {"name": "OpenRouter", "kind": "aggregator", "api_style": "openrouter"},
+    "perplexity": {"name": "Perplexity", "kind": "first_party", "api_style": "openai"},
+    "ai21": {"name": "AI21 Labs", "kind": "first_party", "api_style": "openai"}
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "sources": {
+    "cohere": {
+      "url": "https://docs.cohere.com/docs/models",
+      "checked_at": "2026-06-28"
+    }
+  },
+  "models": {
+    "command-a-03-2025": {
+      "provider": "cohere",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "command-r-plus-08-2024": {
+      "provider": "cohere",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "command-r-plus": {
+      "provider": "cohere",
+      "status": "retired",
+      "retired_at": "2026-03-01",
+      "replacement": "command-r-plus-08-2024",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "command-r7b-12-2024": {
+      "provider": "cohere",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "command-r-08-2024": {
+      "provider": "cohere",
+      "status": "retired",
+      "retired_at": "2026-01-01",
+      "replacement": "command-r7b-12-2024",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "command": {
+      "provider": "cohere",
+      "status": "retired",
+      "retired_at": "2025-06-01",
+      "replacement": "command-r7b-12-2024",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    }
+  }
+}

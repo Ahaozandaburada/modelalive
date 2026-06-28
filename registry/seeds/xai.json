@@ -1,0 +1,105 @@
+{
+  "sources": {
+    "xai": {
+      "url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "checked_at": "2026-06-28"
+    }
+  },
+  "aliases": {
+    "grok-3-beta": "grok-3",
+    "grok-3-latest": "grok-3",
+    "grok-4-fast-reasoning": "grok-4-1-fast-reasoning",
+    "grok-4-fast-non-reasoning": "grok-4-1-fast-non-reasoning"
+  },
+  "models": {
+    "grok-4.3": {
+      "provider": "xai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": ["Reasoning effort: use none|low|medium|high on chat completions"],
+      "migrate_url": "https://docs.x.ai/developers/models",
+      "source": "xai"
+    },
+    "grok-build-0.1": {
+      "provider": "xai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/models",
+      "source": "xai"
+    },
+    "grok-imagine-image-quality": {
+      "provider": "xai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/models",
+      "source": "xai"
+    },
+    "grok-3": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-4.3",
+      "breaking_changes": ["Redirects to grok-4.3 with none reasoning effort; billed at Grok 4.3 rates"],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-4-1-fast-reasoning": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-4.3",
+      "breaking_changes": ["Redirects to grok-4.3 with low reasoning effort"],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-4-1-fast-non-reasoning": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-4.3",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-4-0709": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-4.3",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-code-fast-1": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-build-0.1",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-imagine-image-pro": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-imagine-image-quality",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-2-latest": {
+      "provider": "xai",
+      "status": "deprecated",
+      "deprecated_at": "2026-01-01",
+      "retired_at": "2026-12-01",
+      "replacement": "grok-4.3",
+      "breaking_changes": ["Not listed on current xAI models page — migrate proactively"],
+      "migrate_url": "https://docs.x.ai/developers/models",
+      "source": "xai",
+      "notes": "Legacy — no official retirement date published; marked deprecated pending xAI notice"
+    }
+  }
+}

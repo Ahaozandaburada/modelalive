@@ -12,6 +12,13 @@ Every verified registry entry maps to an official provider deprecation page:
 | OpenAI | [API deprecations](https://developers.openai.com/api/docs/deprecations) |
 | Google | [Gemini deprecations](https://ai.google.dev/gemini-api/docs/deprecations) |
 | Groq | [Groq deprecations](https://console.groq.com/docs/deprecations) |
+| xAI | [Grok migration](https://docs.x.ai/developers/migration/models) |
+| Together | [Together deprecations](https://docs.together.ai/docs/deprecations) |
+| Fireworks | [Fireworks changelog](https://docs.fireworks.ai/updates/changelog) |
+| OpenRouter | [OpenRouter models](https://openrouter.ai/docs/models) |
+| Cohere / DeepSeek / Perplexity / Cerebras / Meta | Official model docs per provider |
+
+Run `modelalive providers` for the full list (17+ inference surfaces).
 
 Each entry includes `source`, `source_url`, and `source_checked_at` in API/SDK responses.
 

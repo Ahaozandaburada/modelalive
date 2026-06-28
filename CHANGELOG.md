@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0 — Universal LLM registry
+
+- **17 providers**: xAI, Cohere, DeepSeek, Meta, Together, Fireworks, Cerebras, Perplexity, OpenRouter, Azure + existing
+- **OpenRouter crosswalk** — `anthropic/claude-sonnet-4-6` → canonical ID
+- **Host-specific lifecycle** — same weights, different retirement on Groq vs Together vs Fireworks
+- `modelalive providers` + `GET /v1/providers`
+- [docs/UNIVERSAL.md](docs/UNIVERSAL.md) — architecture for every inference surface
+
 ## 0.7.0
 
 - **157 models** (+33 OpenAI via doc parser), **97 OpenAI** entries

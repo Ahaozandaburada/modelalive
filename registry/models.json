@@ -25,6 +25,46 @@
     "mistral": {
       "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
       "checked_at": "2026-06-28"
+    },
+    "azure": {
+      "url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "checked_at": "2026-06-28"
+    },
+    "cerebras": {
+      "url": "https://inference-docs.cerebras.ai/models/overview",
+      "checked_at": "2026-06-28"
+    },
+    "cohere": {
+      "url": "https://docs.cohere.com/docs/models",
+      "checked_at": "2026-06-28"
+    },
+    "deepseek": {
+      "url": "https://api-docs.deepseek.com/",
+      "checked_at": "2026-06-28"
+    },
+    "fireworks": {
+      "url": "https://docs.fireworks.ai/updates/changelog",
+      "checked_at": "2026-06-28"
+    },
+    "meta": {
+      "url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "checked_at": "2026-06-28"
+    },
+    "openrouter": {
+      "url": "https://openrouter.ai/docs/models",
+      "checked_at": "2026-06-28"
+    },
+    "perplexity": {
+      "url": "https://docs.perplexity.ai/guides/model-cards",
+      "checked_at": "2026-06-28"
+    },
+    "together": {
+      "url": "https://docs.together.ai/docs/deprecations",
+      "checked_at": "2026-06-28"
+    },
+    "xai": {
+      "url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "checked_at": "2026-06-28"
     }
   },
   "aliases": {
@@ -45,7 +85,46 @@
     "eu.anthropic.claude-sonnet-4-6-v1:0": "claude-sonnet-4-6",
     "amazon.titan-text-premier-v1:0": "amazon.titan-text-premier-v1",
     "mistral-large-latest": "mistral-large-2411",
-    "mistral-small-latest": "mistral-small-2506"
+    "mistral-small-latest": "mistral-small-2506",
+    "azure/gpt-4o": "gpt-4o",
+    "azure/gpt-4o-mini": "gpt-4o-mini",
+    "azure/gpt-5.5": "gpt-5.5",
+    "azure/o3": "o3",
+    "azure/o4-mini": "o4-mini",
+    "accounts/fireworks/models/kimi-k2p5": "fireworks/kimi-k2p5",
+    "accounts/fireworks/models/kimi-k2p6": "fireworks/kimi-k2p6",
+    "accounts/fireworks/models/deepseek-v3p1": "fireworks/deepseek-v3p1",
+    "accounts/fireworks/models/llama-v3p3-70b-instruct": "fireworks/llama-v3p3-70b-instruct",
+    "llama-3.3-70b-instruct": "meta-llama/Llama-3.3-70B-Instruct",
+    "llama-3.1-8b-instruct": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "llama-3.1-70b-instruct": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+    "openai/gpt-4o": "gpt-4o",
+    "openai/gpt-4o-mini": "gpt-4o-mini",
+    "openai/gpt-5.5": "gpt-5.5",
+    "openai/o3": "o3",
+    "openai/o4-mini": "o4-mini",
+    "anthropic/claude-sonnet-4-6": "claude-sonnet-4-6",
+    "anthropic/claude-opus-4-8": "claude-opus-4-8",
+    "anthropic/claude-3-5-sonnet-20241022": "claude-3-5-sonnet-20241022",
+    "anthropic/claude-3-5-haiku-20241022": "claude-3-5-haiku-20241022",
+    "google/gemini-2.5-flash": "gemini-2.5-flash",
+    "google/gemini-3.5-flash": "gemini-3.5-flash",
+    "x-ai/grok-4.3": "grok-4.3",
+    "x-ai/grok-3": "grok-3",
+    "mistralai/mistral-large-2411": "mistral-large-2411",
+    "mistralai/mistral-small-2506": "mistral-small-2506",
+    "deepseek/deepseek-chat": "deepseek-chat",
+    "deepseek/deepseek-reasoner": "deepseek-reasoner",
+    "meta-llama/llama-3.3-70b-instruct": "meta-llama/Llama-3.3-70B-Instruct",
+    "meta-llama/llama-3.1-8b-instruct": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "cohere/command-r-plus": "command-r-plus",
+    "cohere/command-r7b-12-2024": "command-r7b-12-2024",
+    "perplexity/sonar": "sonar",
+    "perplexity/sonar-pro": "sonar-pro",
+    "grok-3-beta": "grok-3",
+    "grok-3-latest": "grok-3",
+    "grok-4-fast-reasoning": "grok-4-1-fast-reasoning",
+    "grok-4-fast-non-reasoning": "grok-4-1-fast-non-reasoning"
   },
   "models": {
     "claude-opus-4-8": {
@@ -1494,6 +1573,495 @@
       "breaking_changes": [],
       "migrate_url": "https://developers.openai.com/api/docs/deprecations",
       "source": "openai"
+    },
+    "llama-3.3-70b": {
+      "provider": "cerebras",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://inference-docs.cerebras.ai/models/overview",
+      "source": "cerebras"
+    },
+    "llama3.1-8b": {
+      "provider": "cerebras",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://inference-docs.cerebras.ai/models/overview",
+      "source": "cerebras"
+    },
+    "qwen-3-32b": {
+      "provider": "cerebras",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://inference-docs.cerebras.ai/models/overview",
+      "source": "cerebras"
+    },
+    "llama-3.1-70b": {
+      "provider": "cerebras",
+      "status": "retired",
+      "deprecated_at": "2025-12-01",
+      "retired_at": "2026-06-01",
+      "replacement": "llama-3.3-70b",
+      "breaking_changes": [],
+      "migrate_url": "https://inference-docs.cerebras.ai/models/overview",
+      "source": "cerebras"
+    },
+    "command-a-03-2025": {
+      "provider": "cohere",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "command-r-plus-08-2024": {
+      "provider": "cohere",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "command-r-plus": {
+      "provider": "cohere",
+      "status": "retired",
+      "deprecated_at": "2025-09-01",
+      "retired_at": "2026-03-01",
+      "replacement": "command-r-plus-08-2024",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "command-r7b-12-2024": {
+      "provider": "cohere",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "command-r-08-2024": {
+      "provider": "cohere",
+      "status": "retired",
+      "deprecated_at": "2025-06-01",
+      "retired_at": "2026-01-01",
+      "replacement": "command-r7b-12-2024",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "command": {
+      "provider": "cohere",
+      "status": "retired",
+      "retired_at": "2025-06-01",
+      "replacement": "command-r7b-12-2024",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "deepseek-chat": {
+      "provider": "deepseek",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "deepseek-reasoner": {
+      "provider": "deepseek",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "deepseek-r1": {
+      "provider": "deepseek",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek",
+      "notes": "Reasoning model — alias of deepseek-reasoner on some hosts"
+    },
+    "deepseek-v3": {
+      "provider": "deepseek",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-01",
+      "retired_at": "2026-10-01",
+      "replacement": "deepseek-chat",
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "fireworks/kimi-k2p6": {
+      "provider": "fireworks",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/glm-5p1": {
+      "provider": "fireworks",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/gpt-oss-120b": {
+      "provider": "fireworks",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/minimax-m2p7": {
+      "provider": "fireworks",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/kimi-k2p5": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-06-01",
+      "replacement": "fireworks/kimi-k2p6",
+      "breaking_changes": [
+        "Serverless deprecated — migrate to kimi-k2p6"
+      ],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/deepseek-v3p1": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/kimi-k2p6",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/deepseek-v3p2": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/kimi-k2p6",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/glm-5": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/glm-5p1",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/llama-v3p3-70b-instruct": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/gpt-oss-120b",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/minimax-m2p5": {
+      "provider": "fireworks",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-07-01",
+      "replacement": "fireworks/minimax-m2p7",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "meta-llama/Llama-3.3-70B-Instruct": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Meta-Llama-3.1-8B-Instruct": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Meta-Llama-3.1-70B-Instruct": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Llama-3.2-3B-Instruct": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Llama-2-13b-chat-hf": {
+      "provider": "meta",
+      "status": "retired",
+      "retired_at": "2025-04-24",
+      "replacement": "meta-llama/Llama-3.3-70B-Instruct",
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "sonar": {
+      "provider": "perplexity",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "sonar-pro": {
+      "provider": "perplexity",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "sonar-reasoning": {
+      "provider": "perplexity",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "sonar-reasoning-pro": {
+      "provider": "perplexity",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "llama-3.1-sonar-small-128k-online": {
+      "provider": "perplexity",
+      "status": "retired",
+      "retired_at": "2025-08-01",
+      "replacement": "sonar",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "llama-3.1-sonar-large-128k-online": {
+      "provider": "perplexity",
+      "status": "retired",
+      "retired_at": "2025-08-01",
+      "replacement": "sonar-pro",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "meta-llama/Llama-3.3-70B-Instruct-Turbo": {
+      "provider": "together",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "Qwen/Qwen3.5-9B": {
+      "provider": "together",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "MiniMaxAI/MiniMax-M3": {
+      "provider": "together",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-03-06",
+      "replacement": "Qwen/Qwen3.5-9B",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "meta-llama/Meta-Llama-3-70B-Instruct-Turbo": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-12-23",
+      "replacement": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "deepseek-ai/DeepSeek-R1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Serverless endpoint removed — use on-demand dedicated or replacement model"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "deepseek-ai/DeepSeek-V3.1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "moonshotai/Kimi-K2.5": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-05-21",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "Qwen/Qwen3.5-397B-A17B": {
+      "provider": "together",
+      "status": "retired",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-06-29",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "mistralai/Mixtral-8x7B-v0.1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-04-30",
+      "replacement": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "grok-4.3": {
+      "provider": "xai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [
+        "Reasoning effort: use none|low|medium|high on chat completions"
+      ],
+      "migrate_url": "https://docs.x.ai/developers/models",
+      "source": "xai"
+    },
+    "grok-build-0.1": {
+      "provider": "xai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/models",
+      "source": "xai"
+    },
+    "grok-imagine-image-quality": {
+      "provider": "xai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/models",
+      "source": "xai"
+    },
+    "grok-3": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-4.3",
+      "breaking_changes": [
+        "Redirects to grok-4.3 with none reasoning effort; billed at Grok 4.3 rates"
+      ],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-4-1-fast-reasoning": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-4.3",
+      "breaking_changes": [
+        "Redirects to grok-4.3 with low reasoning effort"
+      ],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-4-1-fast-non-reasoning": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-4.3",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-4-0709": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-4.3",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-code-fast-1": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-build-0.1",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-imagine-image-pro": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-imagine-image-quality",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-2-latest": {
+      "provider": "xai",
+      "status": "deprecated",
+      "deprecated_at": "2026-01-01",
+      "retired_at": "2026-12-01",
+      "replacement": "grok-4.3",
+      "breaking_changes": [
+        "Not listed on current xAI models page — migrate proactively"
+      ],
+      "migrate_url": "https://docs.x.ai/developers/models",
+      "source": "xai",
+      "notes": "Legacy — no official retirement date published; marked deprecated pending xAI notice"
     }
   }
 }

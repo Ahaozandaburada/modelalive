@@ -1,10 +1,10 @@
 # Model Alive
 
-Pre-flight check before every LLM API call: **is this model ID still alive?**
+**Universal pre-flight check for every LLM model ID** — OpenAI, Anthropic, Google, xAI, Mistral, Cohere, DeepSeek, Groq, Together, Fireworks, Bedrock, OpenRouter, and more.
 
-Hardcoded model IDs break silently until production fails. Anthropic retired Claude Sonnet 4 and Opus 4 on **June 15, 2026**. Mythos Preview retires **June 30, 2026**. Model Alive answers in one call — with **source links** and **breaking change** notes.
+Hardcoded model IDs break silently until production fails. Model Alive answers in one call — with **source links**, **breaking change** notes, and **host-aware** lifecycle status.
 
-**[60-second quickstart →](docs/QUICKSTART.md)**
+**[Universal registry guide →](docs/UNIVERSAL.md)** · **[60-second quickstart →](docs/QUICKSTART.md)**
 
 ## Install
 

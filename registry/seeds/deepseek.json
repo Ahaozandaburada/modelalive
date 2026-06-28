@@ -1,0 +1,45 @@
+{
+  "sources": {
+    "deepseek": {
+      "url": "https://api-docs.deepseek.com/",
+      "checked_at": "2026-06-28"
+    }
+  },
+  "models": {
+    "deepseek-chat": {
+      "provider": "deepseek",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "deepseek-reasoner": {
+      "provider": "deepseek",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "deepseek-r1": {
+      "provider": "deepseek",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek",
+      "notes": "Reasoning model — alias of deepseek-reasoner on some hosts"
+    },
+    "deepseek-v3": {
+      "provider": "deepseek",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-01",
+      "retired_at": "2026-10-01",
+      "replacement": "deepseek-chat",
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    }
+  }
+}

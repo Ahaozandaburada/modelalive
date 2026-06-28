@@ -5,6 +5,7 @@ import json
 import sys
 from pathlib import Path
 
+from modelalive.providers import list_provider_keys, provider_label
 from modelalive.config_file import load_config
 from modelalive.check import alive, check, ensure, resolve
 from modelalive.exceptions import (
@@ -60,8 +61,11 @@ def main(argv: list[str] | None = None) -> int:
 
     list_cmd = sub.add_parser("list", help="List models in registry")
     list_cmd.add_argument("--status", choices=["active", "deprecated", "retired", "legacy"])
-    list_cmd.add_argument("--provider", choices=["anthropic", "openai", "google", "groq", "mistral", "bedrock"])
+    list_cmd.add_argument("--provider", help="Filter by provider (see: modelalive providers)")
     list_cmd.add_argument("--json", action="store_true")
+
+    providers_cmd = sub.add_parser("providers", help="List supported inference providers")
+    providers_cmd.add_argument("--json", action="store_true")
 
     validate_cmd = sub.add_parser("validate", help="Validate registry JSON")
     validate_cmd.add_argument("--registry", type=Path, default=None)
@@ -69,7 +73,7 @@ def main(argv: list[str] | None = None) -> int:
 
     expiring_cmd = sub.add_parser("expiring", help="List models retiring soon")
     expiring_cmd.add_argument("--days", type=int, default=30)
-    expiring_cmd.add_argument("--provider", choices=["anthropic", "openai", "google", "groq", "mistral", "bedrock"])
+    expiring_cmd.add_argument("--provider", help="Filter by provider")
     expiring_cmd.add_argument("--json", action="store_true")
 
     scan_cmd = sub.add_parser("scan", help="Scan project for hardcoded model IDs")
@@ -87,6 +91,7 @@ def main(argv: list[str] | None = None) -> int:
         "resolve": lambda: _cmd_resolve(args),
         "info": lambda: _cmd_info(args),
         "list": lambda: _cmd_list(args),
+        "providers": lambda: _cmd_providers(args),
         "validate": lambda: _cmd_validate(args),
         "expiring": lambda: _cmd_expiring(args),
         "scan": lambda: _cmd_scan(args),
@@ -188,6 +193,17 @@ def _cmd_list(args: argparse.Namespace) -> int:
         replacement = entry.get("replacement")
         suffix = f" -> {replacement}" if replacement else ""
         print(f"  {model_id:40} {entry.get('status'):12} [{entry.get('provider')}]{suffix}")
+    return 0
+
+
+def _cmd_providers(args: argparse.Namespace) -> int:
+    keys = list_provider_keys()
+    if args.json:
+        print(json.dumps({"count": len(keys), "providers": {k: provider_label(k) for k in keys}}, indent=2))
+        return 0
+    print(f"Supported providers ({len(keys)}):")
+    for key in keys:
+        print(f"  {key:14} {provider_label(key)}")
     return 0
 
 
