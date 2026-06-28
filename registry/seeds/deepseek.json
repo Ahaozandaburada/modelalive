@@ -5,6 +5,12 @@
       "checked_at": "2026-06-28"
     }
   },
+  "aliases": {
+    "deepseek/deepseek-chat": "deepseek-chat",
+    "deepseek/deepseek-reasoner": "deepseek-reasoner",
+    "deepseek-r1-0528": "deepseek-r1",
+    "deepseek-v3.1": "deepseek-chat"
+  },
   "models": {
     "deepseek-chat": {
       "provider": "deepseek",
@@ -28,18 +34,60 @@
       "replacement": null,
       "breaking_changes": [],
       "migrate_url": "https://api-docs.deepseek.com/",
-      "source": "deepseek",
-      "notes": "Reasoning model — alias of deepseek-reasoner on some hosts"
+      "source": "deepseek"
+    },
+    "deepseek-v4-pro": {
+      "provider": "deepseek",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "deepseek-v4-flash": {
+      "provider": "deepseek",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
     },
     "deepseek-v3": {
       "provider": "deepseek",
-      "status": "deprecated",
-      "deprecated_at": "2026-04-01",
-      "retired_at": "2026-10-01",
+      "status": "retired",
+      "retired_at": "2026-06-01",
       "replacement": "deepseek-chat",
       "breaking_changes": [],
       "migrate_url": "https://api-docs.deepseek.com/",
       "source": "deepseek"
+    },
+    "deepseek-v2.5": {
+      "provider": "deepseek",
+      "status": "retired",
+      "retired_at": "2025-12-01",
+      "replacement": "deepseek-chat",
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "deepseek-coder-v2-instruct": {
+      "provider": "deepseek",
+      "status": "retired",
+      "retired_at": "2025-09-01",
+      "replacement": "deepseek-chat",
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "deepseek-ai/DeepSeek-R1": {
+      "provider": "deepseek",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "deepseek-r1",
+      "breaking_changes": ["Together/Fireworks serverless removed — use deepseek API or host replacement"],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "deepseek",
+      "notes": "Hosted copy on Together; canonical DeepSeek API model is deepseek-r1"
     }
   }
 }

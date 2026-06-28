@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.9.0 — Every LLM: Qwen, DeepSeek, Llama, Ollama
+
+- **20 providers** — Qwen (DashScope), NVIDIA NIM, Ollama (local tags) + existing 17
+- **259 models**, **125 aliases** — OpenRouter crosswalk generator (`scripts/generate_openrouter_crosswalk.py`)
+- **DeepSeek v4** — `deepseek-v4-pro`, `deepseek-v4-flash` + expanded R1/V3 lifecycle
+- **Meta Llama 3.2** — vision (11B/90B), 1B/3B instruct variants
+- **Groq** — Qwen QwQ, Gemma2, Llama 3.2 vision previews, DeepSeek R1 distill
+- **Ollama tag aliases** — `llama3.3`, `qwen3`, `deepseek-v3` → canonical IDs
+- **merge_seeds.py** — rebuilds aliases from seeds (no stale self-referencing cycles)
+- **118 tests**
+
 ## 0.8.0 — Universal LLM registry
 
 - **17 providers**: xAI, Cohere, DeepSeek, Meta, Together, Fireworks, Cerebras, Perplexity, OpenRouter, Azure + existing

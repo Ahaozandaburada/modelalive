@@ -1,0 +1,184 @@
+{
+  "sources": {
+    "qwen": {
+      "url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "checked_at": "2026-06-28"
+    }
+  },
+  "aliases": {
+    "qwen-max": "qwen3.7-max",
+    "qwen-plus": "qwen3.7-plus",
+    "qwen-turbo": "qwen3.5-flash",
+    "qwen-long": "qwen3.7-plus"
+  },
+  "models": {
+    "qwen3.7-max": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3.7-plus": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3.6-plus": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3.6-flash": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3.5-plus": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3.5-flash": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-coder-plus": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-coder-flash": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-max": {
+      "provider": "qwen",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-09-08",
+      "replacement": "qwen3.7-max",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen-max-2025-01-25": {
+      "provider": "qwen",
+      "status": "retired",
+      "retired_at": "2026-01-30",
+      "replacement": "qwen3.7-max",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen-max-latest": {
+      "provider": "qwen",
+      "status": "retired",
+      "retired_at": "2026-05-13",
+      "replacement": "qwen3.7-max",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-max-2026-01-23": {
+      "provider": "qwen",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-08",
+      "retired_at": "2026-07-08",
+      "replacement": "qwen3.7-max",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-coder-plus-2025-07-22": {
+      "provider": "qwen",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-08",
+      "retired_at": "2026-07-08",
+      "replacement": "qwen3-coder-plus",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-vl-flash-2026-01-22": {
+      "provider": "qwen",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-08",
+      "retired_at": "2026-07-08",
+      "replacement": "qwen3.6-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen-vl-max-latest": {
+      "provider": "qwen",
+      "status": "retired",
+      "retired_at": "2026-05-13",
+      "replacement": "qwen3.6-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen-vl-plus-latest": {
+      "provider": "qwen",
+      "status": "retired",
+      "retired_at": "2026-05-13",
+      "replacement": "qwen3.6-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen2.5-72b-instruct": {
+      "provider": "qwen",
+      "status": "retired",
+      "retired_at": "2025-07-30",
+      "replacement": "qwen3.5-plus",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen2.5-coder-32b-instruct": {
+      "provider": "qwen",
+      "status": "retired",
+      "deprecated_at": "2025-12-01",
+      "retired_at": "2026-06-01",
+      "replacement": "qwen3-coder-plus",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "Qwen/Qwen2.5-7B-Instruct-Turbo": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "qwen",
+      "notes": "Together-hosted Qwen; also listed on Together deprecations"
+    }
+  }
+}

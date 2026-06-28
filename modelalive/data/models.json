@@ -51,7 +51,7 @@
       "checked_at": "2026-06-28"
     },
     "openrouter": {
-      "url": "https://openrouter.ai/docs/models",
+      "url": "https://openrouter.ai/docs/guides/overview/models",
       "checked_at": "2026-06-28"
     },
     "perplexity": {
@@ -65,15 +65,33 @@
     "xai": {
       "url": "https://docs.x.ai/developers/migration/may-15-retirement",
       "checked_at": "2026-06-28"
+    },
+    "ai21": {
+      "url": "https://docs.ai21.com/docs/models-overview",
+      "checked_at": "2026-06-28"
+    },
+    "nvidia": {
+      "url": "https://build.nvidia.com/nim",
+      "checked_at": "2026-06-28"
+    },
+    "ollama": {
+      "url": "https://ollama.com/library",
+      "checked_at": "2026-06-28"
+    },
+    "qwen": {
+      "url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "checked_at": "2026-06-28"
     }
   },
   "aliases": {
     "claude-3-5-sonnet-latest": "claude-3-5-sonnet-20241022",
     "claude-3-5-haiku-latest": "claude-3-5-haiku-20241022",
     "claude-3-opus-latest": "claude-3-opus-20240229",
-    "gemini-2.0-flash-latest": "gemini-2.0-flash",
-    "gpt-4-turbo-preview": "gpt-4-0125-preview",
-    "gpt-4-turbo-preview-completions": "gpt-4-0125-preview",
+    "azure/gpt-4o": "gpt-4o",
+    "azure/gpt-4o-mini": "gpt-4o-mini",
+    "azure/gpt-5.5": "gpt-5.5",
+    "azure/o3": "o3",
+    "azure/o4-mini": "o4-mini",
     "anthropic.claude-sonnet-4-6-v1:0": "claude-sonnet-4-6",
     "anthropic.claude-sonnet-4-20250514-v1:0": "claude-sonnet-4-20250514",
     "anthropic.claude-opus-4-8-v1:0": "claude-opus-4-8",
@@ -84,43 +102,109 @@
     "us.anthropic.claude-sonnet-4-6-v1:0": "claude-sonnet-4-6",
     "eu.anthropic.claude-sonnet-4-6-v1:0": "claude-sonnet-4-6",
     "amazon.titan-text-premier-v1:0": "amazon.titan-text-premier-v1",
-    "mistral-large-latest": "mistral-large-2411",
-    "mistral-small-latest": "mistral-small-2506",
-    "azure/gpt-4o": "gpt-4o",
-    "azure/gpt-4o-mini": "gpt-4o-mini",
-    "azure/gpt-5.5": "gpt-5.5",
-    "azure/o3": "o3",
-    "azure/o4-mini": "o4-mini",
+    "deepseek/deepseek-chat": "deepseek-chat",
+    "deepseek/deepseek-reasoner": "deepseek-reasoner",
+    "deepseek-r1-0528": "deepseek-r1",
+    "deepseek-v3.1": "deepseek-chat",
     "accounts/fireworks/models/kimi-k2p5": "fireworks/kimi-k2p5",
     "accounts/fireworks/models/kimi-k2p6": "fireworks/kimi-k2p6",
     "accounts/fireworks/models/deepseek-v3p1": "fireworks/deepseek-v3p1",
     "accounts/fireworks/models/llama-v3p3-70b-instruct": "fireworks/llama-v3p3-70b-instruct",
+    "gemini-2.0-flash-latest": "gemini-2.0-flash",
     "llama-3.3-70b-instruct": "meta-llama/Llama-3.3-70B-Instruct",
     "llama-3.1-8b-instruct": "meta-llama/Meta-Llama-3.1-8B-Instruct",
     "llama-3.1-70b-instruct": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+    "llama-3.2-3b-instruct": "meta-llama/Llama-3.2-3B-Instruct",
+    "llama-3.2-11b-vision-instruct": "meta-llama/Llama-3.2-11B-Vision-Instruct",
+    "llama-3.2-90b-vision-instruct": "meta-llama/Llama-3.2-90B-Vision-Instruct",
+    "llama-3.2-1b-instruct": "meta-llama/Llama-3.2-1B-Instruct",
+    "llama-2-13b-chat-hf": "meta-llama/Llama-2-13b-chat-hf",
+    "llama2-70b-chat": "meta-llama/Llama-2-13b-chat-hf",
+    "mistral-large-latest": "mistral-large-2411",
+    "mistral-small-latest": "mistral-small-2506",
+    "llama3.3": "meta-llama/Llama-3.3-70B-Instruct",
+    "llama3.3:70b": "meta-llama/Llama-3.3-70B-Instruct",
+    "llama3.2": "meta-llama/Llama-3.2-3B-Instruct",
+    "llama3.1": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "llama3.1:8b": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "llama3.1:70b": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+    "llama2": "meta-llama/Llama-2-13b-chat-hf",
+    "qwen2.5": "qwen3.5-plus",
+    "qwen2.5-coder": "qwen3-coder-plus",
+    "qwen3": "qwen3.7-plus",
+    "deepseek-v3": "deepseek-chat",
+    "mistral": "mistral-small-2506",
+    "mixtral": "mixtral-8x7b-32768",
+    "gemma2": "gemma2-9b-it",
+    "phi3": "microsoft/phi-3-mini-4k-instruct",
+    "gpt-4-turbo-preview": "gpt-4-0125-preview",
+    "gpt-4-turbo-preview-completions": "gpt-4-0125-preview",
     "openai/gpt-4o": "gpt-4o",
     "openai/gpt-4o-mini": "gpt-4o-mini",
+    "openai/gpt-4-turbo": "gpt-4-turbo-2024-04-09",
     "openai/gpt-5.5": "gpt-5.5",
+    "openai/gpt-5.4-mini": "gpt-5.4-mini",
     "openai/o3": "o3",
     "openai/o4-mini": "o4-mini",
+    "openai/o1": "o1",
     "anthropic/claude-sonnet-4-6": "claude-sonnet-4-6",
     "anthropic/claude-opus-4-8": "claude-opus-4-8",
     "anthropic/claude-3-5-sonnet-20241022": "claude-3-5-sonnet-20241022",
     "anthropic/claude-3-5-haiku-20241022": "claude-3-5-haiku-20241022",
+    "anthropic/claude-3-opus-20240229": "claude-3-opus-20240229",
+    "anthropic/claude-sonnet-4-20250514": "claude-sonnet-4-20250514",
     "google/gemini-2.5-flash": "gemini-2.5-flash",
     "google/gemini-3.5-flash": "gemini-3.5-flash",
+    "google/gemini-2.0-flash": "gemini-2.0-flash",
+    "google/gemini-2.5-pro": "gemini-2.5-pro",
     "x-ai/grok-4.3": "grok-4.3",
     "x-ai/grok-3": "grok-3",
+    "x-ai/grok-2-latest": "grok-2-latest",
     "mistralai/mistral-large-2411": "mistral-large-2411",
     "mistralai/mistral-small-2506": "mistral-small-2506",
-    "deepseek/deepseek-chat": "deepseek-chat",
-    "deepseek/deepseek-reasoner": "deepseek-reasoner",
+    "mistralai/mixtral-8x7b-instruct-v0.1": "mixtral-8x7b-32768",
+    "deepseek/deepseek-r1": "deepseek-r1",
+    "deepseek/deepseek-v3.2": "deepseek-chat",
+    "deepseek/deepseek-v3.1-terminus": "deepseek-chat",
+    "deepseek/deepseek-v4-pro": "deepseek-v4-pro",
+    "deepseek/deepseek-v4-flash": "deepseek-v4-flash",
+    "deepseek/deepseek-r1-distill-llama-70b": "meta-llama/Llama-3.3-70B-Instruct",
+    "qwen/qwen3.7-max": "qwen3.7-max",
+    "qwen/qwen3.7-plus": "qwen3.7-plus",
+    "qwen/qwen3.6-plus": "qwen3.6-plus",
+    "qwen/qwen3.6-flash": "qwen3.6-flash",
+    "qwen/qwen3.5-plus": "qwen3.5-plus",
+    "qwen/qwen3.5-flash": "qwen3.5-flash",
+    "qwen/qwen3-coder-plus": "qwen3-coder-plus",
+    "qwen/qwen3-max": "qwen3-max",
+    "qwen/qwen3-coder": "qwen3-coder-plus",
+    "qwen/qwen-2.5-coder-32b-instruct": "qwen2.5-coder-32b-instruct",
+    "qwen/qwen2.5-vl-72b-instruct": "qwen2.5-72b-instruct",
+    "qwen/qwen3.5-397b-a17b": "Qwen/Qwen3.5-397B-A17B",
+    "qwen/qwen3-235b-a22b-instruct-2507": "qwen3.7-plus",
     "meta-llama/llama-3.3-70b-instruct": "meta-llama/Llama-3.3-70B-Instruct",
     "meta-llama/llama-3.1-8b-instruct": "meta-llama/Meta-Llama-3.1-8B-Instruct",
-    "cohere/command-r-plus": "command-r-plus",
+    "meta-llama/llama-3.1-70b-instruct": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+    "meta-llama/llama-3.2-3b-instruct": "meta-llama/Llama-3.2-3B-Instruct",
+    "meta-llama/llama-3.2-11b-vision-instruct": "meta-llama/Llama-3.2-11B-Vision-Instruct",
+    "meta-llama/llama-3.2-90b-vision-instruct": "meta-llama/Llama-3.2-90B-Vision-Instruct",
+    "meta-llama/llama-3.2-1b-instruct": "meta-llama/Llama-3.2-1B-Instruct",
+    "meta-llama/llama-2-13b-chat-hf": "meta-llama/Llama-2-13b-chat-hf",
+    "cohere/command-r-plus": "command-r-plus-08-2024",
     "cohere/command-r7b-12-2024": "command-r7b-12-2024",
+    "cohere/command-a-03-2025": "command-a-03-2025",
     "perplexity/sonar": "sonar",
     "perplexity/sonar-pro": "sonar-pro",
+    "perplexity/sonar-reasoning": "sonar-reasoning",
+    "groq/llama-3.3-70b-versatile": "llama-3.3-70b-versatile",
+    "groq/llama3-70b-8192": "llama3-70b-8192",
+    "together/meta-llama/llama-3.3-70b-instruct-turbo": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+    "ai21/jamba-1.5-large": "jamba-1.5-large",
+    "ai21/jamba-1.5-mini": "jamba-1.5-mini",
+    "qwen-max": "qwen3.7-max",
+    "qwen-plus": "qwen3.7-plus",
+    "qwen-turbo": "qwen3.5-flash",
+    "qwen-long": "qwen3.7-plus",
     "grok-3-beta": "grok-3",
     "grok-3-latest": "grok-3",
     "grok-4-fast-reasoning": "grok-4-1-fast-reasoning",
@@ -1688,9 +1772,9 @@
     },
     "deepseek-v3": {
       "provider": "deepseek",
-      "status": "deprecated",
+      "status": "retired",
       "deprecated_at": "2026-04-01",
-      "retired_at": "2026-10-01",
+      "retired_at": "2026-06-01",
       "replacement": "deepseek-chat",
       "breaking_changes": [],
       "migrate_url": "https://api-docs.deepseek.com/",
@@ -1927,7 +2011,8 @@
         "Serverless endpoint removed — use on-demand dedicated or replacement model"
       ],
       "migrate_url": "https://docs.together.ai/docs/deprecations",
-      "source": "together"
+      "source": "together",
+      "notes": "Hosted copy on Together; canonical DeepSeek API model is deepseek-r1"
     },
     "deepseek-ai/DeepSeek-V3.1": {
       "provider": "together",
@@ -2062,6 +2147,408 @@
       "migrate_url": "https://docs.x.ai/developers/models",
       "source": "xai",
       "notes": "Legacy — no official retirement date published; marked deprecated pending xAI notice"
+    },
+    "jamba-1.5-large": {
+      "provider": "ai21",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.ai21.com/docs/models-overview",
+      "source": "ai21"
+    },
+    "jamba-1.5-mini": {
+      "provider": "ai21",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.ai21.com/docs/models-overview",
+      "source": "ai21"
+    },
+    "jamba-instruct": {
+      "provider": "ai21",
+      "status": "retired",
+      "retired_at": "2025-06-01",
+      "replacement": "jamba-1.5-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.ai21.com/docs/models-overview",
+      "source": "ai21"
+    },
+    "deepseek-v4-pro": {
+      "provider": "deepseek",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "deepseek-v4-flash": {
+      "provider": "deepseek",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "deepseek-v2.5": {
+      "provider": "deepseek",
+      "status": "retired",
+      "retired_at": "2025-12-01",
+      "replacement": "deepseek-chat",
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "deepseek-coder-v2-instruct": {
+      "provider": "deepseek",
+      "status": "retired",
+      "retired_at": "2025-09-01",
+      "replacement": "deepseek-chat",
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "llama-3.1-8b-instant": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "llama-3.2-3b-preview": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "llama-3.2-11b-vision-preview": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "llama-3.2-90b-vision-preview": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "gemma2-9b-it": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "qwen-qwq-32b": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "qwen-2.5-32b": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "deepseek-r1-distill-llama-70b": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "llama3-8b-8192": {
+      "provider": "groq",
+      "status": "retired",
+      "retired_at": "2025-02-01",
+      "replacement": "llama-3.1-8b-instant",
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "gemma-7b-it": {
+      "provider": "groq",
+      "status": "retired",
+      "retired_at": "2025-04-01",
+      "replacement": "gemma2-9b-it",
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "meta-llama/Llama-3.2-1B-Instruct": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Llama-3.2-11B-Vision-Instruct": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Llama-3.2-90B-Vision-Instruct": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "meta",
+      "notes": "Together-hosted turbo variant"
+    },
+    "meta-llama/Llama-2-70b-chat-hf": {
+      "provider": "meta",
+      "status": "retired",
+      "retired_at": "2025-06-01",
+      "replacement": "meta-llama/Llama-3.3-70B-Instruct",
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Meta-Llama-3-8B-Instruct": {
+      "provider": "meta",
+      "status": "retired",
+      "retired_at": "2025-04-17",
+      "replacement": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "meta"
+    },
+    "meta-llama/Meta-Llama-3-70B-Instruct": {
+      "provider": "meta",
+      "status": "retired",
+      "retired_at": "2025-04-17",
+      "replacement": "meta-llama/Llama-3.3-70B-Instruct",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "meta"
+    },
+    "nvidia/llama-3.3-nemotron-super-49b-v1.5": {
+      "provider": "nvidia",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://build.nvidia.com/nim",
+      "source": "nvidia"
+    },
+    "nvidia/llama-3.1-nemotron-70b-instruct": {
+      "provider": "nvidia",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://build.nvidia.com/nim",
+      "source": "nvidia"
+    },
+    "nvidia/mistral-nemo-minitron-8b-8k-instruct": {
+      "provider": "nvidia",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://build.nvidia.com/nim",
+      "source": "nvidia"
+    },
+    "microsoft/phi-3-mini-4k-instruct": {
+      "provider": "ollama",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ollama.com/library/phi3",
+      "source": "ollama",
+      "notes": "Common Ollama local tag maps to Microsoft Phi-3"
+    },
+    "qwen3.7-max": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3.7-plus": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3.6-plus": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3.6-flash": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3.5-plus": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3.5-flash": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-coder-plus": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-coder-flash": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-max": {
+      "provider": "qwen",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-09-08",
+      "replacement": "qwen3.7-max",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen-max-2025-01-25": {
+      "provider": "qwen",
+      "status": "retired",
+      "retired_at": "2026-01-30",
+      "replacement": "qwen3.7-max",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen-max-latest": {
+      "provider": "qwen",
+      "status": "retired",
+      "retired_at": "2026-05-13",
+      "replacement": "qwen3.7-max",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-max-2026-01-23": {
+      "provider": "qwen",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-08",
+      "retired_at": "2026-07-08",
+      "replacement": "qwen3.7-max",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-coder-plus-2025-07-22": {
+      "provider": "qwen",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-08",
+      "retired_at": "2026-07-08",
+      "replacement": "qwen3-coder-plus",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-vl-flash-2026-01-22": {
+      "provider": "qwen",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-08",
+      "retired_at": "2026-07-08",
+      "replacement": "qwen3.6-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen-vl-max-latest": {
+      "provider": "qwen",
+      "status": "retired",
+      "retired_at": "2026-05-13",
+      "replacement": "qwen3.6-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen-vl-plus-latest": {
+      "provider": "qwen",
+      "status": "retired",
+      "retired_at": "2026-05-13",
+      "replacement": "qwen3.6-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen2.5-72b-instruct": {
+      "provider": "qwen",
+      "status": "retired",
+      "retired_at": "2025-07-30",
+      "replacement": "qwen3.5-plus",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen2.5-coder-32b-instruct": {
+      "provider": "qwen",
+      "status": "retired",
+      "deprecated_at": "2025-12-01",
+      "retired_at": "2026-06-01",
+      "replacement": "qwen3-coder-plus",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "Qwen/Qwen2.5-7B-Instruct-Turbo": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "qwen",
+      "notes": "Together-hosted Qwen; also listed on Together deprecations"
     }
   }
 }

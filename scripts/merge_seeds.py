@@ -15,7 +15,7 @@ SEEDS_DIR = ROOT / "registry" / "seeds"
 def main() -> int:
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
     models = registry.setdefault("models", {})
-    aliases = registry.setdefault("aliases", {})
+    aliases: dict[str, str] = {}
     sources = registry.setdefault("sources", {})
     added = 0
 
@@ -32,11 +32,13 @@ def main() -> int:
             else:
                 models[model_id].update(entry)
         for alias, target in seed.get("aliases", {}).items():
-            if alias in aliases:
+            if alias == target:
                 continue
             if target in aliases and target not in models:
                 continue
             aliases[alias] = target
+
+    registry["aliases"] = aliases
 
     REGISTRY.write_text(json.dumps(registry, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     BUNDLE.write_text(REGISTRY.read_text(encoding="utf-8"), encoding="utf-8")

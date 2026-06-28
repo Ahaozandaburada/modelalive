@@ -18,6 +18,9 @@
     "azure": {"name": "Azure OpenAI", "kind": "cloud_gateway", "api_style": "azure"},
     "openrouter": {"name": "OpenRouter", "kind": "aggregator", "api_style": "openrouter"},
     "perplexity": {"name": "Perplexity", "kind": "first_party", "api_style": "openai"},
-    "ai21": {"name": "AI21 Labs", "kind": "first_party", "api_style": "openai"}
+    "ai21": {"name": "AI21 Labs", "kind": "first_party", "api_style": "openai"},
+    "qwen": {"name": "Alibaba Qwen (DashScope)", "kind": "first_party", "api_style": "openai"},
+    "nvidia": {"name": "NVIDIA NIM", "kind": "inference_host", "api_style": "openai"},
+    "ollama": {"name": "Ollama (local)", "kind": "local_runtime", "api_style": "openai"}
   }
 }

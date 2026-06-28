@@ -1,0 +1,34 @@
+{
+  "sources": {
+    "nvidia": {
+      "url": "https://build.nvidia.com/nim",
+      "checked_at": "2026-06-28"
+    }
+  },
+  "models": {
+    "nvidia/llama-3.3-nemotron-super-49b-v1.5": {
+      "provider": "nvidia",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://build.nvidia.com/nim",
+      "source": "nvidia"
+    },
+    "nvidia/llama-3.1-nemotron-70b-instruct": {
+      "provider": "nvidia",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://build.nvidia.com/nim",
+      "source": "nvidia"
+    },
+    "nvidia/mistral-nemo-minitron-8b-8k-instruct": {
+      "provider": "nvidia",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://build.nvidia.com/nim",
+      "source": "nvidia"
+    }
+  }
+}

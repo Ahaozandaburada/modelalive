@@ -92,5 +92,7 @@
       "source": "google"
     }
   },
-  "aliases": {}
+  "aliases": {
+    "gemini-2.0-flash-latest": "gemini-2.0-flash"
+  }
 }

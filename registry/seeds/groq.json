@@ -5,8 +5,73 @@
       "checked_at": "2026-06-28"
     }
   },
+  "aliases": {},
   "models": {
     "llama-3.3-70b-versatile": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "llama-3.1-8b-instant": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "llama-3.2-3b-preview": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "llama-3.2-11b-vision-preview": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "llama-3.2-90b-vision-preview": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "gemma2-9b-it": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "qwen-qwq-32b": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "qwen-2.5-32b": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "deepseek-r1-distill-llama-70b": {
       "provider": "groq",
       "status": "active",
       "replacement": null,
@@ -23,6 +88,15 @@
       "migrate_url": "https://console.groq.com/docs/deprecations",
       "source": "groq"
     },
+    "llama3-8b-8192": {
+      "provider": "groq",
+      "status": "retired",
+      "retired_at": "2025-02-01",
+      "replacement": "llama-3.1-8b-instant",
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
     "mixtral-8x7b-32768": {
       "provider": "groq",
       "status": "retired",
@@ -31,7 +105,15 @@
       "breaking_changes": [],
       "migrate_url": "https://console.groq.com/docs/deprecations",
       "source": "groq"
+    },
+    "gemma-7b-it": {
+      "provider": "groq",
+      "status": "retired",
+      "retired_at": "2025-04-01",
+      "replacement": "gemma2-9b-it",
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
     }
-  },
-  "aliases": {}
+  }
 }

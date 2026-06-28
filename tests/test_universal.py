@@ -8,11 +8,53 @@ from modelalive.providers import list_provider_keys, provider_label
 
 def test_provider_count():
     keys = list_provider_keys()
-    assert len(keys) >= 15
+    assert len(keys) >= 20
     assert "xai" in keys
     assert "together" in keys
     assert "fireworks" in keys
     assert "openrouter" in keys
+    assert "qwen" in keys
+    assert "nvidia" in keys
+    assert "ollama" in keys
+
+
+def test_qwen_openrouter_alias():
+    result = modelalive.alive("qwen/qwen3.7-max")
+    assert result.status == "active"
+    assert result.canonical_model == "qwen3.7-max"
+
+
+def test_qwen_alias_short_name():
+    result = modelalive.alive("qwen-max")
+    assert result.status == "active"
+    assert result.canonical_model == "qwen3.7-max"
+
+
+def test_deepseek_v4_openrouter():
+    result = modelalive.alive("deepseek/deepseek-v4-pro")
+    assert result.status == "active"
+    assert result.canonical_model == "deepseek-v4-pro"
+
+
+def test_llama_openrouter_slug():
+    result = modelalive.alive("meta-llama/llama-3.3-70b-instruct")
+    assert result.status == "active"
+    assert result.canonical_model == "meta-llama/Llama-3.3-70B-Instruct"
+
+
+def test_groq_qwen_active():
+    assert modelalive.alive("qwen-qwq-32b").status == "active"
+
+
+def test_ollama_tag_alias():
+    result = modelalive.alive("llama3.3")
+    assert result.canonical_model == "meta-llama/Llama-3.3-70B-Instruct"
+
+
+def test_qwen_retired_snapshot():
+    result = modelalive.alive("qwen-max-latest")
+    assert result.status == "retired"
+    assert modelalive.ensure("qwen-max-latest") == "qwen3.7-max"
 
 
 def test_openrouter_alias_to_openai():

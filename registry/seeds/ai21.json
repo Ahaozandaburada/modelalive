@@ -1,0 +1,35 @@
+{
+  "sources": {
+    "ai21": {
+      "url": "https://docs.ai21.com/docs/models-overview",
+      "checked_at": "2026-06-28"
+    }
+  },
+  "models": {
+    "jamba-1.5-large": {
+      "provider": "ai21",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.ai21.com/docs/models-overview",
+      "source": "ai21"
+    },
+    "jamba-1.5-mini": {
+      "provider": "ai21",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.ai21.com/docs/models-overview",
+      "source": "ai21"
+    },
+    "jamba-instruct": {
+      "provider": "ai21",
+      "status": "retired",
+      "retired_at": "2025-06-01",
+      "replacement": "jamba-1.5-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.ai21.com/docs/models-overview",
+      "source": "ai21"
+    }
+  }
+}
