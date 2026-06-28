@@ -122,6 +122,21 @@ def list_registry(
     }
 
 
+@app.get("/v1/expiring")
+def get_expiring(
+    days: Annotated[int, Query(ge=1, le=365)] = 30,
+    provider: Annotated[str | None, Query()] = None,
+):
+    from modelalive.expiring import list_expiring
+
+    results = list_expiring(within_days=days, provider=provider)
+    return {
+        "within_days": days,
+        "count": len(results),
+        "models": [result.to_dict() for result in results],
+    }
+
+
 @app.get("/v1/validate")
 def get_validate():
     issues = validate_registry()

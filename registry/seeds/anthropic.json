@@ -1,0 +1,35 @@
+{
+  "models": {
+    "claude-1.0": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-instant-1.2": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-3-5-sonnet-20240620": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2025-08-13",
+      "retired_at": "2025-10-28",
+      "replacement": "claude-sonnet-4-6",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    }
+  },
+  "aliases": {
+    "claude-3-5-sonnet-latest": "claude-3-5-sonnet-20241022"
+  }
+}

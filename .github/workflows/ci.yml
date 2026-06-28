@@ -22,7 +22,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Sync registry bundle
-        run: python scripts/sync_registry.py
+        run: |
+          python scripts/merge_seeds.py
+          python scripts/sync_registry.py
 
       - name: Verify registry sync
         run: diff -q registry/models.json modelalive/data/models.json

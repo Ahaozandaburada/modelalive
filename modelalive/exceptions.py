@@ -27,3 +27,7 @@ class ModelDeprecatedError(ModelLifecycleError):
 
 class ModelUnknownError(ModelLifecycleError):
     """Raised when a model is not in the registry and strict mode is enabled."""
+
+
+class ModelExpiringSoonError(ModelLifecycleError):
+    """Raised when a model retires within the configured warn_days window."""

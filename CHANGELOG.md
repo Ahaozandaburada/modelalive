@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.0
+
+- **116 models** (+48) via registry seed merge system
+- `modelalive scan` — find retired/deprecated models in your codebase
+- `modelalive expiring` — models retiring within N days
+- `MODELALIVE_STRICT`, `MODELALIVE_WARN_DAYS`, `MODELALIVE_WARN_DEPRECATED` env vars
+- `ModelExpiringSoonError` + `--warn-days` flag
+- `GET /v1/expiring`, `py.typed`, drift-check CI workflow
+- 28 tests
+
 ## 0.3.0
 
 - Add `ensure()` pre-flight gate — validate and return safe model ID

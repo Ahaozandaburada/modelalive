@@ -3,17 +3,26 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from modelalive.exceptions import ModelDeprecatedError, ModelRetiredError, ModelUnknownError
+from modelalive.exceptions import (
+    ModelDeprecatedError,
+    ModelExpiringSoonError,
+    ModelRetiredError,
+    ModelUnknownError,
+)
+from modelalive.lifecycle import days_until, effective_status
 from modelalive.normalize import normalize_model
 from modelalive.registry import (
-    days_until,
     get_model_entry,
     get_source,
     registry_version,
     resolve_alias,
 )
+from modelalive.settings import (
+    default_strict_unknown,
+    default_warn_days,
+    default_warn_deprecated,
+)
 from modelalive.types import AliveResult
-from modelalive.lifecycle import effective_status
 
 _MAX_RESOLVE_DEPTH = 12
 
@@ -98,12 +107,20 @@ def alive(
 def check(
     model: str,
     *,
-    warn_deprecated: bool = False,
-    strict_unknown: bool = False,
+    warn_deprecated: bool | None = None,
+    strict_unknown: bool | None = None,
+    warn_days: int | None = None,
     registry_path: str | Path | None = None,
     today: date | None = None,
 ) -> AliveResult:
-    """Check model lifecycle; raise on retired (and optionally deprecated/unknown)."""
+    """Check model lifecycle; raise on retired (and optionally deprecated/unknown/expiring)."""
+    if warn_deprecated is None:
+        warn_deprecated = default_warn_deprecated()
+    if strict_unknown is None:
+        strict_unknown = default_strict_unknown()
+    if warn_days is None:
+        warn_days = default_warn_days()
+
     result = alive(model, registry_path=registry_path, today=today)
 
     if strict_unknown and result.status == "unknown":
@@ -112,6 +129,13 @@ def check(
         raise ModelRetiredError(result)
     if warn_deprecated and result.status == "deprecated":
         raise ModelDeprecatedError(result)
+    if (
+        warn_days is not None
+        and result.status == "deprecated"
+        and result.days_until_retirement is not None
+        and 0 <= result.days_until_retirement <= warn_days
+    ):
+        raise ModelExpiringSoonError(result)
     return result
 
 
@@ -158,12 +182,20 @@ def resolve(
 def ensure(
     model: str,
     *,
-    warn_deprecated: bool = False,
-    strict_unknown: bool = False,
+    warn_deprecated: bool | None = None,
+    strict_unknown: bool | None = None,
+    warn_days: int | None = None,
     registry_path: str | Path | None = None,
     today: date | None = None,
 ) -> str:
     """Pre-flight gate: return a safe model ID, raising only when migration is impossible."""
+    if warn_deprecated is None:
+        warn_deprecated = default_warn_deprecated()
+    if strict_unknown is None:
+        strict_unknown = default_strict_unknown()
+    if warn_days is None:
+        warn_days = default_warn_days()
+
     result = alive(model, registry_path=registry_path, today=today)
 
     if strict_unknown and result.status == "unknown":
@@ -172,6 +204,13 @@ def ensure(
         raise ModelRetiredError(result)
     if warn_deprecated and result.status == "deprecated":
         raise ModelDeprecatedError(result)
+    if (
+        warn_days is not None
+        and result.status == "deprecated"
+        and result.days_until_retirement is not None
+        and 0 <= result.days_until_retirement <= warn_days
+    ):
+        raise ModelExpiringSoonError(result)
 
     return resolve(model, registry_path=registry_path, today=today)
 

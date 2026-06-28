@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 
-_MODEL_ID_PATTERN = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,127}$")
+_MODEL_ID_PATTERN = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,200}$")
 
 
 def normalize_model(model: str) -> str:

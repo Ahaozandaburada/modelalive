@@ -1,0 +1,35 @@
+name: Registry drift
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - registry/**
+      - scripts/**
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -e ".[http,dev]"
+
+      - name: Merge seeds
+        run: python scripts/merge_seeds.py
+
+      - name: Validate registry
+        run: modelalive validate --strict
+
+      - name: Verify provider docs mention registry models
+        run: python scripts/refresh_sources.py --dry-run
+
+      - name: Test
+        run: pytest -q

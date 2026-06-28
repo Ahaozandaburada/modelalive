@@ -1,0 +1,9 @@
+# Models used in this project — checked by `modelalive check` in CI
+models = [
+  "claude-sonnet-4-6",
+  "gpt-5.5",
+]
+
+[ci]
+strict_unknown = true
+warn_days = 14

@@ -1,6 +1,7 @@
 .PHONY: sync validate test check release lint
 
 sync:
+	python scripts/merge_seeds.py
 	python scripts/sync_registry.py
 
 validate: sync

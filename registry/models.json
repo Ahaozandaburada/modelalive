@@ -20,7 +20,8 @@
     "claude-3-5-haiku-latest": "claude-3-5-haiku-20241022",
     "claude-3-opus-latest": "claude-3-opus-20240229",
     "gemini-2.0-flash-latest": "gemini-2.0-flash",
-    "gpt-4-turbo-preview": "gpt-4-turbo"
+    "gpt-4-turbo-preview": "gpt-4-0125-preview",
+    "gpt-4-turbo-preview-completions": "gpt-4-0125-preview"
   },
   "models": {
     "claude-opus-4-8": {
@@ -652,10 +653,459 @@
     },
     "gpt-4.1-nano-2025-04-14": {
       "provider": "openai",
+      "status": "active",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "claude-1.0": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-instant-1.2": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "gemini-2.5-pro-preview-06-05": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-12-02",
+      "replacement": "gemini-3.1-pro-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.5-flash-preview-05-20": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-11-18",
+      "replacement": "gemini-3.5-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.5-flash-image": {
+      "provider": "google",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-10-02",
+      "replacement": "gemini-3.1-flash-image",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-3-flash-preview": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2026-06-01",
+      "replacement": "gemini-3.5-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-robotics-er-1.5-preview": {
+      "provider": "google",
+      "status": "retired",
+      "deprecated_at": "2026-04-14",
+      "retired_at": "2026-04-30",
+      "replacement": "gemini-robotics-er-1.6-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-robotics-er-1.6-preview": {
+      "provider": "google",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "embedding-001": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-10-30",
+      "replacement": "gemini-embedding-2",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "veo-3.0-generate-001": {
+      "provider": "google",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-06-30",
+      "replacement": "veo-3.1-generate-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "veo-3.1-generate-preview": {
+      "provider": "google",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gpt-image-2": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-image-1-mini": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-02",
+      "retired_at": "2026-12-01",
+      "replacement": "gpt-image-2",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-image-1.5": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-02",
+      "retired_at": "2026-12-01",
+      "replacement": "gpt-image-2",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "chatgpt-image-latest": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-02",
+      "retired_at": "2026-12-01",
+      "replacement": "gpt-image-2",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-image-1": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-image-2",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "computer-use-preview-2025-03-11": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4o-mini-search-preview-2025-03-11": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4o-mini-tts-2025-03-20": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-4o-mini-tts-2025-12-15",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4o-mini-tts-2025-12-15": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4o-search-preview-2025-03-11": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5.1-codex-max": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5.1-codex-mini": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5.1-codex": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5.2-codex": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-audio-mini-2025-10-06": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-audio-1.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-audio-1.5": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-realtime-mini-2025-10-06": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-realtime-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-realtime-mini": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o3-deep-research-2025-06-26": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.5-pro",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o4-mini-deep-research-2025-06-26": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.5-pro",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4-1106-preview": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4-0125-preview": {
+      "provider": "openai",
+      "status": "retired",
+      "retired_at": "2026-03-26",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4.1-nano": {
+      "provider": "openai",
       "status": "deprecated",
       "deprecated_at": "2026-04-22",
       "retired_at": "2026-10-23",
       "replacement": "gpt-5.4-nano",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-3.5-turbo-0125": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-3.5-turbo-1106": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2025-09-26",
+      "retired_at": "2026-09-28",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-3.5-turbo-instruct": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2025-09-26",
+      "retired_at": "2026-09-28",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "babbage-002": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2025-09-26",
+      "retired_at": "2026-09-28",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "davinci-002": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2025-09-26",
+      "retired_at": "2026-09-28",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "dall-e-2": {
+      "provider": "openai",
+      "status": "retired",
+      "retired_at": "2026-05-12",
+      "replacement": "gpt-image-2",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "dall-e-3": {
+      "provider": "openai",
+      "status": "retired",
+      "retired_at": "2026-05-12",
+      "replacement": "gpt-image-2",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o1-2024-12-17": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o1": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o1-pro-2025-03-19": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.5-pro",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o1-pro": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o3-mini": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o4-mini": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4-turbo-2024-04-09": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
       "breaking_changes": [],
       "migrate_url": "https://developers.openai.com/api/docs/deprecations",
       "source": "openai"

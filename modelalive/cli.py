@@ -6,8 +6,15 @@ import sys
 from pathlib import Path
 
 from modelalive.check import alive, check, ensure, resolve
-from modelalive.exceptions import ModelDeprecatedError, ModelRetiredError, ModelUnknownError
+from modelalive.exceptions import (
+    ModelDeprecatedError,
+    ModelExpiringSoonError,
+    ModelRetiredError,
+    ModelUnknownError,
+)
+from modelalive.expiring import list_expiring
 from modelalive.registry import list_models, load_registry
+from modelalive.scan import scan_path
 from modelalive.validate import assert_registry_valid, validate_registry
 
 
@@ -30,12 +37,19 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Exit non-zero if any model is not in the registry",
     )
+    check_cmd.add_argument(
+        "--warn-days",
+        type=int,
+        default=None,
+        help="Fail if model retires within N days",
+    )
     check_cmd.add_argument("--json", action="store_true", help="Output JSON")
 
     ensure_cmd = sub.add_parser("ensure", help="Pre-flight: validate and print safe model ID")
     ensure_cmd.add_argument("model", help="Model ID to ensure")
     ensure_cmd.add_argument("--warn-deprecated", action="store_true")
     ensure_cmd.add_argument("--strict-unknown", action="store_true")
+    ensure_cmd.add_argument("--warn-days", type=int, default=None)
 
     resolve_cmd = sub.add_parser("resolve", help="Return best model ID to use")
     resolve_cmd.add_argument("model", help="Model ID to resolve")
@@ -52,6 +66,15 @@ def main(argv: list[str] | None = None) -> int:
     validate_cmd.add_argument("--registry", type=Path, default=None)
     validate_cmd.add_argument("--strict", action="store_true", help="Treat warnings as errors")
 
+    expiring_cmd = sub.add_parser("expiring", help="List models retiring soon")
+    expiring_cmd.add_argument("--days", type=int, default=30)
+    expiring_cmd.add_argument("--provider", choices=["anthropic", "openai", "google"])
+    expiring_cmd.add_argument("--json", action="store_true")
+
+    scan_cmd = sub.add_parser("scan", help="Scan project for hardcoded model IDs")
+    scan_cmd.add_argument("path", nargs="?", default=".", help="Directory to scan")
+    scan_cmd.add_argument("--json", action="store_true")
+
     args = parser.parse_args(argv)
 
     commands = {
@@ -61,6 +84,8 @@ def main(argv: list[str] | None = None) -> int:
         "info": lambda: _cmd_info(args),
         "list": lambda: _cmd_list(args),
         "validate": lambda: _cmd_validate(args),
+        "expiring": lambda: _cmd_expiring(args),
+        "scan": lambda: _cmd_scan(args),
     }
     return commands[args.command]()
 
@@ -76,9 +101,10 @@ def _cmd_check(args: argparse.Namespace) -> int:
                     model_arg,
                     warn_deprecated=args.warn_deprecated,
                     strict_unknown=args.strict_unknown,
+                    warn_days=args.warn_days,
                 )
             )
-        except (ModelRetiredError, ModelDeprecatedError, ModelUnknownError) as exc:
+        except (ModelRetiredError, ModelDeprecatedError, ModelUnknownError, ModelExpiringSoonError) as exc:
             results.append(exc.result)
             exit_code = 1
 
@@ -98,10 +124,11 @@ def _cmd_ensure(args: argparse.Namespace) -> int:
                 args.model,
                 warn_deprecated=args.warn_deprecated,
                 strict_unknown=args.strict_unknown,
+                warn_days=args.warn_days,
             )
         )
         return 0
-    except (ModelRetiredError, ModelDeprecatedError, ModelUnknownError) as exc:
+    except (ModelRetiredError, ModelDeprecatedError, ModelUnknownError, ModelExpiringSoonError) as exc:
         print(exc.result.message or str(exc), file=sys.stderr)
         return 1
 
@@ -177,6 +204,43 @@ def _cmd_validate(args: argparse.Namespace) -> int:
         return 1
     print("Registry OK")
     return 0
+
+
+def _cmd_expiring(args: argparse.Namespace) -> int:
+    results = list_expiring(within_days=args.days, provider=args.provider)
+    if args.json:
+        print(json.dumps([r.to_dict() for r in results], indent=2))
+        return 0
+    print(f"Expiring within {args.days} day(s) — {len(results)} model(s)")
+    for result in results:
+        print(
+            f"  {result.model:40} {result.days_until_retirement:3}d  -> {result.replacement}"
+        )
+    return 0
+
+
+def _cmd_scan(args: argparse.Namespace) -> int:
+    report = scan_path(args.path)
+    if args.json:
+        print(
+            json.dumps(
+                {
+                    "root": report.root,
+                    "scanned_files": report.scanned_files,
+                    "findings": [f.__dict__ for f in report.findings],
+                },
+                indent=2,
+            )
+        )
+    else:
+        print(f"Scanned {report.scanned_files} files under {report.root}")
+        if not report.findings:
+            print("No retired/deprecated/unknown model IDs found.")
+            return 0
+        for finding in report.findings:
+            repl = f" -> {finding.replacement}" if finding.replacement else ""
+            print(f"  {finding.path}:{finding.line}  {finding.model} [{finding.status}]{repl}")
+    return 1 if report.retired else 0
 
 
 if __name__ == "__main__":
