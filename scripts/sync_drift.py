@@ -18,6 +18,9 @@ def run(cmd: list[str]) -> int:
 def main() -> int:
     steps = [
         [sys.executable, str(ROOT / "scripts" / "parse_openai_deprecations.py"), "--write"],
+        [sys.executable, str(ROOT / "scripts" / "parse_together_deprecations.py"), "--write"],
+        [sys.executable, str(ROOT / "scripts" / "parse_anthropic_deprecations.py"), "--write"],
+        [sys.executable, str(ROOT / "scripts" / "generate_openrouter_crosswalk.py")],
         [sys.executable, str(ROOT / "scripts" / "merge_seeds.py")],
         [sys.executable, str(ROOT / "scripts" / "sync_registry.py")],
         [sys.executable, str(ROOT / "scripts" / "refresh_sources.py")],

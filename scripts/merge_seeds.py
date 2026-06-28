@@ -19,13 +19,15 @@ def main() -> int:
     sources = registry.setdefault("sources", {})
     added = 0
 
+    SKIP_PARSED = {"openai_parsed.json", "together_parsed.json", "anthropic_parsed.json"}
+
     for seed_file in sorted(SEEDS_DIR.glob("*.json")):
         seed = json.loads(seed_file.read_text(encoding="utf-8"))
         for key, meta in seed.get("sources", {}).items():
             sources[key] = meta
         for model_id, entry in seed.get("models", {}).items():
-            if seed_file.name == "openai_parsed.json" and model_id in models:
-                continue  # manual openai.json wins over parsed drift
+            if seed_file.name in SKIP_PARSED and model_id in models:
+                continue  # manual seed wins over parsed drift
             if model_id not in models:
                 models[model_id] = entry
                 added += 1

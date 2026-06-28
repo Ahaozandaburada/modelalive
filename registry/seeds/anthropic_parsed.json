@@ -1,0 +1,239 @@
+{
+  "sources": {
+    "anthropic": {
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "checked_at": "2026-06-29"
+    }
+  },
+  "aliases": {},
+  "models": {
+    "claude-opus-4-1-20250805": {
+      "provider": "anthropic",
+      "status": "deprecated",
+      "retired_at": "2026-08-05",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic",
+      "deprecated_at": "2026-08-05",
+      "replacement": "claude-opus-4-8"
+    },
+    "claude-sonnet-4-20250514": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2026-06-15",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic",
+      "replacement": "claude-sonnet-4-6"
+    },
+    "claude-opus-4-20250514": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2026-06-15",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic",
+      "replacement": "claude-opus-4-8"
+    },
+    "claude-3-haiku-20240307": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2026-04-20",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic",
+      "replacement": "claude-haiku-4-5-20251001"
+    },
+    "claude-3-5-haiku-20241022": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2026-02-19",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic",
+      "replacement": "claude-haiku-4-5-20251001"
+    },
+    "claude-3-7-sonnet-20250219": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2026-02-19",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic",
+      "replacement": "claude-sonnet-4-6"
+    },
+    "claude-3-5-sonnet-20240620": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2025-10-28",
+      "replacement": "claude-sonnet-4-6",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-3-5-sonnet-20241022": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2025-10-28",
+      "replacement": "claude-sonnet-4-6",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-3-opus-20240229": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2026-01-05",
+      "replacement": "claude-opus-4-8",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-2.0": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2025-07-21",
+      "replacement": "claude-opus-4-8",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-2.1": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2025-07-21",
+      "replacement": "claude-opus-4-8",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-3-sonnet-20240229": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2025-07-21",
+      "replacement": "claude-sonnet-4-6",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-1.0": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-1.1": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-1.2": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-1.3": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-instant-1.0": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-instant-1.1": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-instant-1.2": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-opus-4-8": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-opus-4-7": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-opus-4-6": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-opus-4-5-20251101": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-sonnet-4-6": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-sonnet-4-5-20250929": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-haiku-4-5-20251001": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    }
+  }
+}

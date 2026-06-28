@@ -1,6 +1,15 @@
 # Changelog
 
-## 0.9.0 — Every LLM: Qwen, DeepSeek, Llama, Ollama
+## 1.0.0 — Class-leading registry + production API
+
+- **466 models**, **130+ aliases**, **20 providers**
+- **Together AI parser** — 200+ serverless deprecations from official docs (`.md` source)
+- **Anthropic parser** — HTML deprecation tables → seed sync
+- **API middleware** — `X-Request-ID` tracing, optional `MODELALIVE_RATE_LIMIT`
+- **LiteLLM integration** — `modelalive.integrations.litellm.patch_litellm()`
+- **Publish CI** — PyPI + npm on `v*` tags (`.github/workflows/publish.yml`)
+- **docs/CONTRIBUTING.md** — provider contribution guide
+- **125 tests** — Every LLM: Qwen, DeepSeek, Llama, Ollama
 
 - **20 providers** — Qwen (DashScope), NVIDIA NIM, Ollama (local tags) + existing 17
 - **259 models**, **125 aliases** — OpenRouter crosswalk generator (`scripts/generate_openrouter_crosswalk.py`)

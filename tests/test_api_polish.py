@@ -21,7 +21,7 @@ def test_health_includes_etag_fields():
     data = client.get("/v1/health").json()
     assert "registry_etag" in data
     assert "alias_count" in data
-    assert data["model_count"] >= 150
+    assert data["model_count"] >= 400
 
 
 def test_get_model_detail():

@@ -1,6 +1,6 @@
 # Model Alive
 
-**Universal pre-flight check for every LLM model ID** — OpenAI, Anthropic, Google, xAI, Mistral, Cohere, DeepSeek, Groq, Together, Fireworks, Bedrock, OpenRouter, and more.
+**466 models · 20 providers · 130+ aliases** — OpenAI, Anthropic, Google, Qwen, DeepSeek, Llama, Groq, Together, Fireworks, Bedrock, OpenRouter, Ollama, and more.
 
 Hardcoded model IDs break silently until production fails. Model Alive answers in one call — with **source links**, **breaking change** notes, and **host-aware** lifecycle status.
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from typing import Annotated
 
 from fastapi import FastAPI, Query, Request, Response
@@ -19,6 +20,8 @@ from modelalive.registry import (
 from modelalive.providers import list_provider_keys, provider_label
 from modelalive.validate import validate_registry
 
+from api.middleware import RateLimitMiddleware, RequestIDMiddleware
+
 app = FastAPI(
     title="Model Alive",
     description="Pre-flight API: is this LLM model ID still alive?",
@@ -31,6 +34,16 @@ app.add_middleware(
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
+
+_rate_raw = os.environ.get("MODELALIVE_RATE_LIMIT", "").strip()
+if _rate_raw and _rate_raw != "0":
+    try:
+        _rate_limit = int(_rate_raw)
+        if _rate_limit > 0:
+            app.add_middleware(RateLimitMiddleware, limit=_rate_limit)
+    except ValueError:
+        pass
+app.add_middleware(RequestIDMiddleware)
 
 
 class BatchRequest(BaseModel):

@@ -2,6 +2,16 @@
 
 All notable registry changes are logged here.
 
+## 2026-06-28 — v1.0.0
+
+### Added
+- **Together AI parser** — 200+ serverless deprecations from official `.md` docs
+- **Anthropic HTML parser** — status + history tables
+- OpenRouter crosswalk in drift sync pipeline
+
+### Totals
+- **466 models**, **130+ aliases**, **20 providers**
+
 ## 2026-06-28 — v0.7.0
 
 ### Added
