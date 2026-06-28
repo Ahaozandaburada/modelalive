@@ -8,7 +8,7 @@ TypeScript/JavaScript SDK for [Model Alive](https://github.com/Ahaozandaburada/m
 npm install modelalive
 ```
 
-*(npm publish pending — build from source:)*
+Build from source (monorepo):
 
 ```bash
 npm install

@@ -10,6 +10,12 @@ Hardcoded model IDs break silently until production fails. Anthropic retired Cla
 pip install modelalive
 ```
 
+JavaScript/TypeScript:
+
+```bash
+npm install modelalive
+```
+
 ## Quick examples
 
 ```bash
