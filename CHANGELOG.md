@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.0 — Bedrock/Azure registry + JS SDK parity
+
+- **Bedrock** — 19 host-specific model entries with lifecycle + regional aliases
+- **Azure** — 13 deployment entries (GPT, o-series, Claude, embeddings)
+- **Groq/Mistral parsers** — `groq_parsed.json`, `mistral_parsed.json` in drift sync
+- **JS SDK parity** — `listExpiring`, `scanPath`, `checkMany`, `requireAlive`, env flags, full error types
+- **517 models** in registry (+32 host entries)
+
 ## 1.1.1 — Developer experience polish
 
 - **GitHub Action** default version synced to package release

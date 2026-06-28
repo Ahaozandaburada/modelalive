@@ -1,6 +1,6 @@
 # Model Alive
 
-**466 models · 20 providers · 130+ aliases** — OpenAI, Anthropic, Google, Qwen, DeepSeek, Llama, Groq, Together, Fireworks, Bedrock, OpenRouter, Ollama, and more.
+**517 models · 21 providers · 130+ aliases** — OpenAI, Anthropic, Google, Qwen, DeepSeek, Llama, Groq, Together, Fireworks, **Bedrock**, **Azure**, OpenRouter, Ollama, and more.
 
 Hardcoded model IDs break silently until production fails. Model Alive answers in one call — with **source links**, **breaking change** notes, and **host-aware** lifecycle status.
 

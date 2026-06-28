@@ -51,3 +51,24 @@ export class ModelUnknownError extends Error {
     this.name = "ModelUnknownError";
   }
 }
+
+export class ModelDeprecatedError extends Error {
+  constructor(public readonly result: AliveResult) {
+    super(result.message ?? `Model ${result.model} is deprecated`);
+    this.name = "ModelDeprecatedError";
+  }
+}
+
+export class ModelExpiringSoonError extends Error {
+  constructor(public readonly result: AliveResult) {
+    super(result.message ?? `Model ${result.model} retires soon`);
+    this.name = "ModelExpiringSoonError";
+  }
+}
+
+export interface CheckOptions {
+  strictUnknown?: boolean | null;
+  warnDeprecated?: boolean | null;
+  warnDays?: number | null;
+  today?: Date;
+}

@@ -21,13 +21,14 @@ def test_fine_tuned_alive_uses_base():
 def test_bedrock_alias_resolves():
     result = alive("anthropic.claude-sonnet-4-6-v1:0")
     assert result.status == "active"
-    assert result.canonical_model == "claude-sonnet-4-6"
+    assert result.provider == "bedrock"
+    assert result.canonical_model == "anthropic.claude-sonnet-4-6-v1:0"
 
 
 def test_bedrock_retired_alias():
     result = alive("anthropic.claude-sonnet-4-20250514-v1:0")
     assert result.status == "retired"
-    assert resolve("anthropic.claude-sonnet-4-20250514-v1:0") == "claude-sonnet-4-6"
+    assert resolve("anthropic.claude-sonnet-4-20250514-v1:0") == "anthropic.claude-sonnet-4-6-v1:0"
 
 
 def test_mistral_retired():

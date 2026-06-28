@@ -107,7 +107,7 @@ def test_cli_providers():
 def test_bedrock_alias_via_cli():
     result = run_cli("resolve", "anthropic.claude-sonnet-4-6-v1:0")
     assert result.returncode == 0
-    assert result.stdout.strip() == "claude-sonnet-4-6"
+    assert result.stdout.strip() == "anthropic.claude-sonnet-4-6-v1:0"
 
 
 def test_strict_unknown_fails():

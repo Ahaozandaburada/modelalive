@@ -24,6 +24,8 @@ jobs:
       - name: Sync registry bundle
         run: |
           python scripts/merge_seeds.py
+          python scripts/generate_host_seeds.py
+          python scripts/merge_seeds.py
           python scripts/sync_registry.py
           cp modelalive/data/models.json js/registry.json
 
@@ -46,7 +48,7 @@ jobs:
 
       - name: TypeScript SDK
         run: |
-          cd js && npm ci && npm run build && node dist/smoke.test.js
+          cd js && npm ci && npm test
 
       - name: OpenAPI schema drift
         run: |

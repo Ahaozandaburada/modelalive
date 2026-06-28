@@ -19,8 +19,8 @@ assert.ok(detail.breaking_changes.length >= 1);
 
 assert.equal(normalizeModel("ft:gpt-4o-mini:org:foo:bar"), "gpt-4o-mini");
 assert.equal(
-  alive("anthropic.claude-sonnet-4-6-v1:0").canonical_model,
-  "claude-sonnet-4-6",
+  alive("anthropic.claude-sonnet-4-6-v1:0").provider,
+  "bedrock",
 );
 
 const gated = gate("gemini-2.0-flash", (safe) => safe);

@@ -2,15 +2,151 @@
   "sources": {
     "azure": {
       "url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
-      "checked_at": "2026-06-28"
+      "checked_at": "2026-06-29"
     }
   },
-  "aliases": {
-    "azure/gpt-4o": "gpt-4o",
-    "azure/gpt-4o-mini": "gpt-4o-mini",
-    "azure/gpt-5.5": "gpt-5.5",
-    "azure/o3": "o3",
-    "azure/o4-mini": "o4-mini"
-  },
-  "models": {}
+  "aliases": {},
+  "models": {
+    "azure/gpt-5.5": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for gpt-5.5"
+    },
+    "azure/gpt-5.5-pro": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for gpt-5.5-pro"
+    },
+    "azure/gpt-5.4-mini": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for gpt-5.4-mini"
+    },
+    "azure/gpt-4o": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for gpt-4o"
+    },
+    "azure/gpt-4o-mini": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for gpt-4o-mini"
+    },
+    "azure/o3": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for o3"
+    },
+    "azure/o3-mini": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for o3-mini"
+    },
+    "azure/o4-mini": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for o4-mini"
+    },
+    "azure/text-embedding-3-large": {
+      "provider": "azure",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry — canonical model pending full crosswalk"
+    },
+    "azure/text-embedding-3-small": {
+      "provider": "azure",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry — canonical model pending full crosswalk"
+    },
+    "azure/claude-sonnet-4-6": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for claude-sonnet-4-6"
+    },
+    "azure/claude-opus-4-8": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [
+        "temperature, top_p, and top_k return 400 on Claude Opus 4.7+ — omit these parameters"
+      ],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for claude-opus-4-8"
+    },
+    "azure/claude-haiku-4-5": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for claude-haiku-4-5-20251001"
+    }
+  }
 }

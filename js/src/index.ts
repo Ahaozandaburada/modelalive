@@ -1,84 +1,52 @@
-import {
-  daysUntil,
-  effectiveStatus,
-  loadRegistry,
-  resolveAlias,
-} from "./registry.js";
+import { alive } from "./alive.js";
 import { normalizeModel } from "./normalize.js";
-import type { AliveResult } from "./types.js";
-import { ModelRetiredError, ModelUnknownError } from "./types.js";
+import {
+  defaultStrictUnknown,
+  defaultWarnDays,
+  defaultWarnDeprecated,
+} from "./settings.js";
+import type { AliveResult, CheckOptions } from "./types.js";
+import {
+  ModelDeprecatedError,
+  ModelExpiringSoonError,
+  ModelRetiredError,
+  ModelUnknownError,
+} from "./types.js";
 
 const MAX_DEPTH = 12;
 
-export function alive(model: string, today = new Date()): AliveResult {
-  const registry = loadRegistry();
-  const queried = normalizeModel(model);
-  const [canonical, aliased] = resolveAlias(queried, registry);
-  const entry = registry.models[canonical];
+export { alive } from "./alive.js";
 
-  if (!entry) {
-    return {
-      model: canonical,
-      queried_model: queried,
-      canonical_model: canonical,
-      aliased,
-      alive: true,
-      status: "unknown",
-      confidence: "unknown",
-      message: "Model not in registry — assumed alive.",
-      registry_version: registry.version,
-    };
-  }
+export function check(model: string, opts: CheckOptions = {}): AliveResult {
+  const strictUnknown = opts.strictUnknown ?? defaultStrictUnknown();
+  const warnDeprecated = opts.warnDeprecated ?? defaultWarnDeprecated();
+  const warnDays = opts.warnDays ?? defaultWarnDays();
+  const today = opts.today;
 
-  const status = effectiveStatus(entry, today);
-  const sourceKey = entry.source ?? "";
-  const sourceMeta = registry.sources[sourceKey];
-  const daysLeft = daysUntil(entry.retired_at, today);
-
-  const base: AliveResult = {
-    model: canonical,
-    queried_model: queried,
-    canonical_model: canonical,
-    aliased,
-    provider: entry.provider,
-    deprecated_at: entry.deprecated_at,
-    retired_at: entry.retired_at,
-    replacement: entry.replacement ?? null,
-    breaking_changes: entry.breaking_changes ?? [],
-    migrate_url: entry.migrate_url,
-    days_until_retirement: daysLeft,
-    registry_version: registry.version,
-    source_url: sourceMeta?.url,
-    source_checked_at: sourceMeta?.checked_at,
-    confidence: entry.source ? "verified" : "unknown",
-    alive: status !== "retired",
-    status: status as AliveResult["status"],
-  };
-
-  if (status === "retired") {
-    const repl = entry.replacement ? ` Use '${entry.replacement}' instead.` : "";
-    base.message = `Model '${canonical}' was retired.${repl}`;
-    base.alive = false;
-  } else if (status === "deprecated") {
-    base.message = `Model '${canonical}' is deprecated.`;
-    base.alive = true;
-  }
-
-  return base;
-}
-
-export function check(
-  model: string,
-  opts: { strictUnknown?: boolean; today?: Date } = {},
-): AliveResult {
-  const result = alive(model, opts.today);
-  if (opts.strictUnknown && result.status === "unknown") {
+  const result = alive(model, today);
+  if (strictUnknown && result.status === "unknown") {
     throw new ModelUnknownError(result);
   }
   if (result.status === "retired") {
     throw new ModelRetiredError(result);
   }
+  if (warnDeprecated && result.status === "deprecated") {
+    throw new ModelDeprecatedError(result);
+  }
+  if (
+    warnDays != null &&
+    result.status === "deprecated" &&
+    result.days_until_retirement != null &&
+    result.days_until_retirement >= 0 &&
+    result.days_until_retirement <= warnDays
+  ) {
+    throw new ModelExpiringSoonError(result);
+  }
   return result;
+}
+
+export function checkMany(models: string[], today = new Date()): AliveResult[] {
+  return models.map((m) => alive(m, today));
 }
 
 export function resolve(model: string, today = new Date()): string {
@@ -148,27 +116,54 @@ export function resolveDetail(model: string, today = new Date()): ResolveDetail 
   };
 }
 
-export function ensure(
-  model: string,
-  opts: { strictUnknown?: boolean; today?: Date } = {},
-): string {
-  const result = alive(model, opts.today);
-  if (opts.strictUnknown && result.status === "unknown") {
+export function ensure(model: string, opts: CheckOptions = {}): string {
+  const strictUnknown = opts.strictUnknown ?? defaultStrictUnknown();
+  const warnDeprecated = opts.warnDeprecated ?? defaultWarnDeprecated();
+  const warnDays = opts.warnDays ?? defaultWarnDays();
+  const today = opts.today;
+
+  const result = alive(model, today);
+  if (strictUnknown && result.status === "unknown") {
     throw new ModelUnknownError(result);
   }
   if (result.status === "retired" && !result.replacement) {
     throw new ModelRetiredError(result);
   }
-  return resolve(model, opts.today);
+  if (warnDeprecated && result.status === "deprecated") {
+    throw new ModelDeprecatedError(result);
+  }
+  if (
+    warnDays != null &&
+    result.status === "deprecated" &&
+    result.days_until_retirement != null &&
+    result.days_until_retirement >= 0 &&
+    result.days_until_retirement <= warnDays
+  ) {
+    throw new ModelExpiringSoonError(result);
+  }
+  return resolve(model, today);
+}
+
+export function requireAlive(model: string, opts: CheckOptions = {}): string {
+  check(model, opts);
+  return model;
 }
 
 export function gate<T>(
   model: string,
   fn: (safeModel: string) => T,
-  opts: { strictUnknown?: boolean; today?: Date } = {},
+  opts: CheckOptions = {},
 ): T {
   return fn(ensure(model, opts));
 }
 
 export * from "./types.js";
 export { normalizeModel } from "./normalize.js";
+export { listExpiring } from "./expiring.js";
+export { scanPath } from "./scan.js";
+export type { ScanFinding, ScanReport } from "./scan.js";
+export {
+  defaultStrictUnknown,
+  defaultWarnDays,
+  defaultWarnDeprecated,
+} from "./settings.js";
