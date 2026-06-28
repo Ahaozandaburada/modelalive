@@ -1,0 +1,128 @@
+{
+  "version": "2026-06-28",
+  "models": {
+    "claude-sonnet-4-20250514": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2026-04-14",
+      "retired_at": "2026-06-15",
+      "replacement": "claude-sonnet-4-6",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+    },
+    "claude-opus-4-20250514": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2026-04-14",
+      "retired_at": "2026-06-15",
+      "replacement": "claude-opus-4-8",
+      "breaking_changes": [
+        "temperature, top_p, and top_k are rejected on Claude Opus 4.7+ — remove these parameters"
+      ],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+    },
+    "claude-opus-4-1-20250805": {
+      "provider": "anthropic",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-05",
+      "retired_at": "2026-08-05",
+      "replacement": "claude-opus-4-8",
+      "breaking_changes": [
+        "temperature, top_p, and top_k are rejected on Claude Opus 4.7+ — remove these parameters"
+      ],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+    },
+    "claude-mythos-preview": {
+      "provider": "anthropic",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-06-30",
+      "replacement": "claude-mythos-5",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+    },
+    "claude-3-7-sonnet-20250219": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2025-10-28",
+      "retired_at": "2026-02-19",
+      "replacement": "claude-sonnet-4-6",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+    },
+    "claude-3-5-haiku-20241022": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2025-12-19",
+      "retired_at": "2026-02-19",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+    },
+    "claude-3-haiku-20240307": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2026-02-19",
+      "retired_at": "2026-04-20",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+    },
+    "claude-sonnet-4-6": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": []
+    },
+    "claude-opus-4-8": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [
+        "temperature, top_p, and top_k are rejected — omit these parameters"
+      ]
+    },
+    "claude-haiku-4-5-20251001": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": []
+    },
+    "gpt-4-0314": {
+      "provider": "openai",
+      "status": "retired",
+      "retired_at": "2024-06-06",
+      "replacement": "gpt-4o",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations"
+    },
+    "gpt-4-32k": {
+      "provider": "openai",
+      "status": "retired",
+      "retired_at": "2024-06-06",
+      "replacement": "gpt-4o",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations"
+    },
+    "gpt-3.5-turbo-0301": {
+      "provider": "openai",
+      "status": "retired",
+      "retired_at": "2024-09-13",
+      "replacement": "gpt-3.5-turbo",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations"
+    },
+    "gpt-4o": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": []
+    },
+    "gpt-4o-mini": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": []
+    }
+  }
+}

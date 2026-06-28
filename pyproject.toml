@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "modelalive"
+version = "0.1.0"
+description = "Pre-flight check: is this LLM model ID still alive?"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "ModelAlive" }]
+keywords = ["llm", "openai", "anthropic", "deprecation", "model-id"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Software Development :: Libraries",
+]
+dependencies = []
+
+[project.optional-dependencies]
+api = ["fastapi>=0.115.0", "uvicorn[standard]>=0.32.0"]
+http = ["httpx>=0.27.0"]
+dev = ["pytest>=8.0", "httpx>=0.27.0", "fastapi>=0.115.0", "uvicorn[standard]>=0.32.0"]
+
+[project.scripts]
+modelalive = "modelalive.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/modelalive/modelalive"
+Repository = "https://github.com/modelalive/modelalive"
+Issues = "https://github.com/modelalive/modelalive/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["modelalive"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
