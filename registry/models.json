@@ -12,7 +12,7 @@
     },
     "google": {
       "url": "https://ai.google.dev/gemini-api/docs/deprecations",
-      "checked_at": "2026-06-28"
+      "checked_at": "2026-06-29"
     },
     "groq": {
       "url": "https://console.groq.com/docs/deprecations",
@@ -4813,6 +4813,113 @@
       "migrate_url": "https://docs.together.ai/docs/deprecations.md",
       "source": "together",
       "notes": "Together redirect/active endpoint — add lifecycle when deprecated"
+    },
+    "gemini-2.5-pro-preview-03-25": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-12-02",
+      "replacement": "gemini-3.1-pro-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.5-pro-preview-05-06": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-12-02",
+      "replacement": "gemini-3.1-pro-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.5-flash-lite-preview-09-2025": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2026-03-31",
+      "replacement": "gemini-3.1-flash-lite",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.5-flash-image-preview": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2026-01-15",
+      "replacement": "gemini-2.5-flash-image",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.0-flash-preview-image-generation": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-11-14",
+      "replacement": "gemini-2.5-flash-image",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.0-flash-lite-preview": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-12-09",
+      "replacement": "gemini-2.5-flash-lite",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.0-flash-lite-preview-02-05": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-12-09",
+      "replacement": "gemini-2.5-flash-lite",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.0-flash-live-001": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-12-09",
+      "replacement": "gemini-3.1-flash-live-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-live-2.5-flash-preview": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-12-09",
+      "replacement": "gemini-3.1-flash-live-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-embedding-exp": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-10-30",
+      "replacement": "gemini-embedding-2",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-embedding-exp-03-07": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-10-30",
+      "replacement": "gemini-embedding-2",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-3.1-flash-live-preview": {
+      "provider": "google",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
     }
   }
 }

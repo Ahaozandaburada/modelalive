@@ -20,6 +20,7 @@ def main() -> int:
         [sys.executable, str(ROOT / "scripts" / "parse_openai_deprecations.py"), "--write"],
         [sys.executable, str(ROOT / "scripts" / "parse_together_deprecations.py"), "--write"],
         [sys.executable, str(ROOT / "scripts" / "parse_anthropic_deprecations.py"), "--write"],
+        [sys.executable, str(ROOT / "scripts" / "parse_google_deprecations.py"), "--write"],
         [sys.executable, str(ROOT / "scripts" / "generate_openrouter_crosswalk.py")],
         [sys.executable, str(ROOT / "scripts" / "merge_seeds.py")],
         [sys.executable, str(ROOT / "scripts" / "sync_registry.py")],

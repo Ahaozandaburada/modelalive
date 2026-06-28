@@ -21,6 +21,7 @@ from modelalive.providers import list_provider_keys, provider_label
 from modelalive.validate import validate_registry
 
 from api.middleware import RateLimitMiddleware, RequestIDMiddleware
+from api.auth import APIKeyMiddleware, load_api_keys, require_api_key_enabled
 
 app = FastAPI(
     title="Model Alive",
@@ -44,6 +45,10 @@ if _rate_raw and _rate_raw != "0":
     except ValueError:
         pass
 app.add_middleware(RequestIDMiddleware)
+
+_api_keys = load_api_keys()
+if require_api_key_enabled() and _api_keys:
+    app.add_middleware(APIKeyMiddleware, keys=_api_keys)
 
 
 class BatchRequest(BaseModel):

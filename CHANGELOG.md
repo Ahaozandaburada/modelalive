@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.1 — Google parser + hosted API auth prep
+
+- **478 models** (+12 via Google Gemini deprecation parser)
+- **API key middleware** — `MODELALIVE_REQUIRE_API_KEY` + `MODELALIVE_API_KEYS`
+- **docs/HOSTED_API.md** — self-host, Fly.io, monetization prep
+- **126 tests**
+
 ## 1.0.0 — Class-leading registry + production API
 
 - **466 models**, **130+ aliases**, **20 providers**

@@ -21,3 +21,11 @@ def test_anthropic_parsed_seed_exists():
     seed = json.loads(path.read_text())
     assert len(seed["models"]) >= 10
     assert "claude-sonnet-4-20250514" in seed["models"]
+
+
+def test_google_parsed_seed_exists():
+    path = ROOT / "registry" / "seeds" / "google_parsed.json"
+    assert path.exists()
+    seed = json.loads(path.read_text())
+    assert len(seed["models"]) >= 20
+    assert "gemini-2.0-flash" in seed["models"]

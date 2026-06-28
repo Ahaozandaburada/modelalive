@@ -19,7 +19,12 @@ def main() -> int:
     sources = registry.setdefault("sources", {})
     added = 0
 
-    SKIP_PARSED = {"openai_parsed.json", "together_parsed.json", "anthropic_parsed.json"}
+    SKIP_PARSED = {
+        "openai_parsed.json",
+        "together_parsed.json",
+        "anthropic_parsed.json",
+        "google_parsed.json",
+    }
 
     for seed_file in sorted(SEEDS_DIR.glob("*.json")):
         seed = json.loads(seed_file.read_text(encoding="utf-8"))
