@@ -29,9 +29,9 @@ dev = ["pytest>=8.0", "httpx>=0.27.0", "fastapi>=0.115.0", "uvicorn[standard]>=0
 modelalive = "modelalive.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/modelalive/modelalive"
-Repository = "https://github.com/modelalive/modelalive"
-Issues = "https://github.com/modelalive/modelalive/issues"
+Homepage = "https://github.com/Ahaozandaburada/modelalive"
+Repository = "https://github.com/Ahaozandaburada/modelalive"
+Issues = "https://github.com/Ahaozandaburada/modelalive/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["modelalive"]
