@@ -5,6 +5,7 @@ import json
 import sys
 from pathlib import Path
 
+from modelalive.config_file import load_config
 from modelalive.check import alive, check, ensure, resolve
 from modelalive.exceptions import (
     ModelDeprecatedError,
@@ -75,6 +76,9 @@ def main(argv: list[str] | None = None) -> int:
     scan_cmd.add_argument("path", nargs="?", default=".", help="Directory to scan")
     scan_cmd.add_argument("--json", action="store_true")
 
+    config_cmd = sub.add_parser("check-config", help="Check models listed in modelalive.toml")
+    config_cmd.add_argument("--file", default="modelalive.toml")
+
     args = parser.parse_args(argv)
 
     commands = {
@@ -86,6 +90,7 @@ def main(argv: list[str] | None = None) -> int:
         "validate": lambda: _cmd_validate(args),
         "expiring": lambda: _cmd_expiring(args),
         "scan": lambda: _cmd_scan(args),
+        "check-config": lambda: _cmd_check_config(args),
     }
     return commands[args.command]()
 
@@ -241,6 +246,21 @@ def _cmd_scan(args: argparse.Namespace) -> int:
             repl = f" -> {finding.replacement}" if finding.replacement else ""
             print(f"  {finding.path}:{finding.line}  {finding.model} [{finding.status}]{repl}")
     return 1 if report.retired else 0
+
+
+def _cmd_check_config(args: argparse.Namespace) -> int:
+    config = load_config(args.file)
+    if not config.models:
+        print(f"No models in {args.file}", file=sys.stderr)
+        return 1
+    check_args = argparse.Namespace(
+        models=config.models,
+        warn_deprecated=config.warn_deprecated,
+        strict_unknown=config.strict_unknown,
+        warn_days=config.warn_days,
+        json=False,
+    )
+    return _cmd_check(check_args)
 
 
 if __name__ == "__main__":
