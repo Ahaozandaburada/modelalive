@@ -5,8 +5,8 @@ import json
 import sys
 from pathlib import Path
 
-from modelalive.check import alive, check, resolve
-from modelalive.exceptions import ModelDeprecatedError, ModelRetiredError
+from modelalive.check import alive, check, ensure, resolve
+from modelalive.exceptions import ModelDeprecatedError, ModelRetiredError, ModelUnknownError
 from modelalive.registry import list_models, load_registry
 from modelalive.validate import assert_registry_valid, validate_registry
 
@@ -25,10 +25,23 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Exit non-zero if any model is deprecated",
     )
+    check_cmd.add_argument(
+        "--strict-unknown",
+        action="store_true",
+        help="Exit non-zero if any model is not in the registry",
+    )
     check_cmd.add_argument("--json", action="store_true", help="Output JSON")
+
+    ensure_cmd = sub.add_parser("ensure", help="Pre-flight: validate and print safe model ID")
+    ensure_cmd.add_argument("model", help="Model ID to ensure")
+    ensure_cmd.add_argument("--warn-deprecated", action="store_true")
+    ensure_cmd.add_argument("--strict-unknown", action="store_true")
 
     resolve_cmd = sub.add_parser("resolve", help="Return best model ID to use")
     resolve_cmd.add_argument("model", help="Model ID to resolve")
+
+    info_cmd = sub.add_parser("info", help="Show full lifecycle info for one model")
+    info_cmd.add_argument("model", help="Model ID")
 
     list_cmd = sub.add_parser("list", help="List models in registry")
     list_cmd.add_argument("--status", choices=["active", "deprecated", "retired", "legacy"])
@@ -36,26 +49,20 @@ def main(argv: list[str] | None = None) -> int:
     list_cmd.add_argument("--json", action="store_true")
 
     validate_cmd = sub.add_parser("validate", help="Validate registry JSON")
-    validate_cmd.add_argument(
-        "--registry",
-        type=Path,
-        default=None,
-        help="Path to registry JSON (default: bundled)",
-    )
+    validate_cmd.add_argument("--registry", type=Path, default=None)
     validate_cmd.add_argument("--strict", action="store_true", help="Treat warnings as errors")
 
     args = parser.parse_args(argv)
 
-    if args.command == "check":
-        return _cmd_check(args)
-    if args.command == "resolve":
-        print(resolve(args.model))
-        return 0
-    if args.command == "list":
-        return _cmd_list(args)
-    if args.command == "validate":
-        return _cmd_validate(args)
-    return 2
+    commands = {
+        "check": lambda: _cmd_check(args),
+        "ensure": lambda: _cmd_ensure(args),
+        "resolve": lambda: _cmd_resolve(args),
+        "info": lambda: _cmd_info(args),
+        "list": lambda: _cmd_list(args),
+        "validate": lambda: _cmd_validate(args),
+    }
+    return commands[args.command]()
 
 
 def _cmd_check(args: argparse.Namespace) -> int:
@@ -64,8 +71,14 @@ def _cmd_check(args: argparse.Namespace) -> int:
 
     for model_arg in args.models:
         try:
-            results.append(check(model_arg, warn_deprecated=args.warn_deprecated))
-        except (ModelRetiredError, ModelDeprecatedError) as exc:
+            results.append(
+                check(
+                    model_arg,
+                    warn_deprecated=args.warn_deprecated,
+                    strict_unknown=args.strict_unknown,
+                )
+            )
+        except (ModelRetiredError, ModelDeprecatedError, ModelUnknownError) as exc:
             results.append(exc.result)
             exit_code = 1
 
@@ -74,22 +87,52 @@ def _cmd_check(args: argparse.Namespace) -> int:
         return exit_code
 
     for result in results:
-        status = "ALIVE" if result.alive else "DEAD"
-        alias = f" (via alias -> {result.canonical_model})" if result.aliased else ""
-        queried = result.queried_model or result.model
-        print(f"{status}: {queried}{alias} [{result.status}]")
-        if result.replacement:
-            print(f"  replacement: {result.replacement}")
-        if result.source_url:
-            print(f"  source: {result.source_url} (checked {result.source_checked_at})")
-        if result.breaking_changes:
-            print("  breaking_changes:")
-            for change in result.breaking_changes:
-                print(f"    - {change}")
-        if result.message and result.status in {"retired", "deprecated", "unknown"}:
-            print(f"  note: {result.message}")
-
+        _print_result(result)
     return exit_code
+
+
+def _cmd_ensure(args: argparse.Namespace) -> int:
+    try:
+        print(
+            ensure(
+                args.model,
+                warn_deprecated=args.warn_deprecated,
+                strict_unknown=args.strict_unknown,
+            )
+        )
+        return 0
+    except (ModelRetiredError, ModelDeprecatedError, ModelUnknownError) as exc:
+        print(exc.result.message or str(exc), file=sys.stderr)
+        return 1
+
+
+def _cmd_resolve(args: argparse.Namespace) -> int:
+    print(resolve(args.model))
+    return 0
+
+
+def _cmd_info(args: argparse.Namespace) -> int:
+    result = alive(args.model)
+    print(json.dumps(result.to_dict(), indent=2))
+    return 0
+
+
+def _print_result(result) -> None:
+    status = "ALIVE" if result.alive else "DEAD"
+    alias = f" (via alias -> {result.canonical_model})" if result.aliased else ""
+    queried = result.queried_model or result.model
+    print(f"{status}: {queried}{alias} [{result.status}]")
+    if result.replacement:
+        print(f"  replacement: {result.replacement}")
+        print(f"  resolved:    {resolve(queried)}")
+    if result.source_url:
+        print(f"  source: {result.source_url} (checked {result.source_checked_at})")
+    if result.breaking_changes:
+        print("  breaking_changes:")
+        for change in result.breaking_changes:
+            print(f"    - {change}")
+    if result.message and result.status in {"retired", "deprecated", "unknown"}:
+        print(f"  note: {result.message}")
 
 
 def _cmd_list(args: argparse.Namespace) -> int:

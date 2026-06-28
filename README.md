@@ -24,18 +24,25 @@ modelalive list --status retired --provider anthropic
 
 # Validate registry integrity
 modelalive validate --strict
+
+# Pre-flight: print safe model ID (auto-replaces retired)
+modelalive ensure claude-sonnet-4-20250514
+
+# Production CI: fail on unknown models too
+modelalive check "$MODEL_ID" --strict-unknown --warn-deprecated
 ```
 
 ```python
 import modelalive
 
+# Pre-flight: auto-replace retired models
+model_id = modelalive.ensure("claude-sonnet-4-20250514")
+# → "claude-sonnet-4-6"
+
 result = modelalive.alive("claude-mythos-preview")
 print(result.days_until_retirement)  # 2 (as of 2026-06-28)
 print(result.source_url)             # Anthropic deprecation docs
 print(result.confidence)             # "verified"
-
-model_id = modelalive.resolve("claude-sonnet-4-20250514")
-# → "claude-sonnet-4-6"
 ```
 
 ## HTTP API
@@ -48,7 +55,8 @@ uvicorn api.main:app --port 8787
 |--------|------|-------------|
 | GET | `/v1/alive?model=` | Lifecycle check (410 if retired) |
 | POST | `/v1/alive/batch` | Check up to 100 models |
-| GET | `/v1/resolve?model=` | Best model ID to use |
+| GET | `/v1/ensure?model=` | Pre-flight: return safe model ID |
+| GET | `/v1/resolve?model=` | Best model ID + breaking changes |
 | GET | `/v1/registry` | Filter by `status`, `provider` |
 | GET | `/v1/sources` | Official doc URLs + last checked date |
 | GET | `/v1/validate` | Registry integrity report |

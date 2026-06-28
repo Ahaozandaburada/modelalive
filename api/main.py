@@ -8,7 +8,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 from modelalive import __version__
-from modelalive.check import alive, check_many, resolve
+from modelalive.check import alive, check_many, ensure, resolve
 from modelalive.registry import load_registry, registry_version
 from modelalive.validate import validate_registry
 
@@ -72,29 +72,51 @@ def post_alive_batch(body: BatchRequest):
 @app.get("/v1/resolve")
 def get_resolve(model: Annotated[str, Query(min_length=1, max_length=128)]):
     result = alive(model)
+    resolved = resolve(model)
+    target = alive(resolved)
     return {
         "queried_model": result.queried_model or model,
         "canonical_model": result.canonical_model or model,
-        "resolved": resolve(model),
+        "resolved": resolved,
         "replacement": result.replacement,
+        "breaking_changes": target.breaking_changes,
+    }
+
+
+@app.get("/v1/ensure")
+def get_ensure(
+    model: Annotated[str, Query(min_length=1, max_length=128)],
+    warn_deprecated: bool = False,
+    strict_unknown: bool = False,
+):
+    from modelalive.exceptions import ModelDeprecatedError, ModelRetiredError, ModelUnknownError
+
+    try:
+        safe_model = ensure(
+            model,
+            warn_deprecated=warn_deprecated,
+            strict_unknown=strict_unknown,
+        )
+    except (ModelRetiredError, ModelDeprecatedError, ModelUnknownError) as exc:
+        return JSONResponse(content=exc.result.to_dict(), status_code=410)
+    result = alive(safe_model)
+    return {
+        "queried_model": model,
+        "safe_model": safe_model,
+        "breaking_changes": result.breaking_changes,
     }
 
 
 @app.get("/v1/registry")
 def list_registry(
     status: Annotated[str | None, Query(description="active, deprecated, retired")] = None,
-    provider: Annotated[str | None, Query(description="anthropic, openai")] = None,
+    provider: Annotated[str | None, Query(description="anthropic, openai, google")] = None,
 ):
-    registry = load_registry()
-    models = registry.get("models", {})
-    filtered = {
-        model_id: entry
-        for model_id, entry in models.items()
-        if (not status or entry.get("status") == status)
-        and (not provider or entry.get("provider") == provider)
-    }
+    from modelalive.registry import list_models
+
+    filtered = list_models(status=status, provider=provider)
     return {
-        "registry_version": registry.get("version"),
+        "registry_version": load_registry().get("version"),
         "count": len(filtered),
         "models": filtered,
     }

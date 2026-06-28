@@ -8,8 +8,16 @@ inputs:
   models:
     description: Space-separated model IDs to check
     required: true
+  version:
+    description: modelalive package version to install
+    required: false
+    default: "0.3.0"
   warn-deprecated:
     description: Fail when models are deprecated (not just retired)
+    required: false
+    default: "false"
+  strict-unknown:
+    description: Fail when models are not in the registry
     required: false
     default: "false"
 
@@ -18,7 +26,7 @@ runs:
   steps:
     - name: Install modelalive
       shell: bash
-      run: pip install modelalive
+      run: pip install "modelalive==${{ inputs.version }}"
 
     - name: Check models
       shell: bash
@@ -26,6 +34,9 @@ runs:
         set -e
         ARGS=""
         if [ "${{ inputs.warn-deprecated }}" = "true" ]; then
-          ARGS="--warn-deprecated"
+          ARGS="$ARGS --warn-deprecated"
+        fi
+        if [ "${{ inputs.strict-unknown }}" = "true" ]; then
+          ARGS="$ARGS --strict-unknown"
         fi
         modelalive check $ARGS ${{ inputs.models }}

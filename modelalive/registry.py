@@ -7,6 +7,8 @@ from importlib import resources
 from pathlib import Path
 from typing import Any
 
+from modelalive.lifecycle import days_until, effective_status, parse_date
+
 _REGISTRY_FILENAME = "models.json"
 _MAX_ALIAS_DEPTH = 8
 
@@ -72,11 +74,14 @@ def list_models(
     status: str | None = None,
     provider: str | None = None,
     registry_path: str | Path | None = None,
+    today: date | None = None,
 ) -> dict[str, dict[str, Any]]:
     models = load_registry(registry_path).get("models", {})
+    current = today or date.today()
     result: dict[str, dict[str, Any]] = {}
     for model_id, entry in models.items():
-        if status and entry.get("status") != status:
+        effective = effective_status(entry, today=current)
+        if status and effective != status:
             continue
         if provider and entry.get("provider") != provider:
             continue
@@ -85,14 +90,10 @@ def list_models(
 
 
 def _parse_date(value: str | None) -> date | None:
-    if not value:
-        return None
-    return datetime.strptime(value, "%Y-%m-%d").date()
+    return parse_date(value)
 
 
 def days_until(value: str | None, *, today: date | None = None) -> int | None:
-    target = _parse_date(value)
-    if target is None:
-        return None
-    current = today or date.today()
-    return (target - current).days
+    from modelalive.lifecycle import days_until as _days_until
+
+    return _days_until(value, today=today)

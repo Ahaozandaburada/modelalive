@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from modelalive.exceptions import ModelDeprecatedError, ModelRetiredError
+from modelalive.exceptions import ModelDeprecatedError, ModelRetiredError, ModelUnknownError
 from modelalive.normalize import normalize_model
 from modelalive.registry import (
     days_until,
@@ -13,7 +13,9 @@ from modelalive.registry import (
     resolve_alias,
 )
 from modelalive.types import AliveResult
-from modelalive.validate import effective_status
+from modelalive.lifecycle import effective_status
+
+_MAX_RESOLVE_DEPTH = 12
 
 
 def alive(
@@ -97,12 +99,15 @@ def check(
     model: str,
     *,
     warn_deprecated: bool = False,
+    strict_unknown: bool = False,
     registry_path: str | Path | None = None,
     today: date | None = None,
 ) -> AliveResult:
-    """Check model lifecycle; raise on retired (and optionally deprecated)."""
+    """Check model lifecycle; raise on retired (and optionally deprecated/unknown)."""
     result = alive(model, registry_path=registry_path, today=today)
 
+    if strict_unknown and result.status == "unknown":
+        raise ModelUnknownError(result)
     if result.status == "retired":
         raise ModelRetiredError(result)
     if warn_deprecated and result.status == "deprecated":
@@ -125,11 +130,50 @@ def resolve(
     registry_path: str | Path | None = None,
     today: date | None = None,
 ) -> str:
-    """Return best model ID to use: replacement if retired/deprecated, else canonical."""
+    """Return the best active model ID, following replacement chains."""
+    current = normalize_model(model)
+    visited: set[str] = set()
+
+    for _ in range(_MAX_RESOLVE_DEPTH):
+        if current in visited:
+            break
+        visited.add(current)
+
+        result = alive(current, registry_path=registry_path, today=today)
+        if result.status in {"active", "unknown"}:
+            return result.canonical_model or current
+        if not result.replacement:
+            return result.canonical_model or current
+
+        replacement = result.replacement
+        repl = alive(replacement, registry_path=registry_path, today=today)
+        if repl.status == "active":
+            return replacement
+        current = replacement
+
+    final = alive(current, registry_path=registry_path, today=today)
+    return final.replacement or final.canonical_model or current
+
+
+def ensure(
+    model: str,
+    *,
+    warn_deprecated: bool = False,
+    strict_unknown: bool = False,
+    registry_path: str | Path | None = None,
+    today: date | None = None,
+) -> str:
+    """Pre-flight gate: return a safe model ID, raising only when migration is impossible."""
     result = alive(model, registry_path=registry_path, today=today)
-    if result.replacement:
-        return result.replacement
-    return result.canonical_model or result.model
+
+    if strict_unknown and result.status == "unknown":
+        raise ModelUnknownError(result)
+    if result.status == "retired" and not result.replacement:
+        raise ModelRetiredError(result)
+    if warn_deprecated and result.status == "deprecated":
+        raise ModelDeprecatedError(result)
+
+    return resolve(model, registry_path=registry_path, today=today)
 
 
 def _retired_message(

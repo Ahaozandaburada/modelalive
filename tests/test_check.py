@@ -3,14 +3,11 @@ from datetime import date
 import pytest
 from fastapi.testclient import TestClient
 
-from modelalive import alive, assert_registry_valid, check, resolve, validate_registry
-from modelalive.exceptions import ModelRetiredError
-from modelalive.validate import effective_status
-
-try:
-    from api.main import app
-except ImportError:
-    app = None
+from modelalive import alive, assert_registry_valid, check, ensure, resolve, validate_registry
+from modelalive.exceptions import ModelRetiredError, ModelUnknownError
+from modelalive.normalize import normalize_model
+from modelalive.lifecycle import effective_status
+from api.main import app
 
 
 def test_registry_is_valid():
@@ -35,6 +32,11 @@ def test_check_raises_on_retired():
     assert exc.value.result.replacement == "claude-sonnet-4-6"
 
 
+def test_strict_unknown_raises():
+    with pytest.raises(ModelUnknownError):
+        check("totally-unknown-model-xyz", strict_unknown=True)
+
+
 def test_active_model_alive():
     result = alive("claude-sonnet-4-6")
     assert result.alive is True
@@ -48,9 +50,24 @@ def test_unknown_model_assumed_alive():
     assert result.confidence == "unknown"
 
 
-def test_resolve_returns_replacement():
+def test_resolve_returns_active_replacement():
     assert resolve("claude-sonnet-4-20250514") == "claude-sonnet-4-6"
     assert resolve("claude-sonnet-4-6") == "claude-sonnet-4-6"
+    assert resolve("gemini-2.0-flash") == "gemini-3.5-flash"
+
+
+def test_ensure_returns_safe_model():
+    assert ensure("claude-sonnet-4-20250514") == "claude-sonnet-4-6"
+    assert ensure("claude-sonnet-4-6") == "claude-sonnet-4-6"
+
+
+def test_ensure_auto_replaces_retired():
+    assert ensure("claude-sonnet-4-20250514") == "claude-sonnet-4-6"
+
+
+def test_ensure_strict_unknown():
+    with pytest.raises(ModelUnknownError):
+        ensure("totally-unknown-model-xyz", strict_unknown=True)
 
 
 def test_deprecated_mythos_still_alive():
@@ -93,14 +110,28 @@ def test_openai_upcoming_deprecation():
     assert result.days_until_retirement == 166
 
 
-@pytest.mark.skipif(app is None, reason="api package not importable")
+def test_normalize_rejects_empty():
+    with pytest.raises(ValueError):
+        normalize_model("   ")
+
+
+def test_replacement_chains_end_active():
+    issues = validate_registry()
+    chain_errors = [
+        issue
+        for issue in issues
+        if issue.level == "error" and "replacement chain" in issue.message
+    ]
+    assert not chain_errors
+
+
 class TestAPI:
     client = TestClient(app)
 
     def test_health(self):
         response = self.client.get("/v1/health")
         assert response.status_code == 200
-        assert response.json()["model_count"] > 0
+        assert response.json()["model_count"] >= 60
 
     def test_alive_retired_410(self):
         response = self.client.get("/v1/alive", params={"model": "claude-sonnet-4-20250514"})
@@ -120,3 +151,16 @@ class TestAPI:
         response = self.client.get("/v1/validate")
         assert response.status_code == 200
         assert response.json()["valid"] is True
+
+    def test_ensure_endpoint(self):
+        response = self.client.get("/v1/ensure", params={"model": "claude-sonnet-4-20250514"})
+        assert response.status_code == 200
+        assert response.json()["safe_model"] == "claude-sonnet-4-6"
+
+    def test_ensure_retired_direct(self):
+        response = self.client.get(
+            "/v1/ensure",
+            params={"model": "claude-sonnet-4-20250514", "strict_unknown": "true"},
+        )
+        assert response.status_code == 200
+        assert response.json()["safe_model"] == "claude-sonnet-4-6"

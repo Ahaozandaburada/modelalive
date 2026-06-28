@@ -5,7 +5,8 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
-from modelalive.registry import _parse_date, load_registry
+from modelalive.lifecycle import effective_status, parse_date
+from modelalive.registry import load_registry
 
 
 @dataclass(frozen=True)
@@ -13,18 +14,6 @@ class ValidationIssue:
     level: str  # error | warning
     path: str
     message: str
-
-
-def effective_status(entry: dict[str, Any], *, today: date | None = None) -> str:
-    """Derive lifecycle status, applying retirement dates even if registry lags."""
-    current = today or date.today()
-    retired_at = _parse_date(entry.get("retired_at"))
-    if retired_at is not None and retired_at <= current:
-        return "retired"
-    status = entry.get("status", "unknown")
-    if status == "legacy":
-        return "deprecated"
-    return status
 
 
 def validate_registry(path: str | Path | None = None) -> list[ValidationIssue]:
@@ -42,10 +31,10 @@ def validate_registry(path: str | Path | None = None) -> list[ValidationIssue]:
             issues.append(ValidationIssue("error", key, f"Missing required field: {key}"))
 
     for alias, target in aliases.items():
-        if alias not in models and alias not in aliases:
-            issues.append(ValidationIssue("warning", f"aliases.{alias}", "Alias name is not a known model"))
         if target not in models:
             issues.append(ValidationIssue("error", f"aliases.{alias}", f"Alias target not in registry: {target}"))
+
+    today = date.today()
 
     for model_id, entry in models.items():
         prefix = f"models.{model_id}"
@@ -64,8 +53,8 @@ def validate_registry(path: str | Path | None = None) -> list[ValidationIssue]:
         if status == "deprecated" and not entry.get("retired_at"):
             issues.append(ValidationIssue("error", prefix, "Deprecated model must have retired_at"))
 
-        retired_at = _parse_date(entry.get("retired_at"))
-        deprecated_at = _parse_date(entry.get("deprecated_at"))
+        retired_at = parse_date(entry.get("retired_at"))
+        deprecated_at = parse_date(entry.get("deprecated_at"))
         if retired_at and deprecated_at and deprecated_at > retired_at:
             issues.append(ValidationIssue("error", prefix, "deprecated_at cannot be after retired_at"))
 
@@ -79,18 +68,61 @@ def validate_registry(path: str | Path | None = None) -> list[ValidationIssue]:
                 )
             )
 
-        computed = effective_status(entry)
+        computed = effective_status(entry, today=today)
         if status == "deprecated" and computed == "retired":
             issues.append(
                 ValidationIssue(
-                    "warning",
+                    "error",
                     prefix,
-                    "status is deprecated but retired_at is in the past — should be retired",
+                    "status is deprecated but retired_at is in the past — must be retired",
                 )
             )
         if status == "active" and computed == "retired":
             issues.append(
                 ValidationIssue("error", prefix, "status is active but retired_at is in the past"),
+            )
+
+        if replacement and replacement in models:
+            repl_status = effective_status(models[replacement], today=today)
+            if repl_status == "retired":
+                issues.append(
+                    ValidationIssue(
+                        "error",
+                        prefix,
+                        f"replacement {replacement!r} is retired — fix replacement chain",
+                    )
+                )
+
+    for model_id, entry in models.items():
+        if entry.get("status") not in {"deprecated", "retired"}:
+            continue
+        replacement = entry.get("replacement")
+        if not replacement:
+            continue
+        prefix = f"models.{model_id}"
+        from modelalive.check import resolve
+
+        try:
+            resolved = resolve(model_id, today=today)
+        except Exception as exc:  # noqa: BLE001
+            issues.append(ValidationIssue("error", prefix, f"resolve failed: {exc}"))
+            continue
+        resolved_entry = models.get(resolved)
+        if resolved_entry is None:
+            issues.append(
+                ValidationIssue(
+                    "warning",
+                    prefix,
+                    f"replacement chain ends at unlisted model {resolved!r}",
+                )
+            )
+        elif effective_status(resolved_entry, today=today) != "active":
+            issues.append(
+                ValidationIssue(
+                    "error",
+                    prefix,
+                    f"replacement chain ends at non-active model {resolved!r}",
+                )
             )
 
     return issues
