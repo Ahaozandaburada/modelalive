@@ -29,3 +29,11 @@ def test_google_parsed_seed_exists():
     seed = json.loads(path.read_text())
     assert len(seed["models"]) >= 20
     assert "gemini-2.0-flash" in seed["models"]
+
+
+def test_fireworks_parsed_seed_exists():
+    path = ROOT / "registry" / "seeds" / "fireworks_parsed.json"
+    assert path.exists()
+    seed = json.loads(path.read_text())
+    assert len(seed["models"]) >= 10
+    assert "fireworks/kimi-k2p5" in seed["models"]

@@ -25,6 +25,7 @@ jobs:
         run: |
           python scripts/merge_seeds.py
           python scripts/sync_registry.py
+          cp modelalive/data/models.json js/registry.json
 
       - name: Verify registry sync
         run: diff -q registry/models.json modelalive/data/models.json

@@ -22,6 +22,7 @@ from modelalive.validate import validate_registry
 
 from api.middleware import RateLimitMiddleware, RequestIDMiddleware
 from api.auth import APIKeyMiddleware, load_api_keys, require_api_key_enabled
+from api.usage import UsageMiddleware, get_tracker, monthly_limit, tier_for_request
 
 app = FastAPI(
     title="Model Alive",
@@ -49,6 +50,7 @@ app.add_middleware(RequestIDMiddleware)
 _api_keys = load_api_keys()
 if require_api_key_enabled() and _api_keys:
     app.add_middleware(APIKeyMiddleware, keys=_api_keys)
+app.add_middleware(UsageMiddleware)
 
 
 class BatchRequest(BaseModel):
@@ -266,6 +268,19 @@ def get_expiring(
         "within_days": days,
         "count": len(results),
         "models": [result.to_dict() for result in results],
+    }
+
+
+@app.get("/v1/usage")
+def get_usage(request: Request):
+    """Current billing-period usage for this client (IP or API key)."""
+    tier = tier_for_request(request)
+    count = get_tracker().get(request)
+    return {
+        "tier": tier,
+        "checks_used": count,
+        "checks_limit": monthly_limit(tier),
+        "checks_remaining": max(0, monthly_limit(tier) - count),
     }
 
 

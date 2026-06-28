@@ -1,6 +1,6 @@
 {
   "name": "modelalive",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Pre-flight check: is this LLM model ID still alive?",
   "type": "module",
   "main": "dist/index.js",

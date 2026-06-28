@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "modelalive"
-version = "1.0.1"
+version = "1.0.2"
 description = "Pre-flight check: is this LLM model ID still alive?"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -38,3 +38,4 @@ packages = ["modelalive"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = "--cov=modelalive --cov=api --cov-report=term-missing:skip-covered --cov-fail-under=65"

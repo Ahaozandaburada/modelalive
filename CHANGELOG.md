@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.2 — Fireworks parser, usage metering, deploy docs
+
+- **485 models** (+7 Fireworks changelog parser)
+- **Usage middleware** — `X-Usage-Count`, `GET /v1/usage`, quota enforcement (`MODELALIVE_ENFORCE_QUOTA`)
+- **docs/DEPLOY.md** — manual PyPI/npm/Fly publish guide
+- **5 CLI tests**, usage/quota API tests
+- CI: sync `js/registry.json`, coverage gate 65%
+
 ## 1.0.1 — Google parser + hosted API auth prep
 
 - **478 models** (+12 via Google Gemini deprecation parser)

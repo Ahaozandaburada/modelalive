@@ -38,7 +38,8 @@ docker run -p 8080:8080 modelalive-api
 | `MODELALIVE_REQUIRE_API_KEY` | off | Require API key when set to `1` |
 | `MODELALIVE_API_KEYS` | — | Comma-separated valid keys (hosted tier) |
 | `MODELALIVE_REGISTRY_PATH` | bundled | Override registry JSON path |
-| `MODELALIVE_REGISTRY_URL` | — | Fetch registry from remote URL |
+| `MODELALIVE_ENFORCE_QUOTA` | off | Return 402 when monthly tier limit exceeded |
+| `MODELALIVE_DEFAULT_TIER` | `pro` | Tier for authenticated API keys |
 
 ## Response headers
 

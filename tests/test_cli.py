@@ -113,3 +113,29 @@ def test_bedrock_alias_via_cli():
 def test_strict_unknown_fails():
     result = run_cli("check", "--strict-unknown", "unknown-model-xyz-abc")
     assert result.returncode == 1
+
+
+def test_list_json_output():
+    result = run_cli("list", "--status", "active", "--provider", "qwen", "--json")
+    assert result.returncode == 0
+    data = json.loads(result.stdout)
+    assert "models" in data
+    assert "qwen3.7-max" in data["models"]
+
+
+def test_providers_json():
+    result = run_cli("providers", "--json")
+    assert result.returncode == 0
+    data = json.loads(result.stdout)
+    assert "qwen" in data["providers"]
+
+
+def test_check_multiple_models():
+    result = run_cli("check", "gpt-4o", "claude-sonnet-4-6")
+    assert result.returncode == 0
+
+
+def test_qwen_openrouter_via_cli():
+    result = run_cli("resolve", "qwen/qwen3.7-max")
+    assert result.returncode == 0
+    assert result.stdout.strip() == "qwen3.7-max"

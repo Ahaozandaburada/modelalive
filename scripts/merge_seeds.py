@@ -24,6 +24,7 @@ def main() -> int:
         "together_parsed.json",
         "anthropic_parsed.json",
         "google_parsed.json",
+        "fireworks_parsed.json",
     }
 
     for seed_file in sorted(SEEDS_DIR.glob("*.json")):
