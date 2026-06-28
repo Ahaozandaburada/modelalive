@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.7.0
+
+- **157 models** (+33 OpenAI via doc parser), **97 OpenAI** entries
+- `scripts/parse_openai_deprecations.py` — auto-parse OpenAI deprecation tables
+- `scripts/sync_drift.py` + daily **drift-pr** GitHub workflow
+- **14 CLI tests** — check, ensure, scan, validate, bedrock alias
+- TypeScript: `resolveDetail()`, `gate()`, `normalizeModel()`, Bedrock + ft: parity
+- CLI `--provider` supports groq, mistral, bedrock
+- **102+ tests**
+
 ## 0.6.0
 
 - **`gate()`** context manager + **`require_alive`** decorator

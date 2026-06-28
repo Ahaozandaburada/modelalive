@@ -60,7 +60,7 @@ def main(argv: list[str] | None = None) -> int:
 
     list_cmd = sub.add_parser("list", help="List models in registry")
     list_cmd.add_argument("--status", choices=["active", "deprecated", "retired", "legacy"])
-    list_cmd.add_argument("--provider", choices=["anthropic", "openai", "google"])
+    list_cmd.add_argument("--provider", choices=["anthropic", "openai", "google", "groq", "mistral", "bedrock"])
     list_cmd.add_argument("--json", action="store_true")
 
     validate_cmd = sub.add_parser("validate", help="Validate registry JSON")
@@ -69,7 +69,7 @@ def main(argv: list[str] | None = None) -> int:
 
     expiring_cmd = sub.add_parser("expiring", help="List models retiring soon")
     expiring_cmd.add_argument("--days", type=int, default=30)
-    expiring_cmd.add_argument("--provider", choices=["anthropic", "openai", "google"])
+    expiring_cmd.add_argument("--provider", choices=["anthropic", "openai", "google", "groq", "mistral", "bedrock"])
     expiring_cmd.add_argument("--json", action="store_true")
 
     scan_cmd = sub.add_parser("scan", help="Scan project for hardcoded model IDs")

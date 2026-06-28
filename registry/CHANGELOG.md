@@ -2,6 +2,16 @@
 
 All notable registry changes are logged here.
 
+## 2026-06-28 — v0.7.0
+
+### Added
+- **OpenAI doc parser** — 93 models from official deprecations page (+33 net new)
+- Daily **drift-pr** workflow for automated registry PRs
+- CLI tests (14), TS `resolveDetail` + `gate` + `normalizeModel`
+
+### Totals
+- **157 models**, 97 OpenAI, 16 aliases
+
 ## 2026-06-28 — v0.6.0
 
 ### Added

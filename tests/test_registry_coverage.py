@@ -20,7 +20,7 @@ def registry():
 
 
 def test_registry_has_minimum_model_count(registry):
-    assert len(registry["models"]) >= 115
+    assert len(registry["models"]) >= 150
 
 
 def test_all_sources_have_urls(registry):

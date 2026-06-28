@@ -4,12 +4,15 @@ import {
   loadRegistry,
   resolveAlias,
 } from "./registry.js";
+import { normalizeModel } from "./normalize.js";
 import type { AliveResult } from "./types.js";
 import { ModelRetiredError, ModelUnknownError } from "./types.js";
 
+const MAX_DEPTH = 12;
+
 export function alive(model: string, today = new Date()): AliveResult {
   const registry = loadRegistry();
-  const queried = model.trim();
+  const queried = normalizeModel(model);
   const [canonical, aliased] = resolveAlias(queried, registry);
   const entry = registry.models[canonical];
 
@@ -79,22 +82,70 @@ export function check(
 }
 
 export function resolve(model: string, today = new Date()): string {
-  let current = model.trim();
-  const visited = new Set<string>();
+  return resolveDetail(model, today).resolved;
+}
 
-  for (let i = 0; i < 12; i++) {
+export interface ResolveDetail {
+  queried_model: string;
+  resolved: string;
+  chain: string[];
+  breaking_changes: string[];
+}
+
+export function resolveDetail(model: string, today = new Date()): ResolveDetail {
+  let current = normalizeModel(model);
+  const visited = new Set<string>();
+  const chain: string[] = [];
+  const breakingChanges: string[] = [];
+
+  for (let i = 0; i < MAX_DEPTH; i++) {
     if (visited.has(current)) break;
     visited.add(current);
+    chain.push(current);
+
     const result = alive(current, today);
-    if (result.status === "active" || result.status === "unknown") {
-      return result.canonical_model ?? current;
+    for (const change of result.breaking_changes ?? []) {
+      if (!breakingChanges.includes(change)) breakingChanges.push(change);
     }
-    if (!result.replacement) return result.canonical_model ?? current;
+
+    if (result.status === "active" || result.status === "unknown") {
+      return {
+        queried_model: model,
+        resolved: result.canonical_model ?? current,
+        chain,
+        breaking_changes: breakingChanges,
+      };
+    }
+    if (!result.replacement) {
+      return {
+        queried_model: model,
+        resolved: result.canonical_model ?? current,
+        chain,
+        breaking_changes: breakingChanges,
+      };
+    }
+
     const repl = alive(result.replacement, today);
-    if (repl.status === "active") return result.replacement;
+    if (repl.status === "active") {
+      for (const change of repl.breaking_changes ?? []) {
+        if (!breakingChanges.includes(change)) breakingChanges.push(change);
+      }
+      return {
+        queried_model: model,
+        resolved: result.replacement,
+        chain: [...chain, result.replacement],
+        breaking_changes: breakingChanges,
+      };
+    }
     current = result.replacement;
   }
-  return current;
+
+  return {
+    queried_model: model,
+    resolved: current,
+    chain,
+    breaking_changes: breakingChanges,
+  };
 }
 
 export function ensure(
@@ -111,4 +162,13 @@ export function ensure(
   return resolve(model, opts.today);
 }
 
+export function gate<T>(
+  model: string,
+  fn: (safeModel: string) => T,
+  opts: { strictUnknown?: boolean; today?: Date } = {},
+): T {
+  return fn(ensure(model, opts));
+}
+
 export * from "./types.js";
+export { normalizeModel } from "./normalize.js";

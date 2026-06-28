@@ -1,0 +1,40 @@
+name: Registry drift PR
+
+on:
+  schedule:
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -e ".[http,dev]"
+
+      - name: Parse provider docs and sync registry
+        run: python scripts/sync_drift.py
+        continue-on-error: true
+
+      - name: Test
+        run: pytest -q
+
+      - name: Open PR if registry changed
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore(registry): auto-sync from provider docs"
+          title: "Registry drift sync"
+          body: |
+            Automated registry update from OpenAI deprecation parser + source refresh.
+            Review model additions and date changes before merge.
+          branch: registry/drift-sync

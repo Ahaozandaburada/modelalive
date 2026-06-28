@@ -24,12 +24,18 @@ def main() -> int:
         for key, meta in seed.get("sources", {}).items():
             sources[key] = meta
         for model_id, entry in seed.get("models", {}).items():
+            if seed_file.name == "openai_parsed.json" and model_id in models:
+                continue  # manual openai.json wins over parsed drift
             if model_id not in models:
                 models[model_id] = entry
                 added += 1
             else:
                 models[model_id].update(entry)
         for alias, target in seed.get("aliases", {}).items():
+            if alias in aliases:
+                continue
+            if target in aliases and target not in models:
+                continue
             aliases[alias] = target
 
     REGISTRY.write_text(json.dumps(registry, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
