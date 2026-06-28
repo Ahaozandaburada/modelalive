@@ -14,7 +14,18 @@ _MODEL_PATTERNS = [
     re.compile(r"""['"](o[0-9]-[a-zA-Z0-9._-]{3,128})['"]"""),
     re.compile(r"""['"](text-embedding-[a-zA-Z0-9._-]{3,64})['"]"""),
     re.compile(r"""['"](ft:[^'"]{3,200})['"]"""),
-    re.compile(r"""model\s*[=:]\s*['"]([a-zA-Z0-9][a-zA-Z0-9._:-]{2,127})['"]"""),
+    re.compile(r"""['"](llama-[a-zA-Z0-9._-]{3,128})['"]"""),
+    re.compile(r"""['"](grok-[a-zA-Z0-9._-]{3,128})['"]"""),
+    re.compile(r"""['"](deepseek-[a-zA-Z0-9._-]{3,128})['"]"""),
+    re.compile(r"""['"](mistral-[a-zA-Z0-9._-]{3,128})['"]"""),
+    re.compile(r"""['"](qwen[a-zA-Z0-9._-]{0,128})['"]"""),
+    re.compile(r"""['"](anthropic\.claude-[a-zA-Z0-9._:-]{3,128})['"]"""),
+    re.compile(r"""['"](amazon\.[a-zA-Z0-9._:-]{3,128})['"]"""),
+    re.compile(
+        r"""['"]((?:anthropic|openai|google|meta-llama|qwen|deepseek|mistral|x-ai)/[a-zA-Z0-9._:-]{3,128})['"]"""
+    ),
+    re.compile(r"""['"](meta-llama/[a-zA-Z0-9._:-]{3,128})['"]"""),
+    re.compile(r"""model\s*[=:]\s*['"]([a-zA-Z0-9][a-zA-Z0-9._:/-]{2,127})['"]"""),
 ]
 
 _SKIP_DIRS = {

@@ -3,7 +3,7 @@
   "info": {
     "title": "Model Alive",
     "description": "Pre-flight API: is this LLM model ID still alive?",
-    "version": "1.1.0"
+    "version": "1.1.1"
   },
   "paths": {
     "/v1/health": {
@@ -193,8 +193,14 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "boolean",
-              "default": false,
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
               "title": "Warn Deprecated"
             }
           },
@@ -203,8 +209,14 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "boolean",
-              "default": false,
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
               "title": "Strict Unknown"
             }
           }
@@ -422,6 +434,183 @@
         }
       }
     },
+    "/v1/billing/plans": {
+      "get": {
+        "summary": "Billing Plans",
+        "operationId": "billing_plans_v1_billing_plans_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/checkout": {
+      "post": {
+        "summary": "Billing Checkout",
+        "operationId": "billing_checkout_v1_billing_checkout_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckoutRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/webhook": {
+      "post": {
+        "summary": "Billing Webhook",
+        "operationId": "billing_webhook_v1_billing_webhook_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/key": {
+      "get": {
+        "summary": "Billing Retrieve Key",
+        "operationId": "billing_retrieve_key_v1_billing_key_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/success": {
+      "get": {
+        "summary": "Billing Success",
+        "operationId": "billing_success_v1_billing_success_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/portal": {
+      "post": {
+        "summary": "Billing Portal",
+        "operationId": "billing_portal_v1_billing_portal_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/usage": {
+      "get": {
+        "summary": "Get Usage",
+        "description": "Current billing-period usage for this client (IP or API key).",
+        "operationId": "get_usage_v1_usage_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/validate": {
       "get": {
         "summary": "Get Validate",
@@ -459,6 +648,27 @@
         ],
         "title": "BatchRequest"
       },
+      "CheckoutRequest": {
+        "properties": {
+          "email": {
+            "type": "string",
+            "maxLength": 320,
+            "minLength": 3,
+            "title": "Email"
+          },
+          "plan": {
+            "type": "string",
+            "pattern": "^pro$",
+            "title": "Plan",
+            "default": "pro"
+          }
+        },
+        "type": "object",
+        "required": [
+          "email"
+        ],
+        "title": "CheckoutRequest"
+      },
       "EnsureRequest": {
         "properties": {
           "model": {
@@ -468,14 +678,26 @@
             "title": "Model"
           },
           "warn_deprecated": {
-            "type": "boolean",
-            "title": "Warn Deprecated",
-            "default": false
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Warn Deprecated"
           },
           "strict_unknown": {
-            "type": "boolean",
-            "title": "Strict Unknown",
-            "default": false
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Strict Unknown"
           }
         },
         "type": "object",

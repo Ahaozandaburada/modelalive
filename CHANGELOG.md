@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.1 — Developer experience polish
+
+- **GitHub Action** default version synced to package release
+- **`check-config`** honors `MODELALIVE_*` env vars when `[ci]` is omitted
+- **`modelalive scan`** detects OpenRouter, Bedrock, Llama, Grok, Qwen IDs; fails on deprecated too
+- **`/v1/ensure`** returns 404 for unknown (strict), 409 for deprecated — not blanket 410
+- **`py.typed`** marker for type checkers
+- CI smoke tests no longer mask failures; OpenAPI drift check added
+
 ## 1.1.0 — Stripe billing + API keys
 
 - **Stripe Checkout** — `POST /v1/billing/checkout` → Pro subscription ($29/mo)

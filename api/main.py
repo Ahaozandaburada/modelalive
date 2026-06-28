@@ -70,8 +70,8 @@ class BatchRequest(BaseModel):
 
 class EnsureRequest(BaseModel):
     model: str = Field(..., min_length=1, max_length=256)
-    warn_deprecated: bool = False
-    strict_unknown: bool = False
+    warn_deprecated: bool | None = None
+    strict_unknown: bool | None = None
 
 
 def _problem(status: int, title: str, detail: str, *, type_suffix: str = "error") -> JSONResponse:
@@ -174,13 +174,34 @@ def get_resolve(model: Annotated[str, Query(min_length=1, max_length=256)]):
     }
 
 
+def _ensure_error_response(exc) -> JSONResponse:
+    from modelalive.exceptions import (
+        ModelDeprecatedError,
+        ModelExpiringSoonError,
+        ModelRetiredError,
+        ModelUnknownError,
+    )
+
+    if isinstance(exc, ModelUnknownError):
+        detail = exc.result.message or f"'{exc.result.queried_model}' is not in the registry"
+        return _problem(404, "Model not found", detail, type_suffix="not-found")
+    if isinstance(exc, (ModelDeprecatedError, ModelExpiringSoonError)):
+        return _alive_response(exc.result, status_code=409)
+    return _alive_response(exc.result, status_code=410)
+
+
 @app.get("/v1/ensure")
 def get_ensure(
     model: Annotated[str, Query(min_length=1, max_length=256)],
-    warn_deprecated: bool = False,
-    strict_unknown: bool = False,
+    warn_deprecated: Annotated[bool | None, Query()] = None,
+    strict_unknown: Annotated[bool | None, Query()] = None,
 ):
-    from modelalive.exceptions import ModelDeprecatedError, ModelRetiredError, ModelUnknownError
+    from modelalive.exceptions import (
+        ModelDeprecatedError,
+        ModelExpiringSoonError,
+        ModelRetiredError,
+        ModelUnknownError,
+    )
 
     try:
         safe_model = ensure(
@@ -188,8 +209,13 @@ def get_ensure(
             warn_deprecated=warn_deprecated,
             strict_unknown=strict_unknown,
         )
-    except (ModelRetiredError, ModelDeprecatedError, ModelUnknownError) as exc:
-        return _alive_response(exc.result, status_code=410)
+    except (
+        ModelRetiredError,
+        ModelDeprecatedError,
+        ModelUnknownError,
+        ModelExpiringSoonError,
+    ) as exc:
+        return _ensure_error_response(exc)
     detail = resolve_detail(safe_model)
     response = JSONResponse(
         content={
@@ -205,7 +231,12 @@ def get_ensure(
 
 @app.post("/v1/ensure")
 def post_ensure(body: EnsureRequest):
-    from modelalive.exceptions import ModelDeprecatedError, ModelRetiredError, ModelUnknownError
+    from modelalive.exceptions import (
+        ModelDeprecatedError,
+        ModelExpiringSoonError,
+        ModelRetiredError,
+        ModelUnknownError,
+    )
 
     try:
         safe_model = ensure(
@@ -213,8 +244,13 @@ def post_ensure(body: EnsureRequest):
             warn_deprecated=body.warn_deprecated,
             strict_unknown=body.strict_unknown,
         )
-    except (ModelRetiredError, ModelDeprecatedError, ModelUnknownError) as exc:
-        return _alive_response(exc.result, status_code=410)
+    except (
+        ModelRetiredError,
+        ModelDeprecatedError,
+        ModelUnknownError,
+        ModelExpiringSoonError,
+    ) as exc:
+        return _ensure_error_response(exc)
     detail = resolve_detail(safe_model)
     response = JSONResponse(
         content={

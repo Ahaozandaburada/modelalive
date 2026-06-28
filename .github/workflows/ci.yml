@@ -48,9 +48,20 @@ jobs:
         run: |
           cd js && npm ci && npm run build && node dist/smoke.test.js
 
+      - name: OpenAPI schema drift
+        run: |
+          python scripts/export_openapi.py
+          git diff --exit-code openapi.json
+
+      - name: Action version matches package
+        run: |
+          ACTION_VER=$(grep -A4 '  version:' action.yml | grep 'default:' | sed 's/.*"\(.*\)".*/\1/')
+          python -c "from modelalive import __version__; import sys; assert __version__ == '$ACTION_VER', f'{__version__} != $ACTION_VER'"
+
       - name: Smoke CLI
         run: |
-          modelalive check claude-sonnet-4-20250514 || true
-          modelalive check gemini-2.0-flash || true
+          modelalive check claude-sonnet-4-20250514; test $? -eq 1
+          modelalive check claude-sonnet-4-6
+          modelalive check gemini-2.0-flash; test $? -eq 1
           modelalive resolve claude-mythos-preview
           modelalive list --status retired --provider google | head

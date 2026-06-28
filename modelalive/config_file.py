@@ -12,9 +12,9 @@ except ModuleNotFoundError:  # pragma: no cover
 @dataclass
 class ProjectConfig:
     models: list[str] = field(default_factory=list)
-    strict_unknown: bool = False
+    strict_unknown: bool | None = None
     warn_days: int | None = None
-    warn_deprecated: bool = False
+    warn_deprecated: bool | None = None
 
 
 def load_config(path: str | Path = "modelalive.toml") -> ProjectConfig:
@@ -29,7 +29,7 @@ def load_config(path: str | Path = "modelalive.toml") -> ProjectConfig:
         models = [models]
     return ProjectConfig(
         models=list(models),
-        strict_unknown=bool(ci.get("strict_unknown", False)),
+        strict_unknown=ci["strict_unknown"] if "strict_unknown" in ci else None,
         warn_days=ci.get("warn_days"),
-        warn_deprecated=bool(ci.get("warn_deprecated", False)),
+        warn_deprecated=ci["warn_deprecated"] if "warn_deprecated" in ci else None,
     )

@@ -17,6 +17,7 @@ from modelalive.exceptions import (
 from modelalive.expiring import list_expiring
 from modelalive.registry import list_models, load_registry
 from modelalive.scan import scan_path
+from modelalive.settings import default_strict_unknown, default_warn_days, default_warn_deprecated
 from modelalive.validate import assert_registry_valid, validate_registry
 
 
@@ -31,13 +32,15 @@ def main(argv: list[str] | None = None) -> int:
     check_cmd.add_argument("models", nargs="+", help="Model ID(s) to check")
     check_cmd.add_argument(
         "--warn-deprecated",
-        action="store_true",
-        help="Exit non-zero if any model is deprecated",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Exit non-zero if any model is deprecated (default: $MODELALIVE_WARN_DEPRECATED)",
     )
     check_cmd.add_argument(
         "--strict-unknown",
-        action="store_true",
-        help="Exit non-zero if any model is not in the registry",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Exit non-zero if any model is not in the registry (default: $MODELALIVE_STRICT)",
     )
     check_cmd.add_argument(
         "--warn-days",
@@ -49,8 +52,8 @@ def main(argv: list[str] | None = None) -> int:
 
     ensure_cmd = sub.add_parser("ensure", help="Pre-flight: validate and print safe model ID")
     ensure_cmd.add_argument("model", help="Model ID to ensure")
-    ensure_cmd.add_argument("--warn-deprecated", action="store_true")
-    ensure_cmd.add_argument("--strict-unknown", action="store_true")
+    ensure_cmd.add_argument("--warn-deprecated", action=argparse.BooleanOptionalAction, default=None)
+    ensure_cmd.add_argument("--strict-unknown", action=argparse.BooleanOptionalAction, default=None)
     ensure_cmd.add_argument("--warn-days", type=int, default=None)
 
     resolve_cmd = sub.add_parser("resolve", help="Return best model ID to use")
@@ -261,7 +264,11 @@ def _cmd_scan(args: argparse.Namespace) -> int:
         for finding in report.findings:
             repl = f" -> {finding.replacement}" if finding.replacement else ""
             print(f"  {finding.path}:{finding.line}  {finding.model} [{finding.status}]{repl}")
-    return 1 if report.retired else 0
+    return 1 if report.findings else 0
+
+
+def _flag(value: bool | None, default_fn) -> bool:
+    return value if value is not None else default_fn()
 
 
 def _cmd_check_config(args: argparse.Namespace) -> int:
@@ -271,9 +278,9 @@ def _cmd_check_config(args: argparse.Namespace) -> int:
         return 1
     check_args = argparse.Namespace(
         models=config.models,
-        warn_deprecated=config.warn_deprecated,
-        strict_unknown=config.strict_unknown,
-        warn_days=config.warn_days,
+        warn_deprecated=_flag(config.warn_deprecated, default_warn_deprecated),
+        strict_unknown=_flag(config.strict_unknown, default_strict_unknown),
+        warn_days=config.warn_days if config.warn_days is not None else default_warn_days(),
         json=False,
     )
     return _cmd_check(check_args)

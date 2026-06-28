@@ -49,7 +49,14 @@ models = [
   "claude-sonnet-4-6",
   "gpt-5.5",
 ]
+
+[ci]
+strict_unknown = true   # optional — overrides $MODELALIVE_STRICT when set
+warn_deprecated = true
+warn_days = 14
 ```
+
+Without `[ci]`, `check-config` honors `MODELALIVE_STRICT`, `MODELALIVE_WARN_DEPRECATED`, and `MODELALIVE_WARN_DAYS`.
 
 ```bash
 modelalive check-config
