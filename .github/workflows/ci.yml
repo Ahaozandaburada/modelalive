@@ -38,6 +38,15 @@ jobs:
       - name: Test
         run: pytest -q
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: TypeScript SDK
+        run: |
+          cd js && npm ci && npm run build && node dist/smoke.test.js
+
       - name: Smoke CLI
         run: |
           modelalive check claude-sonnet-4-20250514 || true
