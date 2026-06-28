@@ -24,10 +24,11 @@ jobs:
 
       - name: Parse provider docs and sync registry
         run: python scripts/sync_drift.py
-        continue-on-error: true
 
-      - name: Test
-        run: pytest -q
+      - name: Validate and test
+        run: |
+          modelalive validate --strict
+          pytest -q
 
       - name: Open PR if registry changed
         uses: peter-evans/create-pull-request@v7
@@ -35,6 +36,6 @@ jobs:
           commit-message: "chore(registry): auto-sync from provider docs"
           title: "Registry drift sync"
           body: |
-            Automated registry update from OpenAI deprecation parser + source refresh.
+            Automated registry update from provider doc parsers.
             Review model additions and date changes before merge.
           branch: registry/drift-sync

@@ -2301,7 +2301,7 @@
       "migrate_url": "https://docs.together.ai/docs/deprecations.md",
       "source": "together"
     },
-    "DeepSeek-R1-0528": {
+    "mistralai/Ministral-3-14B-Instruct-2512": {
       "provider": "together",
       "status": "active",
       "replacement": null,
@@ -2310,7 +2310,7 @@
       "source": "together",
       "notes": "Together redirect/active endpoint — add lifecycle when deprecated"
     },
-    "MiniMaxAI/MiniMax-M3": {
+    "DeepSeek-R1-0528": {
       "provider": "together",
       "status": "active",
       "replacement": null,
@@ -2328,7 +2328,7 @@
       "source": "together",
       "notes": "Together redirect/active endpoint — add lifecycle when deprecated"
     },
-    "mistralai/Ministral-3-14B-Instruct-2512": {
+    "DeepSeek-V3.1": {
       "provider": "together",
       "status": "active",
       "replacement": null,
@@ -2337,7 +2337,7 @@
       "source": "together",
       "notes": "Together redirect/active endpoint — add lifecycle when deprecated"
     },
-    "DeepSeek-V3.1": {
+    "MiniMaxAI/MiniMax-M3": {
       "provider": "together",
       "status": "active",
       "replacement": null,

@@ -18,9 +18,24 @@ Every verified registry entry maps to an official provider deprecation page:
 | OpenRouter | [OpenRouter models](https://openrouter.ai/docs/models) |
 | Cohere / DeepSeek / Perplexity / Cerebras / Meta | Official model docs per provider |
 
-Run `modelalive providers` for the full list (17+ inference surfaces).
+Run `modelalive providers` for the full list (**21 inference surfaces**).
 
 Each entry includes `source`, `source_url`, and `source_checked_at` in API/SDK responses.
+
+## Provider parsers (automated drift sync)
+
+| Parser | Output seed |
+|--------|-------------|
+| OpenAI | `openai_parsed.json` |
+| Anthropic | `anthropic_parsed.json` |
+| Google | `google_parsed.json` |
+| Together | `together_parsed.json` |
+| Fireworks | `fireworks_parsed.json` |
+| Groq | `groq_parsed.json` |
+| Mistral | `mistral_parsed.json` |
+| Host crosswalk | `bedrock.json`, `azure.json` via `generate_host_seeds.py` |
+
+CI runs `scripts/check_registry_drift.py` — committed registry must match live docs.
 
 ## Unknown models
 

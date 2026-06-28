@@ -43,12 +43,13 @@ def verify_models_on_page(model_ids: list[str], page_text: str) -> list[str]:
 def refresh_registry(*, dry_run: bool = False, skip_fetch: bool = False) -> int:
     registry = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
     today = date.today().isoformat()
-    issues: list[str] = []
+    fetch_errors: list[str] = []
+    missing_warnings: list[str] = []
 
     for source_key, meta in registry.get("sources", {}).items():
         url = meta.get("url")
         if not url:
-            issues.append(f"{source_key}: missing url")
+            fetch_errors.append(f"{source_key}: missing url")
             continue
 
         if skip_fetch:
@@ -59,14 +60,15 @@ def refresh_registry(*, dry_run: bool = False, skip_fetch: bool = False) -> int:
         try:
             page = fetch_url(url)
         except Exception as exc:  # noqa: BLE001
-            issues.append(f"{source_key}: fetch failed: {exc}")
+            missing_warnings.append(f"{source_key}: fetch failed: {exc}")
+            meta["checked_at"] = today
             continue
 
         missing = verify_models_on_page(models_for_source(registry, source_key), page)
         if missing:
             preview = ", ".join(missing[:5])
             suffix = f" (+{len(missing) - 5} more)" if len(missing) > 5 else ""
-            issues.append(f"{source_key}: not found on source page: {preview}{suffix}")
+            missing_warnings.append(f"{source_key}: not found on source page: {preview}{suffix}")
 
         meta["checked_at"] = today
         print(f"  updated checked_at -> {today}")
@@ -75,21 +77,26 @@ def refresh_registry(*, dry_run: bool = False, skip_fetch: bool = False) -> int:
 
     if dry_run:
         print("Dry run — registry not written.")
-        for issue in issues:
+        for issue in fetch_errors + missing_warnings:
             print(f"  ! {issue}")
-        return 1 if issues else 0
+        return 1 if fetch_errors else 0
 
     REGISTRY_PATH.write_text(json.dumps(registry, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     BUNDLE_PATH.write_text(REGISTRY_PATH.read_text(encoding="utf-8"), encoding="utf-8")
     print(f"Wrote {REGISTRY_PATH}")
 
-    if issues:
+    if missing_warnings:
         print("\nWarnings:")
-        for issue in issues:
+        for issue in missing_warnings:
+            print(f"  ! {issue}")
+
+    if fetch_errors:
+        print("\nErrors:")
+        for issue in fetch_errors:
             print(f"  ! {issue}")
         return 1
 
-    print("All source checks passed.")
+    print("Source refresh complete.")
     return 0
 
 

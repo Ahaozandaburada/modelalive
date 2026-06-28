@@ -4,7 +4,7 @@
 
 Hardcoded model IDs break silently until production fails. Model Alive answers in one call — with **source links**, **breaking change** notes, and **host-aware** lifecycle status.
 
-**[Universal registry guide →](docs/UNIVERSAL.md)** · **[60-second quickstart →](docs/QUICKSTART.md)**
+**[Quality scorecard →](docs/STATUS.md)** · **[Universal registry guide →](docs/UNIVERSAL.md)** · **[60-second quickstart →](docs/QUICKSTART.md)**
 
 ## Install
 

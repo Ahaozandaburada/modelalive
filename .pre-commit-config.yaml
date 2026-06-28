@@ -3,7 +3,7 @@ repos:
     hooks:
       - id: modelalive-validate
         name: modelalive registry validate
-        entry: bash -c 'python scripts/merge_seeds.py && modelalive validate --strict'
+        entry: bash -c 'python scripts/merge_seeds.py && python scripts/generate_host_seeds.py && python scripts/merge_seeds.py && modelalive validate --strict'
         language: system
         pass_filenames: false
         always_run: true

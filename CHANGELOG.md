@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.0 — 10/10 quality sprint
+
+- **If-None-Match / 304** caching on registry-backed API routes
+- **Drift gate** — `check_registry_drift.py` fails CI if registry ≠ live doc parsers
+- **Graph validation** — alias cycle + replacement cycle detection
+- **165 tests**, `registry/CHANGELOG.md`, `docs/STATUS.md` scorecard
+- Source refresh warnings no longer fail the drift pipeline
+
 ## 1.2.0 — Bedrock/Azure registry + JS SDK parity
 
 - **Bedrock** — 19 host-specific model entries with lifecycle + regional aliases

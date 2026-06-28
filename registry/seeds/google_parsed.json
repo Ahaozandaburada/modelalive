@@ -264,7 +264,31 @@
       "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
       "source": "google"
     },
+    "gemini-3.1-pro-preview": {
+      "provider": "google",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
     "gemini-3.1-flash-lite": {
+      "provider": "google",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-3.1-flash-live-preview": {
+      "provider": "google",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-3.1-flash-image": {
       "provider": "google",
       "status": "active",
       "replacement": null,
@@ -281,30 +305,6 @@
       "source": "google"
     },
     "gemini-3.5-flash": {
-      "provider": "google",
-      "status": "active",
-      "replacement": null,
-      "breaking_changes": [],
-      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
-      "source": "google"
-    },
-    "gemini-3.1-flash-live-preview": {
-      "provider": "google",
-      "status": "active",
-      "replacement": null,
-      "breaking_changes": [],
-      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
-      "source": "google"
-    },
-    "gemini-3.1-pro-preview": {
-      "provider": "google",
-      "status": "active",
-      "replacement": null,
-      "breaking_changes": [],
-      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
-      "source": "google"
-    },
-    "gemini-3.1-flash-image": {
       "provider": "google",
       "status": "active",
       "replacement": null,

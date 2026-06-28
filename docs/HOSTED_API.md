@@ -14,7 +14,12 @@ Public HTTP API for model lifecycle checks — deployable via Docker or Fly.io.
 | GET | `/v1/models/{id}` | Full model entry |
 | GET | `/v1/expiring?days=30` | Models retiring soon |
 | GET | `/v1/providers` | Supported providers |
-| GET | `/openapi.json` | OpenAPI 3.1 spec |
+| GET | `/v1/registry` | Filter by `status`, `provider` |
+| GET | `/v1/sources` | Official doc URLs + last checked date |
+| GET | `/v1/alive/batch` | POST batch check (up to 100 models) |
+| GET | `/v1/validate` | Registry integrity report |
+| GET | `/v1/usage` | Usage metering (hosted) |
+| GET | `/openapi.json` | OpenAPI 3 schema |
 
 ## Self-host
 
@@ -48,7 +53,7 @@ Every response includes:
 - `X-Request-ID` — trace ID (pass your own via request header)
 - `X-Model-Status` — on `/v1/alive`
 - `X-Replacement` — when model is retired/deprecated
-- `ETag` — registry version hash (cache with `If-None-Match`)
+- `ETag` — registry version hash (cache with `If-None-Match` → **304 Not Modified**)
 
 ## Rate limiting
 

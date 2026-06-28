@@ -32,6 +32,7 @@ from api.billing import (
     stripe_enabled,
 )
 from api.store import get_store
+from api.cache import attach_etag, etag_matches, not_modified
 
 app = FastAPI(
     title="Model Alive",
@@ -105,7 +106,9 @@ def openapi_json():
 
 
 @app.get("/v1/health")
-def health() -> dict[str, object]:
+def health(request: Request):
+    if etag_matches(request):
+        return not_modified()
     registry = load_registry()
     age = oldest_source_age_days()
     payload: dict[str, object] = {
@@ -121,7 +124,9 @@ def health() -> dict[str, object]:
         if age > 7:
             payload["status"] = "degraded"
             payload["warning"] = f"Registry sources stale — oldest check is {age} days old"
-    return payload
+    response = JSONResponse(content=payload)
+    attach_etag(response)
+    return response
 
 
 @app.get("/v1/providers")
@@ -134,17 +139,24 @@ def get_providers():
 
 
 @app.get("/v1/sources")
-def get_sources(response: Response):
+def get_sources(request: Request):
+    if etag_matches(request):
+        return not_modified()
     registry = load_registry()
-    response.headers["ETag"] = f'"{registry_hash()}"'
-    return {
-        "registry_version": registry.get("version"),
-        "sources": registry.get("sources", {}),
-    }
+    response = JSONResponse(
+        content={
+            "registry_version": registry.get("version"),
+            "sources": registry.get("sources", {}),
+        }
+    )
+    attach_etag(response)
+    return response
 
 
 @app.get("/v1/alive")
-def get_alive(model: Annotated[str, Query(min_length=1, max_length=256)]):
+def get_alive(request: Request, model: Annotated[str, Query(min_length=1, max_length=256)]):
+    if etag_matches(request):
+        return not_modified()
     result = alive(model)
     return _alive_response(result)
 
@@ -164,14 +176,20 @@ def post_alive_batch(body: BatchRequest):
 
 
 @app.get("/v1/resolve")
-def get_resolve(model: Annotated[str, Query(min_length=1, max_length=256)]):
+def get_resolve(request: Request, model: Annotated[str, Query(min_length=1, max_length=256)]):
+    if etag_matches(request):
+        return not_modified()
     detail = resolve_detail(model)
-    return {
-        "queried_model": detail["queried_model"],
-        "resolved": detail["resolved"],
-        "chain": detail["chain"],
-        "breaking_changes": detail["breaking_changes"],
-    }
+    response = JSONResponse(
+        content={
+            "queried_model": detail["queried_model"],
+            "resolved": detail["resolved"],
+            "chain": detail["chain"],
+            "breaking_changes": detail["breaking_changes"],
+        }
+    )
+    attach_etag(response)
+    return response
 
 
 def _ensure_error_response(exc) -> JSONResponse:
@@ -286,36 +304,48 @@ def get_model(model_id: str, request: Request):
 
 @app.get("/v1/registry")
 def list_registry(
-    response: Response,
+    request: Request,
     status: Annotated[str | None, Query(description="active, deprecated, retired")] = None,
     provider: Annotated[str | None, Query(description="anthropic, openai, google, groq, mistral, bedrock")] = None,
 ):
     from modelalive.registry import list_models
 
+    if etag_matches(request):
+        return not_modified()
     etag = registry_hash()
-    response.headers["ETag"] = f'"{etag}"'
     filtered = list_models(status=status, provider=provider)
-    return {
-        "registry_version": load_registry().get("version"),
-        "registry_etag": etag,
-        "count": len(filtered),
-        "models": filtered,
-    }
+    response = JSONResponse(
+        content={
+            "registry_version": load_registry().get("version"),
+            "registry_etag": etag,
+            "count": len(filtered),
+            "models": filtered,
+        }
+    )
+    attach_etag(response)
+    return response
 
 
 @app.get("/v1/expiring")
 def get_expiring(
+    request: Request,
     days: Annotated[int, Query(ge=1, le=365)] = 30,
     provider: Annotated[str | None, Query()] = None,
 ):
     from modelalive.expiring import list_expiring
 
+    if etag_matches(request):
+        return not_modified()
     results = list_expiring(within_days=days, provider=provider)
-    return {
-        "within_days": days,
-        "count": len(results),
-        "models": [result.to_dict() for result in results],
-    }
+    response = JSONResponse(
+        content={
+            "within_days": days,
+            "count": len(results),
+            "models": [result.to_dict() for result in results],
+        }
+    )
+    attach_etag(response)
+    return response
 
 
 @app.get("/v1/billing/plans")

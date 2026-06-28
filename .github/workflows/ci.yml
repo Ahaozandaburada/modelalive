@@ -50,6 +50,9 @@ jobs:
         run: |
           cd js && npm ci && npm test
 
+      - name: Registry drift gate
+        run: python scripts/check_registry_drift.py
+
       - name: OpenAPI schema drift
         run: |
           python scripts/export_openapi.py

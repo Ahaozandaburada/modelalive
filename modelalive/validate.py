@@ -34,6 +34,48 @@ def validate_registry(path: str | Path | None = None) -> list[ValidationIssue]:
         if target not in models:
             issues.append(ValidationIssue("error", f"aliases.{alias}", f"Alias target not in registry: {target}"))
 
+    # Alias cycles
+    for alias in aliases:
+        chain = [alias]
+        current = alias
+        for _ in range(32):
+            nxt = aliases.get(current)
+            if nxt is None:
+                break
+            if nxt in chain:
+                issues.append(
+                    ValidationIssue(
+                        "error",
+                        f"aliases.{alias}",
+                        f"Alias cycle: {' -> '.join(chain + [nxt])}",
+                    )
+                )
+                break
+            chain.append(nxt)
+            current = nxt
+
+    # Replacement cycles (follow replacement edges only among registry models)
+    for model_id, entry in models.items():
+        chain = [model_id]
+        current = model_id
+        for _ in range(64):
+            replacement = (models.get(current) or {}).get("replacement")
+            if not replacement:
+                break
+            if replacement in chain:
+                issues.append(
+                    ValidationIssue(
+                        "error",
+                        f"models.{model_id}",
+                        f"Replacement cycle: {' -> '.join(chain + [replacement])}",
+                    )
+                )
+                break
+            if replacement not in models:
+                break
+            chain.append(replacement)
+            current = replacement
+
     today = date.today()
 
     for model_id, entry in models.items():

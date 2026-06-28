@@ -31,5 +31,8 @@ jobs:
       - name: Verify provider docs mention registry models
         run: python scripts/refresh_sources.py --dry-run
 
+      - name: Drift gate (committed registry vs live docs)
+        run: python scripts/check_registry_drift.py
+
       - name: Test
         run: pytest -q
