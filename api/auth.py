@@ -13,6 +13,8 @@ from api.store import get_store
 
 PUBLIC_PREFIXES = (
     "/v1/health",
+    "/status",
+    "/v1/status",
     "/openapi.json",
     "/docs",
     "/redoc",

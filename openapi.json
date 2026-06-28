@@ -3,9 +3,25 @@
   "info": {
     "title": "Model Alive",
     "description": "Pre-flight API: is this LLM model ID still alive?",
-    "version": "1.3.0"
+    "version": "1.4.0"
   },
   "paths": {
+    "/v1/status": {
+      "get": {
+        "summary": "Service Status Json",
+        "operationId": "service_status_json_v1_status_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/health": {
       "get": {
         "summary": "Health",

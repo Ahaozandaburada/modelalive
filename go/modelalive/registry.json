@@ -1,0 +1,5348 @@
+{
+  "version": "2026-06-29",
+  "schema_version": 2,
+  "sources": {
+    "anthropic": {
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "checked_at": "2026-06-29"
+    },
+    "openai": {
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "checked_at": "2026-06-29"
+    },
+    "google": {
+      "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "checked_at": "2026-06-29"
+    },
+    "groq": {
+      "url": "https://console.groq.com/docs/deprecations",
+      "checked_at": "2026-06-29"
+    },
+    "bedrock": {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "checked_at": "2026-06-29"
+    },
+    "mistral": {
+      "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "checked_at": "2026-06-29"
+    },
+    "azure": {
+      "url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "checked_at": "2026-06-29"
+    },
+    "cerebras": {
+      "url": "https://inference-docs.cerebras.ai/models/overview",
+      "checked_at": "2026-06-29"
+    },
+    "cohere": {
+      "url": "https://docs.cohere.com/docs/models",
+      "checked_at": "2026-06-29"
+    },
+    "deepseek": {
+      "url": "https://api-docs.deepseek.com/",
+      "checked_at": "2026-06-29"
+    },
+    "fireworks": {
+      "url": "https://docs.fireworks.ai/updates/changelog",
+      "checked_at": "2026-06-29"
+    },
+    "meta": {
+      "url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "checked_at": "2026-06-29"
+    },
+    "openrouter": {
+      "url": "https://openrouter.ai/docs/guides/overview/models",
+      "checked_at": "2026-06-29"
+    },
+    "perplexity": {
+      "url": "https://docs.perplexity.ai/guides/model-cards",
+      "checked_at": "2026-06-29"
+    },
+    "together": {
+      "url": "https://docs.together.ai/docs/deprecations.md",
+      "checked_at": "2026-06-29"
+    },
+    "xai": {
+      "url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "checked_at": "2026-06-29"
+    },
+    "ai21": {
+      "url": "https://docs.ai21.com/docs/models-overview",
+      "checked_at": "2026-06-29"
+    },
+    "nvidia": {
+      "url": "https://build.nvidia.com/nim",
+      "checked_at": "2026-06-29"
+    },
+    "ollama": {
+      "url": "https://ollama.com/library",
+      "checked_at": "2026-06-29"
+    },
+    "qwen": {
+      "url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "checked_at": "2026-06-29"
+    }
+  },
+  "aliases": {
+    "claude-3-5-sonnet-latest": "claude-3-5-sonnet-20241022",
+    "claude-3-5-haiku-latest": "claude-3-5-haiku-20241022",
+    "claude-3-opus-latest": "claude-3-opus-20240229",
+    "us.anthropic.claude-sonnet-4-6-v1:0": "anthropic.claude-sonnet-4-6-v1:0",
+    "eu.anthropic.claude-sonnet-4-6-v1:0": "anthropic.claude-sonnet-4-6-v1:0",
+    "us.anthropic.claude-opus-4-8-v1:0": "anthropic.claude-opus-4-8-v1:0",
+    "eu.anthropic.claude-opus-4-8-v1:0": "anthropic.claude-opus-4-8-v1:0",
+    "us.anthropic.claude-3-5-sonnet-20241022-v2:0": "anthropic.claude-3-5-sonnet-20241022-v2:0",
+    "anthropic.claude-sonnet-4-6-v1": "anthropic.claude-sonnet-4-6-v1:0",
+    "anthropic.claude-sonnet-4-20250514-v1": "anthropic.claude-sonnet-4-20250514-v1:0",
+    "anthropic.claude-opus-4-8-v1": "anthropic.claude-opus-4-8-v1:0",
+    "anthropic.claude-opus-4-20250514-v1": "anthropic.claude-opus-4-20250514-v1:0",
+    "anthropic.claude-haiku-4-5-20251001-v1": "anthropic.claude-haiku-4-5-20251001-v1:0",
+    "anthropic.claude-3-5-sonnet-20241022-v2": "anthropic.claude-3-5-sonnet-20241022-v2:0",
+    "anthropic.claude-3-5-haiku-20241022-v1": "anthropic.claude-3-5-haiku-20241022-v1:0",
+    "anthropic.claude-3-opus-20240229-v1": "anthropic.claude-3-opus-20240229-v1:0",
+    "anthropic.claude-3-sonnet-20240229-v1": "anthropic.claude-3-sonnet-20240229-v1:0",
+    "anthropic.claude-3-haiku-20240307-v1": "anthropic.claude-3-haiku-20240307-v1:0",
+    "meta.llama3-70b-instruct-v1": "meta.llama3-70b-instruct-v1:0",
+    "meta.llama3-8b-instruct-v1": "meta.llama3-8b-instruct-v1:0",
+    "amazon.titan-text-premier-v1": "amazon.titan-text-premier-v1:0",
+    "amazon.nova-pro-v1": "amazon.nova-pro-v1:0",
+    "amazon.nova-lite-v1": "amazon.nova-lite-v1:0",
+    "cohere.command-r-v1": "cohere.command-r-v1:0",
+    "cohere.command-r-plus-v1": "cohere.command-r-plus-v1:0",
+    "mistral.mistral-large-2402-v1": "mistral.mistral-large-2402-v1:0",
+    "deepseek/deepseek-chat": "deepseek-chat",
+    "deepseek/deepseek-reasoner": "deepseek-reasoner",
+    "deepseek-r1-0528": "deepseek-r1",
+    "deepseek-v3.1": "deepseek-chat",
+    "accounts/fireworks/models/kimi-k2p5": "fireworks/kimi-k2p5",
+    "accounts/fireworks/models/kimi-k2p6": "fireworks/kimi-k2p6",
+    "accounts/fireworks/models/deepseek-v3p1": "fireworks/deepseek-v3p1",
+    "accounts/fireworks/models/llama-v3p3-70b-instruct": "fireworks/llama-v3p3-70b-instruct",
+    "gemini-2.0-flash-latest": "gemini-2.0-flash",
+    "llama-3.3-70b-instruct": "meta-llama/Llama-3.3-70B-Instruct",
+    "llama-3.1-8b-instruct": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "llama-3.1-70b-instruct": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+    "llama-3.2-3b-instruct": "meta-llama/Llama-3.2-3B-Instruct",
+    "llama-3.2-11b-vision-instruct": "meta-llama/Llama-3.2-11B-Vision-Instruct",
+    "llama-3.2-90b-vision-instruct": "meta-llama/Llama-3.2-90B-Vision-Instruct",
+    "llama-3.2-1b-instruct": "meta-llama/Llama-3.2-1B-Instruct",
+    "llama-2-13b-chat-hf": "meta-llama/Llama-2-13b-chat-hf",
+    "llama2-70b-chat": "meta-llama/Llama-2-13b-chat-hf",
+    "mistral-large-latest": "mistral-large-2411",
+    "mistral-small-latest": "mistral-small-2506",
+    "llama3.3": "meta-llama/Llama-3.3-70B-Instruct",
+    "llama3.3:70b": "meta-llama/Llama-3.3-70B-Instruct",
+    "llama3.2": "meta-llama/Llama-3.2-3B-Instruct",
+    "llama3.1": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "llama3.1:8b": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "llama3.1:70b": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+    "llama2": "meta-llama/Llama-2-13b-chat-hf",
+    "qwen2.5": "qwen3.5-plus",
+    "qwen2.5-coder": "qwen3-coder-plus",
+    "qwen3": "qwen3.7-plus",
+    "deepseek-v3": "deepseek-chat",
+    "mistral": "mistral-small-2506",
+    "mixtral": "mixtral-8x7b-32768",
+    "gemma2": "gemma2-9b-it",
+    "phi3": "microsoft/phi-3-mini-4k-instruct",
+    "gpt-4-turbo-preview": "gpt-4-0125-preview",
+    "gpt-4-turbo-preview-completions": "gpt-4-0125-preview",
+    "openai/gpt-4o": "gpt-4o",
+    "openai/gpt-4o-mini": "gpt-4o-mini",
+    "openai/gpt-4-turbo": "gpt-4-turbo-2024-04-09",
+    "openai/gpt-5.5": "gpt-5.5",
+    "openai/gpt-5.4-mini": "gpt-5.4-mini",
+    "openai/o3": "o3",
+    "openai/o4-mini": "o4-mini",
+    "openai/o1": "o1",
+    "anthropic/claude-sonnet-4-6": "claude-sonnet-4-6",
+    "anthropic/claude-opus-4-8": "claude-opus-4-8",
+    "anthropic/claude-3-5-sonnet-20241022": "claude-3-5-sonnet-20241022",
+    "anthropic/claude-3-5-haiku-20241022": "claude-3-5-haiku-20241022",
+    "anthropic/claude-3-opus-20240229": "claude-3-opus-20240229",
+    "anthropic/claude-sonnet-4-20250514": "claude-sonnet-4-20250514",
+    "google/gemini-2.5-flash": "gemini-2.5-flash",
+    "google/gemini-3.5-flash": "gemini-3.5-flash",
+    "google/gemini-2.0-flash": "gemini-2.0-flash",
+    "google/gemini-2.5-pro": "gemini-2.5-pro",
+    "x-ai/grok-4.3": "grok-4.3",
+    "x-ai/grok-3": "grok-3",
+    "x-ai/grok-2-latest": "grok-2-latest",
+    "mistralai/mistral-large-2411": "mistral-large-2411",
+    "mistralai/mistral-small-2506": "mistral-small-2506",
+    "mistralai/mixtral-8x7b-instruct-v0.1": "mixtral-8x7b-32768",
+    "deepseek/deepseek-r1": "deepseek-r1",
+    "deepseek/deepseek-v3.2": "deepseek-chat",
+    "deepseek/deepseek-v3.1-terminus": "deepseek-chat",
+    "deepseek/deepseek-v4-pro": "deepseek-v4-pro",
+    "deepseek/deepseek-v4-flash": "deepseek-v4-flash",
+    "deepseek/deepseek-r1-distill-llama-70b": "meta-llama/Llama-3.3-70B-Instruct",
+    "qwen/qwen3.7-max": "qwen3.7-max",
+    "qwen/qwen3.7-plus": "qwen3.7-plus",
+    "qwen/qwen3.6-plus": "qwen3.6-plus",
+    "qwen/qwen3.6-flash": "qwen3.6-flash",
+    "qwen/qwen3.5-plus": "qwen3.5-plus",
+    "qwen/qwen3.5-flash": "qwen3.5-flash",
+    "qwen/qwen3-coder-plus": "qwen3-coder-plus",
+    "qwen/qwen3-max": "qwen3-max",
+    "qwen/qwen3-coder": "qwen3-coder-plus",
+    "qwen/qwen-2.5-coder-32b-instruct": "qwen2.5-coder-32b-instruct",
+    "qwen/qwen2.5-vl-72b-instruct": "qwen2.5-72b-instruct",
+    "qwen/qwen3.5-397b-a17b": "Qwen/Qwen3.5-397B-A17B",
+    "qwen/qwen3-235b-a22b-instruct-2507": "qwen3.7-plus",
+    "meta-llama/llama-3.3-70b-instruct": "meta-llama/Llama-3.3-70B-Instruct",
+    "meta-llama/llama-3.1-8b-instruct": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "meta-llama/llama-3.1-70b-instruct": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+    "meta-llama/llama-3.2-3b-instruct": "meta-llama/Llama-3.2-3B-Instruct",
+    "meta-llama/llama-3.2-11b-vision-instruct": "meta-llama/Llama-3.2-11B-Vision-Instruct",
+    "meta-llama/llama-3.2-90b-vision-instruct": "meta-llama/Llama-3.2-90B-Vision-Instruct",
+    "meta-llama/llama-3.2-1b-instruct": "meta-llama/Llama-3.2-1B-Instruct",
+    "meta-llama/llama-2-13b-chat-hf": "meta-llama/Llama-2-13b-chat-hf",
+    "cohere/command-r-plus": "command-r-plus-08-2024",
+    "cohere/command-r7b-12-2024": "command-r7b-12-2024",
+    "cohere/command-a-03-2025": "command-a-03-2025",
+    "perplexity/sonar": "sonar",
+    "perplexity/sonar-pro": "sonar-pro",
+    "perplexity/sonar-reasoning": "sonar-reasoning",
+    "groq/llama-3.3-70b-versatile": "llama-3.3-70b-versatile",
+    "groq/llama3-70b-8192": "llama3-70b-8192",
+    "together/meta-llama/llama-3.3-70b-instruct-turbo": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+    "ai21/jamba-1.5-large": "jamba-1.5-large",
+    "ai21/jamba-1.5-mini": "jamba-1.5-mini",
+    "qwen-max": "qwen3.7-max",
+    "qwen-plus": "qwen3.7-plus",
+    "qwen-turbo": "qwen3.5-flash",
+    "qwen-long": "qwen3.7-plus",
+    "mistralai/Mistral-7B-Instruct-v0.3": "mistralai/Ministral-3-14B-Instruct-2512",
+    "Kimi-K2": "Kimi-K2-0905",
+    "DeepSeek-V3": "DeepSeek-V3.1",
+    "DeepSeek-V3-0324": "DeepSeek-V3.1",
+    "DeepSeek-R1": "DeepSeek-R1-0528",
+    "grok-3-beta": "grok-3",
+    "grok-3-latest": "grok-3",
+    "grok-4-fast-reasoning": "grok-4-1-fast-reasoning",
+    "grok-4-fast-non-reasoning": "grok-4-1-fast-non-reasoning"
+  },
+  "models": {
+    "claude-opus-4-8": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [
+        "temperature, top_p, and top_k return 400 on Claude Opus 4.7+ — omit these parameters"
+      ],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic",
+      "notes": "Active; tentative retirement not sooner than 2027-05-28"
+    },
+    "claude-opus-4-7": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [
+        "temperature, top_p, and top_k return 400 — omit these parameters"
+      ],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-opus-4-6": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-opus-4-5-20251101": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-opus-4-1-20250805": {
+      "provider": "anthropic",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-05",
+      "retired_at": "2026-08-05",
+      "replacement": "claude-opus-4-8",
+      "breaking_changes": [
+        "temperature, top_p, and top_k are rejected on Claude Opus 4.7+ — remove before migrating"
+      ],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-opus-4-20250514": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2026-04-14",
+      "retired_at": "2026-06-15",
+      "replacement": "claude-opus-4-8",
+      "breaking_changes": [
+        "temperature, top_p, and top_k are rejected on Claude Opus 4.7+ — remove before migrating"
+      ],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-sonnet-4-6": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-sonnet-4-5-20250929": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-sonnet-4-20250514": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2026-04-14",
+      "retired_at": "2026-06-15",
+      "replacement": "claude-sonnet-4-6",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-3-7-sonnet-20250219": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2025-10-28",
+      "retired_at": "2026-02-19",
+      "replacement": "claude-sonnet-4-6",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-haiku-4-5-20251001": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-3-5-haiku-20241022": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2025-12-19",
+      "retired_at": "2026-02-19",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-3-haiku-20240307": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2026-02-19",
+      "retired_at": "2026-04-20",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-mythos-preview": {
+      "provider": "anthropic",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-06-30",
+      "replacement": "claude-mythos-5",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-mythos-5": {
+      "provider": "anthropic",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic",
+      "notes": "Replacement for claude-mythos-preview"
+    },
+    "claude-3-5-sonnet-20240620": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2025-08-13",
+      "retired_at": "2025-10-28",
+      "replacement": "claude-sonnet-4-6",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-3-5-sonnet-20241022": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2025-08-13",
+      "retired_at": "2025-10-28",
+      "replacement": "claude-sonnet-4-6",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-3-opus-20240229": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2025-06-30",
+      "retired_at": "2026-01-05",
+      "replacement": "claude-opus-4-8",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-3-sonnet-20240229": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2025-01-21",
+      "retired_at": "2025-07-21",
+      "replacement": "claude-sonnet-4-6",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-2.0": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2025-01-21",
+      "retired_at": "2025-07-21",
+      "replacement": "claude-opus-4-8",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-2.1": {
+      "provider": "anthropic",
+      "status": "retired",
+      "deprecated_at": "2025-01-21",
+      "retired_at": "2025-07-21",
+      "replacement": "claude-opus-4-8",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "gpt-5.5": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5.4-mini": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5-2025-08-07": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-11",
+      "retired_at": "2026-12-11",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5-mini-2025-08-07": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-11",
+      "retired_at": "2026-12-11",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5.2-chat-latest": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-05-08",
+      "retired_at": "2026-08-10",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5.3-chat-latest": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-05-08",
+      "retired_at": "2026-08-10",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4o": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4o-mini": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4-0314": {
+      "provider": "openai",
+      "status": "retired",
+      "retired_at": "2024-06-06",
+      "replacement": "gpt-4o",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4-32k": {
+      "provider": "openai",
+      "status": "retired",
+      "retired_at": "2024-06-06",
+      "replacement": "gpt-4o",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-3.5-turbo": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-3.5-turbo-0301": {
+      "provider": "openai",
+      "status": "retired",
+      "retired_at": "2024-09-13",
+      "replacement": "gpt-3.5-turbo",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4o-2024-05-13": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4-turbo": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o3-2025-04-16": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-11",
+      "retired_at": "2026-12-11",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o3-pro-2025-06-10": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-11",
+      "retired_at": "2026-12-11",
+      "replacement": "gpt-5.5-pro",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5-pro-2025-10-06": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-11",
+      "retired_at": "2026-12-11",
+      "replacement": "gpt-5.5-pro",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5-nano-2025-08-07": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-11",
+      "retired_at": "2026-12-11",
+      "replacement": "gpt-5.4-nano",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5.5-pro": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5.4-nano": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4-0613": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o4-mini-2025-04-16": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5-chat-latest": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5-codex": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gemini-3.5-flash": {
+      "provider": "google",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-3.1-pro-preview": {
+      "provider": "google",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-3.1-flash-lite": {
+      "provider": "google",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-3.1-flash-image": {
+      "provider": "google",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-3-pro-image": {
+      "provider": "google",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-embedding-2": {
+      "provider": "google",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.0-flash": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2026-06-01",
+      "replacement": "gemini-3.5-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.0-flash-001": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2026-06-01",
+      "replacement": "gemini-3.5-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.0-flash-lite": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2026-06-01",
+      "replacement": "gemini-3.1-flash-lite",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-3-pro-preview": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2026-03-09",
+      "replacement": "gemini-3.1-pro-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-3.1-flash-lite-preview": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2026-05-25",
+      "replacement": "gemini-3.1-flash-lite",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-3.1-flash-image-preview": {
+      "provider": "google",
+      "status": "retired",
+      "deprecated_at": "2026-02-26",
+      "retired_at": "2026-06-25",
+      "replacement": "gemini-3.1-flash-image",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-3-pro-image-preview": {
+      "provider": "google",
+      "status": "retired",
+      "deprecated_at": "2025-11-20",
+      "retired_at": "2026-06-25",
+      "replacement": "gemini-3-pro-image",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.5-flash": {
+      "provider": "google",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-10-16",
+      "replacement": "gemini-3.5-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.5-pro": {
+      "provider": "google",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-10-16",
+      "replacement": "gemini-3.1-pro-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-embedding-001": {
+      "provider": "google",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-07-14",
+      "replacement": "gemini-embedding-2",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.0-flash-lite-001": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2026-06-01",
+      "replacement": "gemini-3.1-flash-lite",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "text-embedding-004": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2026-01-14",
+      "replacement": "gemini-embedding-2",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.5-flash-lite": {
+      "provider": "google",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-10-16",
+      "replacement": "gemini-3.1-flash-lite",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.5-flash-preview-09-25": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2026-02-17",
+      "replacement": "gemini-3.5-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "o3-mini-2025-01-31": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5.1-chat-latest": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4.1-nano-2025-04-14": {
+      "provider": "openai",
+      "status": "active",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "claude-1.0": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-instant-1.2": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "gemini-2.5-pro-preview-06-05": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-12-02",
+      "replacement": "gemini-3.1-pro-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.5-flash-preview-05-20": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-11-18",
+      "replacement": "gemini-3.5-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.5-flash-image": {
+      "provider": "google",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-10-02",
+      "replacement": "gemini-3.1-flash-image",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-3-flash-preview": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2026-06-01",
+      "replacement": "gemini-3.5-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-robotics-er-1.5-preview": {
+      "provider": "google",
+      "status": "retired",
+      "deprecated_at": "2026-04-14",
+      "retired_at": "2026-04-30",
+      "replacement": "gemini-robotics-er-1.6-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-robotics-er-1.6-preview": {
+      "provider": "google",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "embedding-001": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-10-30",
+      "replacement": "gemini-embedding-2",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "veo-3.0-generate-001": {
+      "provider": "google",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-06-30",
+      "replacement": "veo-3.1-generate-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "veo-3.1-generate-preview": {
+      "provider": "google",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gpt-image-2": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-image-1-mini": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-02",
+      "retired_at": "2026-12-01",
+      "replacement": "gpt-image-2",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-image-1.5": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-02",
+      "retired_at": "2026-12-01",
+      "replacement": "gpt-image-2",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "chatgpt-image-latest": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-02",
+      "retired_at": "2026-12-01",
+      "replacement": "gpt-image-2",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-image-1": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-image-2",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "computer-use-preview-2025-03-11": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4o-mini-search-preview-2025-03-11": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4o-mini-tts-2025-03-20": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-4o-mini-tts-2025-12-15",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4o-mini-tts-2025-12-15": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4o-search-preview-2025-03-11": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5.1-codex-max": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5.1-codex-mini": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5.1-codex": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5.2-codex": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-audio-mini-2025-10-06": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-audio-1.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-audio-1.5": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-realtime-mini-2025-10-06": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-realtime-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-realtime-mini": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o3-deep-research-2025-06-26": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.5-pro",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o4-mini-deep-research-2025-06-26": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-07-23",
+      "replacement": "gpt-5.5-pro",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4-1106-preview": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4-0125-preview": {
+      "provider": "openai",
+      "status": "retired",
+      "retired_at": "2026-03-26",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4.1-nano": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.4-nano",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-3.5-turbo-0125": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-3.5-turbo-1106": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2025-09-26",
+      "retired_at": "2026-09-28",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-3.5-turbo-instruct": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2025-09-26",
+      "retired_at": "2026-09-28",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "babbage-002": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2025-09-26",
+      "retired_at": "2026-09-28",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "davinci-002": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2025-09-26",
+      "retired_at": "2026-09-28",
+      "replacement": "gpt-5.4-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "dall-e-2": {
+      "provider": "openai",
+      "status": "retired",
+      "retired_at": "2026-05-12",
+      "replacement": "gpt-image-2",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "dall-e-3": {
+      "provider": "openai",
+      "status": "retired",
+      "retired_at": "2026-05-12",
+      "replacement": "gpt-image-2",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o1-2024-12-17": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.5",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o1": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o1-pro-2025-03-19": {
+      "provider": "openai",
+      "status": "deprecated",
+      "deprecated_at": "2026-04-22",
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.5-pro",
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o1-pro": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o3-mini": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o4-mini": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4-turbo-2024-04-09": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "llama-3.3-70b-versatile": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "llama3-70b-8192": {
+      "provider": "groq",
+      "status": "retired",
+      "retired_at": "2025-01-06",
+      "replacement": "llama-3.3-70b-versatile",
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "mixtral-8x7b-32768": {
+      "provider": "groq",
+      "status": "retired",
+      "retired_at": "2025-03-05",
+      "replacement": "llama-3.3-70b-versatile",
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "amazon.titan-text-premier-v1": {
+      "provider": "bedrock",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Bedrock-native model ID (alias strips :0 suffix)"
+    },
+    "mistral-large-2411": {
+      "provider": "mistral",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "source": "mistral"
+    },
+    "mistral-small-2506": {
+      "provider": "mistral",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "source": "mistral"
+    },
+    "open-mistral-nemo": {
+      "provider": "mistral",
+      "status": "deprecated",
+      "deprecated_at": "2026-03-01",
+      "retired_at": "2026-09-01",
+      "replacement": "mistral-small-2506",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "source": "mistral"
+    },
+    "mistral-medium-2312": {
+      "provider": "mistral",
+      "status": "retired",
+      "retired_at": "2025-12-01",
+      "replacement": "mistral-large-2411",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "source": "mistral"
+    },
+    "ft-o4-mini-2025-04-16": {
+      "provider": "openai",
+      "status": "deprecated",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.4-mini",
+      "deprecated_at": "2026-10-23"
+    },
+    "ft-gpt-3.5-turbo": {
+      "provider": "openai",
+      "status": "deprecated",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.4-mini",
+      "deprecated_at": "2026-10-23"
+    },
+    "ft-gpt-4": {
+      "provider": "openai",
+      "status": "deprecated",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.5",
+      "deprecated_at": "2026-10-23"
+    },
+    "ft-gpt-4.1-nano-2025-04-14": {
+      "provider": "openai",
+      "status": "deprecated",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.4-nano",
+      "deprecated_at": "2026-10-23"
+    },
+    "ft-babbage-002": {
+      "provider": "openai",
+      "status": "deprecated",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.4-mini",
+      "deprecated_at": "2026-10-23"
+    },
+    "ft-davinci-002": {
+      "provider": "openai",
+      "status": "deprecated",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2026-10-23",
+      "replacement": "gpt-5.4-mini",
+      "deprecated_at": "2026-10-23"
+    },
+    "chatgpt-4o-latest": {
+      "provider": "openai",
+      "status": "retired",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2026-02-17",
+      "replacement": "gpt-5.1-chat-latest"
+    },
+    "codex-mini-latest": {
+      "provider": "openai",
+      "status": "retired",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2026-02-12",
+      "replacement": "gpt-5-codex-mini"
+    },
+    "gpt-4o-audio-preview-2024-10-01": {
+      "provider": "openai",
+      "status": "retired",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2025-10-10",
+      "replacement": "gpt-audio-1.5"
+    },
+    "text-moderation-007": {
+      "provider": "openai",
+      "status": "retired",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2025-10-27",
+      "replacement": "omni-moderation"
+    },
+    "text-moderation-stable": {
+      "provider": "openai",
+      "status": "retired",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2025-10-27",
+      "replacement": "omni-moderation"
+    },
+    "text-moderation-latest": {
+      "provider": "openai",
+      "status": "retired",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2025-10-27",
+      "replacement": "omni-moderation"
+    },
+    "o1-preview": {
+      "provider": "openai",
+      "status": "retired",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2025-07-28",
+      "replacement": "o3"
+    },
+    "o1-mini": {
+      "provider": "openai",
+      "status": "retired",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2025-10-27",
+      "replacement": "o4-mini"
+    },
+    "gpt-4.5-preview": {
+      "provider": "openai",
+      "status": "retired",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2025-07-14",
+      "replacement": "gpt-4.1"
+    },
+    "text-davinci-edit-001": {
+      "provider": "openai",
+      "status": "retired",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2024-01-04",
+      "replacement": "gpt-4o"
+    },
+    "code-davinci-edit-001": {
+      "provider": "openai",
+      "status": "retired",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2024-01-04",
+      "replacement": "gpt-4o"
+    },
+    "code-davinci-002": {
+      "provider": "openai",
+      "status": "retired",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2023-03-23",
+      "replacement": "gpt-4o"
+    },
+    "code-davinci-001": {
+      "provider": "openai",
+      "status": "retired",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2023-03-23",
+      "replacement": "gpt-4o"
+    },
+    "code-cushman-002": {
+      "provider": "openai",
+      "status": "retired",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2023-03-23",
+      "replacement": "gpt-4o"
+    },
+    "code-cushman-001": {
+      "provider": "openai",
+      "status": "retired",
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai",
+      "breaking_changes": [],
+      "retired_at": "2023-03-23",
+      "replacement": "gpt-4o"
+    },
+    "gpt-5": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o4-mini-deep-research": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4-turbo-completions": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5-mini": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4.1": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-4-completions": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-3.5-turbo-completions": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o3-deep-research": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "omni-moderation": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "computer-use-preview": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "gpt-5-codex-mini": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "o3": {
+      "provider": "openai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://developers.openai.com/api/docs/deprecations",
+      "source": "openai"
+    },
+    "llama-3.3-70b": {
+      "provider": "cerebras",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://inference-docs.cerebras.ai/models/overview",
+      "source": "cerebras"
+    },
+    "llama3.1-8b": {
+      "provider": "cerebras",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://inference-docs.cerebras.ai/models/overview",
+      "source": "cerebras"
+    },
+    "qwen-3-32b": {
+      "provider": "cerebras",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://inference-docs.cerebras.ai/models/overview",
+      "source": "cerebras"
+    },
+    "llama-3.1-70b": {
+      "provider": "cerebras",
+      "status": "retired",
+      "deprecated_at": "2025-12-01",
+      "retired_at": "2026-06-01",
+      "replacement": "llama-3.3-70b",
+      "breaking_changes": [],
+      "migrate_url": "https://inference-docs.cerebras.ai/models/overview",
+      "source": "cerebras"
+    },
+    "command-a-03-2025": {
+      "provider": "cohere",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "command-r-plus-08-2024": {
+      "provider": "cohere",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "command-r-plus": {
+      "provider": "cohere",
+      "status": "retired",
+      "deprecated_at": "2025-09-01",
+      "retired_at": "2026-03-01",
+      "replacement": "command-r-plus-08-2024",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "command-r7b-12-2024": {
+      "provider": "cohere",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "command-r-08-2024": {
+      "provider": "cohere",
+      "status": "retired",
+      "deprecated_at": "2025-06-01",
+      "retired_at": "2026-01-01",
+      "replacement": "command-r7b-12-2024",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "command": {
+      "provider": "cohere",
+      "status": "retired",
+      "retired_at": "2025-06-01",
+      "replacement": "command-r7b-12-2024",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.cohere.com/docs/models",
+      "source": "cohere"
+    },
+    "deepseek-chat": {
+      "provider": "deepseek",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "deepseek-reasoner": {
+      "provider": "deepseek",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "deepseek-r1": {
+      "provider": "deepseek",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek",
+      "notes": "Reasoning model — alias of deepseek-reasoner on some hosts"
+    },
+    "deepseek-v3": {
+      "provider": "deepseek",
+      "status": "retired",
+      "deprecated_at": "2026-04-01",
+      "retired_at": "2026-06-01",
+      "replacement": "deepseek-chat",
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "fireworks/kimi-k2p6": {
+      "provider": "fireworks",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/glm-5p1": {
+      "provider": "fireworks",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/gpt-oss-120b": {
+      "provider": "fireworks",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/minimax-m2p7": {
+      "provider": "fireworks",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/kimi-k2p5": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-06-01",
+      "replacement": "fireworks/kimi-k2p6",
+      "breaking_changes": [
+        "Serverless deprecated — migrate to kimi-k2p6"
+      ],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/deepseek-v3p1": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/kimi-k2p6",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/deepseek-v3p2": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/kimi-k2p6",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/glm-5": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/glm-5p1",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/llama-v3p3-70b-instruct": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/gpt-oss-120b",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/minimax-m2p5": {
+      "provider": "fireworks",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-07-01",
+      "replacement": "fireworks/minimax-m2p7",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "meta-llama/Llama-3.3-70B-Instruct": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Meta-Llama-3.1-8B-Instruct": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Meta-Llama-3.1-70B-Instruct": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Llama-3.2-3B-Instruct": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Llama-2-13b-chat-hf": {
+      "provider": "meta",
+      "status": "retired",
+      "retired_at": "2025-04-24",
+      "replacement": "meta-llama/Llama-3.3-70B-Instruct",
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "sonar": {
+      "provider": "perplexity",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "sonar-pro": {
+      "provider": "perplexity",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "sonar-reasoning": {
+      "provider": "perplexity",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "sonar-reasoning-pro": {
+      "provider": "perplexity",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "llama-3.1-sonar-small-128k-online": {
+      "provider": "perplexity",
+      "status": "retired",
+      "retired_at": "2025-08-01",
+      "replacement": "sonar",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "llama-3.1-sonar-large-128k-online": {
+      "provider": "perplexity",
+      "status": "retired",
+      "retired_at": "2025-08-01",
+      "replacement": "sonar-pro",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.perplexity.ai/guides/model-cards",
+      "source": "perplexity"
+    },
+    "meta-llama/Llama-3.3-70B-Instruct-Turbo": {
+      "provider": "together",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "Qwen/Qwen3.5-9B": {
+      "provider": "together",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "MiniMaxAI/MiniMax-M3": {
+      "provider": "together",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-03-06",
+      "replacement": "Qwen/Qwen3.5-9B",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "meta-llama/Meta-Llama-3-70B-Instruct-Turbo": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-12-23",
+      "replacement": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "deepseek-ai/DeepSeek-R1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Serverless endpoint removed — use on-demand dedicated or replacement model"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together",
+      "notes": "Hosted copy on Together; canonical DeepSeek API model is deepseek-r1"
+    },
+    "deepseek-ai/DeepSeek-V3.1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "moonshotai/Kimi-K2.5": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-05-21",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "Qwen/Qwen3.5-397B-A17B": {
+      "provider": "together",
+      "status": "retired",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-06-29",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "mistralai/Mixtral-8x7B-v0.1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-04-30",
+      "replacement": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "together"
+    },
+    "grok-4.3": {
+      "provider": "xai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [
+        "Reasoning effort: use none|low|medium|high on chat completions"
+      ],
+      "migrate_url": "https://docs.x.ai/developers/models",
+      "source": "xai"
+    },
+    "grok-build-0.1": {
+      "provider": "xai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/models",
+      "source": "xai"
+    },
+    "grok-imagine-image-quality": {
+      "provider": "xai",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/models",
+      "source": "xai"
+    },
+    "grok-3": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-4.3",
+      "breaking_changes": [
+        "Redirects to grok-4.3 with none reasoning effort; billed at Grok 4.3 rates"
+      ],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-4-1-fast-reasoning": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-4.3",
+      "breaking_changes": [
+        "Redirects to grok-4.3 with low reasoning effort"
+      ],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-4-1-fast-non-reasoning": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-4.3",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-4-0709": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-4.3",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-code-fast-1": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-build-0.1",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-imagine-image-pro": {
+      "provider": "xai",
+      "status": "retired",
+      "retired_at": "2026-05-15",
+      "replacement": "grok-imagine-image-quality",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.x.ai/developers/migration/may-15-retirement",
+      "source": "xai"
+    },
+    "grok-2-latest": {
+      "provider": "xai",
+      "status": "deprecated",
+      "deprecated_at": "2026-01-01",
+      "retired_at": "2026-12-01",
+      "replacement": "grok-4.3",
+      "breaking_changes": [
+        "Not listed on current xAI models page — migrate proactively"
+      ],
+      "migrate_url": "https://docs.x.ai/developers/models",
+      "source": "xai",
+      "notes": "Legacy — no official retirement date published; marked deprecated pending xAI notice"
+    },
+    "jamba-1.5-large": {
+      "provider": "ai21",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.ai21.com/docs/models-overview",
+      "source": "ai21"
+    },
+    "jamba-1.5-mini": {
+      "provider": "ai21",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.ai21.com/docs/models-overview",
+      "source": "ai21"
+    },
+    "jamba-instruct": {
+      "provider": "ai21",
+      "status": "retired",
+      "retired_at": "2025-06-01",
+      "replacement": "jamba-1.5-mini",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.ai21.com/docs/models-overview",
+      "source": "ai21"
+    },
+    "deepseek-v4-pro": {
+      "provider": "deepseek",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "deepseek-v4-flash": {
+      "provider": "deepseek",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "deepseek-v2.5": {
+      "provider": "deepseek",
+      "status": "retired",
+      "retired_at": "2025-12-01",
+      "replacement": "deepseek-chat",
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "deepseek-coder-v2-instruct": {
+      "provider": "deepseek",
+      "status": "retired",
+      "retired_at": "2025-09-01",
+      "replacement": "deepseek-chat",
+      "breaking_changes": [],
+      "migrate_url": "https://api-docs.deepseek.com/",
+      "source": "deepseek"
+    },
+    "llama-3.1-8b-instant": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "llama-3.2-3b-preview": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "llama-3.2-11b-vision-preview": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "llama-3.2-90b-vision-preview": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "gemma2-9b-it": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "qwen-qwq-32b": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "qwen-2.5-32b": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "deepseek-r1-distill-llama-70b": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "llama3-8b-8192": {
+      "provider": "groq",
+      "status": "retired",
+      "retired_at": "2025-02-01",
+      "replacement": "llama-3.1-8b-instant",
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "gemma-7b-it": {
+      "provider": "groq",
+      "status": "retired",
+      "retired_at": "2025-04-01",
+      "replacement": "gemma2-9b-it",
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "meta-llama/Llama-3.2-1B-Instruct": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Llama-3.2-11B-Vision-Instruct": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Llama-3.2-90B-Vision-Instruct": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo": {
+      "provider": "meta",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "meta",
+      "notes": "Together-hosted turbo variant"
+    },
+    "meta-llama/Llama-2-70b-chat-hf": {
+      "provider": "meta",
+      "status": "retired",
+      "retired_at": "2025-06-01",
+      "replacement": "meta-llama/Llama-3.3-70B-Instruct",
+      "breaking_changes": [],
+      "migrate_url": "https://www.llama.com/docs/model-cards-and-prompt-formats/",
+      "source": "meta"
+    },
+    "meta-llama/Meta-Llama-3-8B-Instruct": {
+      "provider": "meta",
+      "status": "retired",
+      "retired_at": "2025-04-17",
+      "replacement": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "meta"
+    },
+    "meta-llama/Meta-Llama-3-70B-Instruct": {
+      "provider": "meta",
+      "status": "retired",
+      "retired_at": "2025-04-17",
+      "replacement": "meta-llama/Llama-3.3-70B-Instruct",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "meta"
+    },
+    "nvidia/llama-3.3-nemotron-super-49b-v1.5": {
+      "provider": "nvidia",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://build.nvidia.com/nim",
+      "source": "nvidia"
+    },
+    "nvidia/llama-3.1-nemotron-70b-instruct": {
+      "provider": "nvidia",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://build.nvidia.com/nim",
+      "source": "nvidia"
+    },
+    "nvidia/mistral-nemo-minitron-8b-8k-instruct": {
+      "provider": "nvidia",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://build.nvidia.com/nim",
+      "source": "nvidia"
+    },
+    "microsoft/phi-3-mini-4k-instruct": {
+      "provider": "ollama",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ollama.com/library/phi3",
+      "source": "ollama",
+      "notes": "Common Ollama local tag maps to Microsoft Phi-3"
+    },
+    "qwen3.7-max": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3.7-plus": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3.6-plus": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3.6-flash": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3.5-plus": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3.5-flash": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-coder-plus": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-coder-flash": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-max": {
+      "provider": "qwen",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-01",
+      "retired_at": "2026-09-08",
+      "replacement": "qwen3.7-max",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen-max-2025-01-25": {
+      "provider": "qwen",
+      "status": "retired",
+      "retired_at": "2026-01-30",
+      "replacement": "qwen3.7-max",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen-max-latest": {
+      "provider": "qwen",
+      "status": "retired",
+      "retired_at": "2026-05-13",
+      "replacement": "qwen3.7-max",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-max-2026-01-23": {
+      "provider": "qwen",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-08",
+      "retired_at": "2026-07-08",
+      "replacement": "qwen3.7-max",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-coder-plus-2025-07-22": {
+      "provider": "qwen",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-08",
+      "retired_at": "2026-07-08",
+      "replacement": "qwen3-coder-plus",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen3-vl-flash-2026-01-22": {
+      "provider": "qwen",
+      "status": "deprecated",
+      "deprecated_at": "2026-06-08",
+      "retired_at": "2026-07-08",
+      "replacement": "qwen3.6-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen-vl-max-latest": {
+      "provider": "qwen",
+      "status": "retired",
+      "retired_at": "2026-05-13",
+      "replacement": "qwen3.6-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen-vl-plus-latest": {
+      "provider": "qwen",
+      "status": "retired",
+      "retired_at": "2026-05-13",
+      "replacement": "qwen3.6-flash",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen2.5-72b-instruct": {
+      "provider": "qwen",
+      "status": "retired",
+      "retired_at": "2025-07-30",
+      "replacement": "qwen3.5-plus",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "qwen2.5-coder-32b-instruct": {
+      "provider": "qwen",
+      "status": "retired",
+      "deprecated_at": "2025-12-01",
+      "retired_at": "2026-06-01",
+      "replacement": "qwen3-coder-plus",
+      "breaking_changes": [],
+      "migrate_url": "https://help.aliyun.com/en/model-studio/model-depreciation",
+      "source": "qwen"
+    },
+    "Qwen/Qwen2.5-7B-Instruct-Turbo": {
+      "provider": "qwen",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations",
+      "source": "qwen",
+      "notes": "Together-hosted Qwen; also listed on Together deprecations"
+    },
+    "claude-1.1": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-1.2": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-1.3": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-instant-1.0": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "claude-instant-1.1": {
+      "provider": "anthropic",
+      "status": "retired",
+      "retired_at": "2024-11-06",
+      "replacement": "claude-haiku-4-5-20251001",
+      "breaking_changes": [],
+      "migrate_url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "source": "anthropic"
+    },
+    "zai-org/GLM-5.1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-06-26",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Llama-Guard-4-12B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-06-26",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Meta-Llama-3-8B-Instruct-Lite": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-06-26",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "google/gemma-3n-E4B-it": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-06-26",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen3-235B-A22B-Instruct-2507-tput": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-06-26",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "zai-org/GLM-5": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-06-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "mistralai/Voxtral-Mini-3B-2507": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-06-11",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-06-04",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "black-forest-labs/FLUX.1-krea-dev": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-05-27",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen3-Coder-Next-FP8": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen3-VL-8B-Instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-04-16",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen3-235B-A22B-Thinking-2507": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-03-06",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "mistralai/Mixtral-8x7B-Instruct-v0.1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-04-16",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "ServiceNow-AI/Apriel-1.5-15b-Thinker": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-04-03",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "ServiceNow-AI/Apriel-1.6-15b-Thinker": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-04-03",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "zai-org/GLM-4.5-Air-FP8": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-04-02",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "zai-org/GLM-4.7": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-04-02",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "mistralai/Mistral-Small-24B-Instruct-2501": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-04-02",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen3-Next-80B-A3B-Instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-04-02",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-03-31",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "mixedbread-ai/Mxbai-Rerank-Large-V2": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-03-06",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "moonshotai/Kimi-K2-Thinking": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-03-06",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "moonshotai/Kimi-K2-Instruct-0905": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-03-06",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Llama-3.2-3B-Instruct-Turbo": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-03-06",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "black-forest-labs/FLUX.1-dev": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "black-forest-labs/FLUX.1-dev-lora": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "black-forest-labs/FLUX.1-Kontext-dev": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen3-VL-32B-Instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Llama-3.2-3B-Instruct-Turbo-Classifier": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "mistralai/Ministral-3-14B-Instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen3-Next-80B-A3B-Thinking": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Alibaba-NLP/gte-modernbert-base": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "BAAI/bge-base-en-v1.5-vllm": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Llama-Guard-3-11B-Vision-Turbo": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/LlamaGuard-2-8b": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "marin-community/Marin-8B-Instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "nvidia/Nvidia-Nemotron-Nano-9B-v2": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/m2-bert-80M-32k-retrieval": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-06",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Salesforce/Llama-Rank-V1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-06",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/Refuel-Llm-V2": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-06",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/Refuel-Llm-V2-Small": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-06",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen3-235B-A22B-fp8-tput": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-06",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "qwen-qwen2-5-14b-instruct-lora": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-06",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Llama-4-Scout-17B-16E-Instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-06",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen2.5-72B-Instruct-Turbo": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-06",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-06",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "BAAI/bge-large-en-v1.5": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-06",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "deepseek-ai/DeepSeek-R1-0528-tput": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-02-03",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen2.5-VL-72B-Instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2026-01-05",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "deepseek-ai/DeepSeek-R1-Distill-Llama-70B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-12-23",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "black-forest-labs/FLUX.1-schnell-free": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-12-23",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Meta-Llama-Guard-3-8B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-12-23",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "deepcogito/cogito-v2-preview-deepseek-671b": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-11-19",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "arcee-ai/caller": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-07-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "arcee-ai/arcee-blitz": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-07-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "arcee-ai/virtuoso-medium-v2": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-07-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "arcee-ai/virtuoso-large": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-11-17",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "arcee-ai/maestro-reasoning": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-11-17",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "arcee_ai/arcee-spotlight": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-11-17",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "arcee-ai/coder-large": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-11-17",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-11-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "mistralai/Mistral-7B-Instruct-v0.1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-11-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen2.5-Coder-32B-Instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-11-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/QwQ-32B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-11-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-11-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Llama-3.3-70B-Instruct-Turbo-Free": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-11-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen2-VL-72B-Instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-08-28",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "nvidia/Llama-3.1-Nemotron-70B-Instruct-HF": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-08-28",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "perplexity-ai/r1-1776": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-08-28",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "google/gemma-2-27b-it": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-08-28",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen2-72B-Instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-08-28",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Llama-Vision-Free": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-08-28",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen2.5-14B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-08-28",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama-llama-3-3-70b-instruct-lora": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-08-28",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-08-28",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-08-28",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-08-28",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "black-forest-labs/FLUX.1-depth": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-08-28",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "black-forest-labs/FLUX.1-redux": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-08-28",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Llama-3-8b-chat-hf": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-08-28",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "black-forest-labs/FLUX.1-canny": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-08-28",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "gryphe-mythomax-l2-13b": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-06-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "mistralai-mixtral-8x22b-instruct-v0-1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-06-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "mistralai-mixtral-8x7b-v0-1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-06-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer-m2-bert-80m-2k-retrieval": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-06-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer-m2-bert-80m-8k-retrieval": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-06-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "whereisai-uae-large-v1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-06-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "google-gemma-2-9b-it": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-06-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "google-gemma-2b-it": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-06-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "gryphe-mythomax-l2-13b-lite": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-06-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama-llama-3-2-3b-instruct-turbo-lora": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-05-16",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama-meta-llama-3-8b-instruct-turbo": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-05-16",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama-meta-llama-3-70b-instruct-turbo": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-04-24",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama-meta-llama-3-1-8b-instruct-turbo-lora": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-04-24",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama-meta-llama-3-1-70b-instruct-turbo-lora": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-04-24",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama-llama-3-2-1b-instruct-lora": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-04-24",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "microsoft-wizardlm-2-8x22b": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-04-24",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "upstage-solar-10-7b-instruct-v1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-04-24",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "stabilityai/stable-diffusion-xl-base-1.0": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-04-14",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo-lora": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-04-04",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "mistralai/Mistral-7B-v0.1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-03-27",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/QwQ-32B-Preview": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-03-25",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "databricks-dbrx-instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-03-13",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Meta-Llama-3-70B-Instruct-Lite": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-03-11",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Meta-Llama/Llama-Guard-7b": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2025-03-08",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "sentence-transformers/msmarco-bert-base-dot-v5": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "bert-base-uncased": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen1.5-72B-Chat": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-10-29",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen1.5-110B-Chat": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-10-29",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "NousResearch/Nous-Hermes-2-Yi-34B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-10-07",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "NousResearch/Hermes-3-Llama-3.1-405B-Turbo": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-10-07",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "NousResearch/Nous-Hermes-2-Mistral-7B-DPO": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "SG161222/Realistic_Vision_V3.0_VAE": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "mistralai/Mixtral-8x22B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Phind/Phind-CodeLlama-34B-v2": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Meta-Llama-3-70B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "teknium/OpenHermes-2p5-Mistral-7B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "openchat/openchat-3.5-1210": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "WizardLM/WizardCoder-Python-34B-V1.0": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "NousResearch/Nous-Hermes-2-Mixtral-8x7B-SFT": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "NousResearch/Nous-Hermes-Llama2-13b": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "zero-one-ai/Yi-34B-Chat": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "codellama/CodeLlama-34b-Instruct-hf": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "codellama/CodeLlama-34b-Python-hf": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "teknium/OpenHermes-2-Mistral-7B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen1.5-14B-Chat": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "stabilityai/stable-diffusion-2-1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Llama-3-8b-hf": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "prompthero/openjourney": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "runwayml/stable-diffusion-v1-5": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "wavymulder/Analog-Diffusion": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Snowflake/snowflake-arctic-instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "deepseek-ai/deepseek-coder-33b-instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen1.5-7B-Chat": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen1.5-32B-Chat": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "cognitivecomputations/dolphin-2.5-mixtral-8x7b": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "garage-bAInd/Platypus2-70B-instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "google/gemma-7b-it": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Llama-2-7b-chat-hf": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen1.5-32B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Open-Orca/Mistral-7B-OpenOrca": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "codellama/CodeLlama-13b-Instruct-hf": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "NousResearch/Nous-Capybara-7B-V1p9": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "lmsys/vicuna-13b-v1.5": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Undi95/ReMM-SLERP-L2-13B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Undi95/Toppy-M-7B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Llama-2-13b-hf": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "codellama/CodeLlama-70b-Instruct-hf": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "snorkelai/Snorkel-Mistral-PairRM-DPO": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/LLaMA-2-7B-32K-Instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Austism/chronos-hermes-13b": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen1.5-72B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "zero-one-ai/Yi-34B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "codellama/CodeLlama-7b-Instruct-hf": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/evo-1-131k-base": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "codellama/CodeLlama-70b-hf": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "WizardLM/WizardLM-13B-V1.2": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "meta-llama/Llama-2-7b-hf": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "google/gemma-7b": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen1.5-1.8B-Chat": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen1.5-4B-Chat": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "lmsys/vicuna-7b-v1.5": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "zero-one-ai/Yi-6B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Nexusflow/NexusRaven-V2-13B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "google/gemma-2b": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen1.5-7B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "NousResearch/Nous-Hermes-llama-2-7b": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/alpaca-7b": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen1.5-14B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "codellama/CodeLlama-70b-Python-hf": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen1.5-4B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/StripedHyena-Hessian-7B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "allenai/OLMo-7B-Instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/RedPajama-INCITE-7B-Instruct": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/LLaMA-2-7B-32K": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/RedPajama-INCITE-7B-Base": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen1.5-0.5B-Chat": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "microsoft/phi-2": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen1.5-0.5B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/RedPajama-INCITE-7B-Chat": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/RedPajama-INCITE-Chat-3B-v1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/GPT-JT-Moderation-6B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "Qwen/Qwen1.5-1.8B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/RedPajama-INCITE-Instruct-3B-v1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/RedPajama-INCITE-Base-3B-v1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "WhereIsAI/UAE-Large-V1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "allenai/OLMo-7B": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer/evo-1-8k-base": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "WizardLM/WizardCoder-15B-V1.0": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "codellama/CodeLlama-13b-Python-hf": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "allenai-olmo-7b-twin-2t": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "codellama/CodeLlama-7b-Python-hf": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "hazyresearch/M2-BERT-2k-Retrieval-Encoder-V1": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "mistralai/Mistral-7B-Instruct-v0.1-json": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "mistralai/Mistral-7B-Instruct-v0.1-tools": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer-codellama-34b-instruct-json": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "togethercomputer-codellama-34b-instruct-tools": {
+      "provider": "together",
+      "status": "retired",
+      "retired_at": "2024-08-22",
+      "replacement": "MiniMaxAI/MiniMax-M3",
+      "breaking_changes": [
+        "Together serverless endpoint removed — see migration options"
+      ],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together"
+    },
+    "DeepSeek-R1-0528": {
+      "provider": "together",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together",
+      "notes": "Together redirect/active endpoint — add lifecycle when deprecated"
+    },
+    "Kimi-K2-0905": {
+      "provider": "together",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together",
+      "notes": "Together redirect/active endpoint — add lifecycle when deprecated"
+    },
+    "mistralai/Ministral-3-14B-Instruct-2512": {
+      "provider": "together",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together",
+      "notes": "Together redirect/active endpoint — add lifecycle when deprecated"
+    },
+    "DeepSeek-V3.1": {
+      "provider": "together",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.together.ai/docs/deprecations.md",
+      "source": "together",
+      "notes": "Together redirect/active endpoint — add lifecycle when deprecated"
+    },
+    "gemini-2.5-pro-preview-03-25": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-12-02",
+      "replacement": "gemini-3.1-pro-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.5-pro-preview-05-06": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-12-02",
+      "replacement": "gemini-3.1-pro-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.5-flash-lite-preview-09-2025": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2026-03-31",
+      "replacement": "gemini-3.1-flash-lite",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.5-flash-image-preview": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2026-01-15",
+      "replacement": "gemini-2.5-flash-image",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.0-flash-preview-image-generation": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-11-14",
+      "replacement": "gemini-2.5-flash-image",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.0-flash-lite-preview": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-12-09",
+      "replacement": "gemini-2.5-flash-lite",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.0-flash-lite-preview-02-05": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-12-09",
+      "replacement": "gemini-2.5-flash-lite",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-2.0-flash-live-001": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-12-09",
+      "replacement": "gemini-3.1-flash-live-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-live-2.5-flash-preview": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-12-09",
+      "replacement": "gemini-3.1-flash-live-preview",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-embedding-exp": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-10-30",
+      "replacement": "gemini-embedding-2",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-embedding-exp-03-07": {
+      "provider": "google",
+      "status": "retired",
+      "retired_at": "2025-10-30",
+      "replacement": "gemini-embedding-2",
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "gemini-3.1-flash-live-preview": {
+      "provider": "google",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "source": "google"
+    },
+    "fireworks/qwen3p6-plus": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-06-26",
+      "replacement": "fireworks/qwen3p7-plus",
+      "breaking_changes": [
+        "Fireworks serverless deprecated — see changelog migration guide"
+      ],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/glm-4p7": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/glm-5p1",
+      "breaking_changes": [
+        "Fireworks serverless deprecated — see changelog migration guide"
+      ],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/qwen3-8b": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/gpt-oss-20b",
+      "breaking_changes": [
+        "Fireworks serverless deprecated — see changelog migration guide"
+      ],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/qwen3-vl-30b-a3b-thinking": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/kimi-k2p6",
+      "breaking_changes": [
+        "Fireworks serverless deprecated — see changelog migration guide"
+      ],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/qwen3-vl-30b-a3b-instruct": {
+      "provider": "fireworks",
+      "status": "retired",
+      "retired_at": "2026-05-14",
+      "replacement": "fireworks/kimi-k2p6",
+      "breaking_changes": [
+        "Fireworks serverless deprecated — see changelog migration guide"
+      ],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/gpt-oss-20b": {
+      "provider": "fireworks",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "fireworks/qwen3p7-plus": {
+      "provider": "fireworks",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.fireworks.ai/updates/changelog",
+      "source": "fireworks"
+    },
+    "azure/gpt-5.5": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for gpt-5.5"
+    },
+    "azure/gpt-5.5-pro": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for gpt-5.5-pro"
+    },
+    "azure/gpt-5.4-mini": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for gpt-5.4-mini"
+    },
+    "azure/gpt-4o": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for gpt-4o"
+    },
+    "azure/gpt-4o-mini": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for gpt-4o-mini"
+    },
+    "azure/o3": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for o3"
+    },
+    "azure/o3-mini": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for o3-mini"
+    },
+    "azure/o4-mini": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for o4-mini"
+    },
+    "azure/text-embedding-3-large": {
+      "provider": "azure",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry — canonical model pending full crosswalk"
+    },
+    "azure/text-embedding-3-small": {
+      "provider": "azure",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry — canonical model pending full crosswalk"
+    },
+    "azure/claude-sonnet-4-6": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for claude-sonnet-4-6"
+    },
+    "azure/claude-opus-4-8": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [
+        "temperature, top_p, and top_k return 400 on Claude Opus 4.7+ — omit these parameters"
+      ],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for claude-opus-4-8"
+    },
+    "azure/claude-haiku-4-5": {
+      "provider": "azure",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements",
+      "source": "azure",
+      "notes": "Host entry for claude-haiku-4-5-20251001"
+    },
+    "anthropic.claude-sonnet-4-6-v1:0": {
+      "provider": "bedrock",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry for claude-sonnet-4-6"
+    },
+    "anthropic.claude-sonnet-4-20250514-v1:0": {
+      "provider": "bedrock",
+      "status": "retired",
+      "deprecated_at": "2026-04-14",
+      "retired_at": "2026-06-15",
+      "replacement": "anthropic.claude-sonnet-4-6-v1:0",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry for claude-sonnet-4-20250514"
+    },
+    "anthropic.claude-opus-4-8-v1:0": {
+      "provider": "bedrock",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [
+        "temperature, top_p, and top_k return 400 on Claude Opus 4.7+ — omit these parameters"
+      ],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry for claude-opus-4-8"
+    },
+    "anthropic.claude-opus-4-20250514-v1:0": {
+      "provider": "bedrock",
+      "status": "retired",
+      "deprecated_at": "2026-04-14",
+      "retired_at": "2026-06-15",
+      "replacement": "anthropic.claude-opus-4-8-v1:0",
+      "breaking_changes": [
+        "temperature, top_p, and top_k are rejected on Claude Opus 4.7+ — remove before migrating"
+      ],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry for claude-opus-4-20250514"
+    },
+    "anthropic.claude-haiku-4-5-20251001-v1:0": {
+      "provider": "bedrock",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry for claude-haiku-4-5-20251001"
+    },
+    "anthropic.claude-3-5-sonnet-20241022-v2:0": {
+      "provider": "bedrock",
+      "status": "retired",
+      "deprecated_at": "2025-08-13",
+      "retired_at": "2025-10-28",
+      "replacement": "anthropic.claude-sonnet-4-6-v1:0",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry for claude-3-5-sonnet-20241022"
+    },
+    "anthropic.claude-3-5-haiku-20241022-v1:0": {
+      "provider": "bedrock",
+      "status": "retired",
+      "deprecated_at": "2025-12-19",
+      "retired_at": "2026-02-19",
+      "replacement": "anthropic.claude-haiku-4-5-20251001-v1:0",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry for claude-3-5-haiku-20241022"
+    },
+    "anthropic.claude-3-opus-20240229-v1:0": {
+      "provider": "bedrock",
+      "status": "retired",
+      "deprecated_at": "2025-06-30",
+      "retired_at": "2026-01-05",
+      "replacement": "anthropic.claude-opus-4-8-v1:0",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry for claude-3-opus-20240229"
+    },
+    "anthropic.claude-3-sonnet-20240229-v1:0": {
+      "provider": "bedrock",
+      "status": "retired",
+      "deprecated_at": "2025-01-21",
+      "retired_at": "2025-07-21",
+      "replacement": "anthropic.claude-sonnet-4-6-v1:0",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry for claude-3-sonnet-20240229"
+    },
+    "anthropic.claude-3-haiku-20240307-v1:0": {
+      "provider": "bedrock",
+      "status": "retired",
+      "deprecated_at": "2026-02-19",
+      "retired_at": "2026-04-20",
+      "replacement": "anthropic.claude-haiku-4-5-20251001-v1:0",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry for claude-3-haiku-20240307"
+    },
+    "meta.llama3-70b-instruct-v1:0": {
+      "provider": "bedrock",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry for meta-llama/Llama-3.3-70B-Instruct"
+    },
+    "meta.llama3-8b-instruct-v1:0": {
+      "provider": "bedrock",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry — canonical model pending full crosswalk"
+    },
+    "amazon.titan-text-premier-v1:0": {
+      "provider": "bedrock",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry for amazon.titan-text-premier-v1"
+    },
+    "amazon.nova-pro-v1:0": {
+      "provider": "bedrock",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry — canonical model pending full crosswalk"
+    },
+    "amazon.nova-lite-v1:0": {
+      "provider": "bedrock",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry — canonical model pending full crosswalk"
+    },
+    "cohere.command-r-v1:0": {
+      "provider": "bedrock",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry — canonical model pending full crosswalk"
+    },
+    "cohere.command-r-plus-v1:0": {
+      "provider": "bedrock",
+      "status": "retired",
+      "deprecated_at": "2025-09-01",
+      "retired_at": "2026-03-01",
+      "replacement": "command-r-plus-08-2024",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry for command-r-plus"
+    },
+    "mistral.mistral-large-2402-v1:0": {
+      "provider": "bedrock",
+      "status": "active",
+      "deprecated_at": null,
+      "retired_at": null,
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry for mistral-large-2411"
+    },
+    "mistral.mixtral-8x7b-instruct-v0:1": {
+      "provider": "bedrock",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Host entry — canonical model pending full crosswalk"
+    }
+  }
+}

@@ -33,6 +33,7 @@ from api.billing import (
 )
 from api.store import get_store
 from api.cache import attach_etag, etag_matches, not_modified
+from api.status_page import html_response, json_response, status_payload
 
 app = FastAPI(
     title="Model Alive",
@@ -103,6 +104,16 @@ def _alive_response(result, *, status_code: int | None = None) -> JSONResponse:
 @app.get("/openapi.json", include_in_schema=False)
 def openapi_json():
     return app.openapi()
+
+
+@app.get("/status", include_in_schema=False)
+def service_status_html():
+    return html_response(status_payload())
+
+
+@app.get("/v1/status")
+def service_status_json():
+    return json_response(status_payload())
 
 
 @app.get("/v1/health")

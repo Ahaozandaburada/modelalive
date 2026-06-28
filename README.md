@@ -18,6 +18,12 @@ JavaScript/TypeScript:
 npm install modelalive
 ```
 
+Go:
+
+```bash
+go get github.com/Ahaozandaburada/modelalive/go/modelalive
+```
+
 ## Quick examples
 
 ```bash

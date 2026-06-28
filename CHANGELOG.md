@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.0 — Go SDK + public status page (10/10)
+
+- **Go SDK** — `Alive`, `Ensure`, `Resolve` with embedded registry
+- **Status page** — `/status` (HTML) + `/v1/status` (JSON)
+- **167 tests** (Python + Go + TS)
+- Scorecard updated to 10/10 across all areas
+
 ## 1.3.0 — 10/10 quality sprint
 
 - **If-None-Match / 304** caching on registry-backed API routes

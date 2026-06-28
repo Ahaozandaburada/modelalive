@@ -46,6 +46,10 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Go SDK
+        run: |
+          cd go && go test ./...
+
       - name: TypeScript SDK
         run: |
           cd js && npm ci && npm test
