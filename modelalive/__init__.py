@@ -35,4 +35,4 @@ __all__ = [
     "list_provider_keys",
     "provider_label",
 ]
-__version__ = "1.4.0"
+__version__ = "1.4.1"

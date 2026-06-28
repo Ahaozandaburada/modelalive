@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.1 — Agent & CI adoption kit
+
+- **Adoption guide** — `docs/ADOPTION.md` with copy-paste GitHub Actions, pre-commit, AGENTS.md
+- **Cursor rule** — `.cursor/rules/model-ids.mdc` for model ID edits in config/source files
+- **Agent skill** — `.cursor/skills/model-check/SKILL.md` for check/ensure/scan workflows
+- **Workflow examples** — `examples/github-actions/` (basic, config, scan, matrix)
+- **Pre-commit template** — `examples/pre-commit-modelalive.yaml`
+
 ## 1.4.0 — Go SDK + public status page (10/10)
 
 - **Go SDK** — `Alive`, `Ensure`, `Resolve` with embedded registry

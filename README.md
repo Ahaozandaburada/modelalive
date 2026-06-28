@@ -4,7 +4,7 @@
 
 Hardcoded model IDs break silently until production fails. Model Alive answers in one call — with **source links**, **breaking change** notes, and **host-aware** lifecycle status.
 
-**[Quality scorecard →](docs/STATUS.md)** · **[Universal registry guide →](docs/UNIVERSAL.md)** · **[60-second quickstart →](docs/QUICKSTART.md)**
+**[Quality scorecard →](docs/STATUS.md)** · **[Adoption (agents + CI) →](docs/ADOPTION.md)** · **[Quickstart →](docs/QUICKSTART.md)**
 
 ## Install
 
@@ -98,17 +98,14 @@ uvicorn api.main:app --port 8787
 ## CI gate (GitHub Actions)
 
 ```yaml
-- uses: Ahaozandaburada/modelalive@main
+- uses: Ahaozandaburada/modelalive@v1.4.1
   with:
-    models: claude-sonnet-4-20250514 gpt-5-2025-08-07
+    models: claude-sonnet-4-6 gpt-5.5
     warn-deprecated: "true"
+    strict-unknown: "true"
 ```
 
-Or plain shell:
-
-```yaml
-- run: pip install modelalive && modelalive check ${{ env.MODEL_ID }}
-```
+Copy-paste workflows, Cursor rules, and agent skills: **[docs/ADOPTION.md](docs/ADOPTION.md)** · [`examples/github-actions/`](examples/github-actions/)
 
 ## Trust & accuracy
 

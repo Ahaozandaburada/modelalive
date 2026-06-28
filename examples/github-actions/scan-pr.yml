@@ -1,0 +1,36 @@
+# Fail PRs that introduce retired or deprecated model IDs anywhere in the tree
+name: Model Alive — scan
+
+on:
+  pull_request:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install "modelalive==1.4.1"
+
+      - name: Scan for stale model IDs
+        run: |
+          modelalive scan . --json > scan.json
+          python - <<'PY'
+          import json
+          import sys
+
+          hits = json.load(open("scan.json"))
+          bad = hits["findings"]
+          if bad:
+              print("Stale model IDs found:")
+              for h in bad:
+                  loc = f"{h.get('path', '?')}:{h.get('line', '?')}"
+                  rep = h.get("replacement") or "see modelalive resolve"
+                  print(f"  {loc}  {h['model']}  ({h['status']}) → {rep}")
+              sys.exit(1)
+          print(f"Scan OK — {hits['scanned_files']} file(s), no stale model IDs.")
+          PY

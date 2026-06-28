@@ -1,5 +1,7 @@
 # Quickstart (60 seconds)
 
+**Agents & CI:** see [ADOPTION.md](ADOPTION.md) for Cursor rules, skills, and GitHub Action templates.
+
 ## Install
 
 ```bash

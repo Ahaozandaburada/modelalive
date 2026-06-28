@@ -1,0 +1,42 @@
+---
+description: Validate LLM model IDs with Model Alive before hardcoding or deploying
+globs: "**/.env*,**/modelalive.toml,**/*.{py,ts,js,go,yml,yaml}"
+alwaysApply: false
+---
+
+# LLM model IDs — use Model Alive
+
+Before adding or changing an LLM `model` ID in code, config, or env:
+
+1. **Check** — `modelalive check <id>` (retired → exit 1)
+2. **Ensure** — `modelalive ensure <id>` → safe ID (auto-replaces retired)
+3. **Scan** — `modelalive scan .` to find stale IDs in the repo
+
+## When writing code
+
+```python
+import modelalive
+model = modelalive.ensure(os.environ["LLM_MODEL"])
+```
+
+```typescript
+import { ensure } from "modelalive";
+const model = ensure(process.env.LLM_MODEL!);
+```
+
+Production: set `MODELALIVE_STRICT=1` so unknown IDs fail CI.
+
+## Rules
+
+- Prefer `ensure()` / `resolve()` over hardcoded snapshot IDs (`*-20250514`).
+- If `check` fails, use `replacement` from output — do not guess.
+- Bedrock/OpenRouter hosts: pass the full host ID (`anthropic.claude-…`, `openai/gpt-4o`).
+- After changing models in config, run `modelalive check-config` if `modelalive.toml` exists.
+
+## Hosted fallback (no install)
+
+```bash
+curl -s "https://modelalive.fly.dev/v1/ensure?model=MODEL_ID"
+```
+
+See [docs/ADOPTION.md](docs/ADOPTION.md) for CI, pre-commit, and agent skill setup.

@@ -1,0 +1,20 @@
+# Snippet — merge into your .pre-commit-config.yaml
+repos:
+  - repo: local
+    hooks:
+      - id: modelalive-check-config
+        name: modelalive check-config
+        entry: bash -c 'pip install -q "modelalive==1.4.1" && modelalive check-config'
+        language: system
+        pass_filenames: false
+        files: modelalive.toml
+
+  # Optional: block commits that edit .env with a stale default model
+  - repo: local
+    hooks:
+      - id: modelalive-env-example
+        name: modelalive check .env.example LLM_MODEL
+        entry: bash -c 'pip install -q "modelalive==1.4.1" && modelalive check "${LLM_MODEL:-claude-sonnet-4-6}"'
+        language: system
+        pass_filenames: false
+        files: \.env\.example$

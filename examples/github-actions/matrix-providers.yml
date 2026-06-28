@@ -1,0 +1,25 @@
+# Check each production model in parallel
+name: Model Alive — matrix
+
+on:
+  schedule:
+    - cron: "0 9 * * 1"  # weekly Monday 09:00 UTC
+  workflow_dispatch:
+
+jobs:
+  models:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        model:
+          - claude-sonnet-4-6
+          - gpt-5.5
+          - gemini-3.5-flash
+          - llama-3.3-70b-versatile
+    steps:
+      - uses: Ahaozandaburada/modelalive@v1.4.1
+        with:
+          models: ${{ matrix.model }}
+          strict-unknown: "true"
+          warn-deprecated: "true"
