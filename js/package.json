@@ -1,0 +1,31 @@
+{
+  "name": "modelalive",
+  "version": "0.5.0",
+  "description": "Pre-flight check: is this LLM model ID still alive?",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist", "registry.json"],
+  "scripts": {
+    "build": "tsc && cp ../registry/models.json registry.json",
+    "prebuild": "cp ../registry/models.json registry.json",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js 2>/dev/null || npm run build && node --test dist/test/*.js"
+  },
+  "keywords": ["llm", "anthropic", "openai", "gemini", "deprecation", "model-id"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ahaozandaburada/modelalive.git",
+    "directory": "js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}

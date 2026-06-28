@@ -13,6 +13,10 @@
     "google": {
       "url": "https://ai.google.dev/gemini-api/docs/deprecations",
       "checked_at": "2026-06-28"
+    },
+    "groq": {
+      "url": "https://console.groq.com/docs/deprecations",
+      "checked_at": "2026-06-28"
     }
   },
   "aliases": {
@@ -1109,6 +1113,32 @@
       "breaking_changes": [],
       "migrate_url": "https://developers.openai.com/api/docs/deprecations",
       "source": "openai"
+    },
+    "llama-3.3-70b-versatile": {
+      "provider": "groq",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "llama3-70b-8192": {
+      "provider": "groq",
+      "status": "retired",
+      "retired_at": "2025-01-06",
+      "replacement": "llama-3.3-70b-versatile",
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
+    },
+    "mixtral-8x7b-32768": {
+      "provider": "groq",
+      "status": "retired",
+      "retired_at": "2025-03-05",
+      "replacement": "llama-3.3-70b-versatile",
+      "breaking_changes": [],
+      "migrate_url": "https://console.groq.com/docs/deprecations",
+      "source": "groq"
     }
   }
 }

@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.0
+
+- **119 models** (+3 Groq) — seed merge now syncs provider sources
+- TypeScript SDK (`js/`) — `alive`, `check`, `resolve`, `ensure`
+- `GET /openapi.json` — machine-readable API schema
+- `docs/ACCURACY.md` — source transparency and error reporting policy
+- `.pre-commit-config.yaml` — validate + test hooks
+- `examples/openai_preflight.py` — integration pattern
+- `modelalive check-config` — validate `modelalive.toml` project config
+- **63 tests** (+35)
+
 ## 0.4.0
 
 - **116 models** (+48) via registry seed merge system

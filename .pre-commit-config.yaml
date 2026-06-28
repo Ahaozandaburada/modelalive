@@ -1,0 +1,16 @@
+repos:
+  - repo: local
+    hooks:
+      - id: modelalive-validate
+        name: modelalive registry validate
+        entry: bash -c 'python scripts/merge_seeds.py && modelalive validate --strict'
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      - id: modelalive-test
+        name: modelalive tests
+        entry: pytest -q
+        language: system
+        pass_filenames: false
+        always_run: true

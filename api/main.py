@@ -30,6 +30,11 @@ class BatchRequest(BaseModel):
     models: list[str] = Field(..., min_length=1, max_length=100)
 
 
+@app.get("/openapi.json", include_in_schema=False)
+def openapi_json():
+    return app.openapi()
+
+
 @app.get("/v1/health")
 def health() -> dict[str, str | int]:
     registry = load_registry()

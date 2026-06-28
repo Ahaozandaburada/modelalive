@@ -16,10 +16,13 @@ def main() -> int:
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
     models = registry.setdefault("models", {})
     aliases = registry.setdefault("aliases", {})
+    sources = registry.setdefault("sources", {})
     added = 0
 
     for seed_file in sorted(SEEDS_DIR.glob("*.json")):
         seed = json.loads(seed_file.read_text(encoding="utf-8"))
+        for key, meta in seed.get("sources", {}).items():
+            sources[key] = meta
         for model_id, entry in seed.get("models", {}).items():
             if model_id not in models:
                 models[model_id] = entry
