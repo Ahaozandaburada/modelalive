@@ -3,7 +3,7 @@
   "info": {
     "title": "Model Alive",
     "description": "Pre-flight API: is this LLM model ID still alive?",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "paths": {
     "/v1/health": {

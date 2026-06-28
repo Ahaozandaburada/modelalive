@@ -4,6 +4,15 @@ primary_region = "iad"
 [build]
   dockerfile = "Dockerfile"
 
+[mounts]
+  source = "modelalive_data"
+  destination = "/data"
+
+[env]
+  MODELALIVE_DB_PATH = "/data/modelalive.db"
+  MODELALIVE_PUBLIC_URL = "https://modelalive.fly.dev"
+  MODELALIVE_ENFORCE_QUOTA = "1"
+
 [http_service]
   internal_port = 8080
   force_https = true

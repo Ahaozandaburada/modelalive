@@ -21,8 +21,17 @@ from modelalive.providers import list_provider_keys, provider_label
 from modelalive.validate import validate_registry
 
 from api.middleware import RateLimitMiddleware, RequestIDMiddleware
-from api.auth import APIKeyMiddleware, load_api_keys, require_api_key_enabled
-from api.usage import UsageMiddleware, get_tracker, monthly_limit, tier_for_request
+from api.auth import APIKeyMiddleware
+from api.usage import UsageMiddleware, current_usage, monthly_limit, tier_for_request
+from api.billing import (
+    create_checkout_session,
+    create_portal_session,
+    handle_webhook,
+    list_plans,
+    retrieve_key_for_session,
+    stripe_enabled,
+)
+from api.store import get_store
 
 app = FastAPI(
     title="Model Alive",
@@ -46,11 +55,13 @@ if _rate_raw and _rate_raw != "0":
     except ValueError:
         pass
 app.add_middleware(RequestIDMiddleware)
-
-_api_keys = load_api_keys()
-if require_api_key_enabled() and _api_keys:
-    app.add_middleware(APIKeyMiddleware, keys=_api_keys)
 app.add_middleware(UsageMiddleware)
+app.add_middleware(APIKeyMiddleware)
+
+
+class CheckoutRequest(BaseModel):
+    email: str = Field(..., min_length=3, max_length=320)
+    plan: str = Field(default="pro", pattern="^pro$")
 
 
 class BatchRequest(BaseModel):
@@ -271,16 +282,78 @@ def get_expiring(
     }
 
 
+@app.get("/v1/billing/plans")
+def billing_plans():
+    payload = list_plans()
+    payload["stripe_enabled"] = stripe_enabled()
+    payload["upgrade_url"] = f"{os.environ.get('MODELALIVE_PUBLIC_URL', 'https://modelalive.fly.dev')}/v1/billing/checkout"
+    return payload
+
+
+@app.post("/v1/billing/checkout")
+def billing_checkout(body: CheckoutRequest):
+    try:
+        return create_checkout_session(email=body.email, plan=body.plan)
+    except (RuntimeError, ValueError) as exc:
+        return _problem(503 if isinstance(exc, RuntimeError) else 400, "Checkout unavailable", str(exc))
+
+
+@app.post("/v1/billing/webhook")
+async def billing_webhook(request: Request):
+    payload = await request.body()
+    sig = request.headers.get("Stripe-Signature")
+    try:
+        return handle_webhook(payload, sig)
+    except Exception as exc:
+        return _problem(400, "Webhook error", str(exc))
+
+
+@app.get("/v1/billing/key")
+def billing_retrieve_key(session_id: Annotated[str, Query(min_length=8)]):
+    result = retrieve_key_for_session(session_id)
+    if result is None:
+        return _problem(404, "Session not found", "Unknown checkout session", type_suffix="not-found")
+    return result
+
+
+@app.get("/v1/billing/success")
+def billing_success(session_id: Annotated[str, Query(min_length=8)]):
+    result = retrieve_key_for_session(session_id)
+    if result is None:
+        return _problem(404, "Session not found", "Unknown checkout session", type_suffix="not-found")
+    if result.get("api_key"):
+        return {
+            "message": "Save your API key now — it will not be shown again.",
+            **result,
+        }
+    return result
+
+
+@app.post("/v1/billing/portal")
+def billing_portal(request: Request):
+    raw_key = getattr(request.state, "api_key_raw", None)
+    if not raw_key:
+        return _problem(401, "API key required", "Provide X-API-Key to manage subscription")
+    customer_id = get_store().get_stripe_customer_id(raw_key)
+    if not customer_id:
+        return _problem(404, "No subscription", "This key is not linked to Stripe")
+    try:
+        return create_portal_session(stripe_customer_id=customer_id)
+    except RuntimeError as exc:
+        return _problem(503, "Portal unavailable", str(exc))
+
+
 @app.get("/v1/usage")
 def get_usage(request: Request):
     """Current billing-period usage for this client (IP or API key)."""
     tier = tier_for_request(request)
-    count = get_tracker().get(request)
+    count = current_usage(request)
     return {
         "tier": tier,
         "checks_used": count,
         "checks_limit": monthly_limit(tier),
         "checks_remaining": max(0, monthly_limit(tier) - count),
+        "upgrade_url": f"{os.environ.get('MODELALIVE_PUBLIC_URL', 'https://modelalive.fly.dev')}/v1/billing/plans",
     }
 
 

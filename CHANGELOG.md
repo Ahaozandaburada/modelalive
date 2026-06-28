@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.0 — Stripe billing + API keys
+
+- **Stripe Checkout** — `POST /v1/billing/checkout` → Pro subscription ($29/mo)
+- **Webhook** — auto-provision `ma_live_*` API keys on payment
+- **Customer portal** — `POST /v1/billing/portal`
+- **SQLite store** — persistent keys + usage on Fly `/data` volume
+- **docs/BILLING.md** — Stripe setup guide
+
 ## 1.0.2 — Fireworks parser, usage metering, deploy docs
 
 - **485 models** (+7 Fireworks changelog parser)
