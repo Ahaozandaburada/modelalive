@@ -215,6 +215,66 @@ def ensure(
     return resolve(model, registry_path=registry_path, today=today)
 
 
+def resolve_detail(
+    model: str,
+    *,
+    registry_path: str | Path | None = None,
+    today: date | None = None,
+) -> dict[str, object]:
+    """Return resolved model ID and merged breaking_changes from the migration chain."""
+    current = normalize_model(model)
+    visited: set[str] = set()
+    breaking_changes: list[str] = []
+    chain: list[str] = []
+
+    for _ in range(_MAX_RESOLVE_DEPTH):
+        if current in visited:
+            break
+        visited.add(current)
+        chain.append(current)
+
+        result = alive(current, registry_path=registry_path, today=today)
+        for change in result.breaking_changes:
+            if change not in breaking_changes:
+                breaking_changes.append(change)
+
+        if result.status in {"active", "unknown"}:
+            return {
+                "queried_model": model,
+                "resolved": result.canonical_model or current,
+                "chain": chain,
+                "breaking_changes": breaking_changes,
+            }
+        if not result.replacement:
+            return {
+                "queried_model": model,
+                "resolved": result.canonical_model or current,
+                "chain": chain,
+                "breaking_changes": breaking_changes,
+            }
+
+        repl = alive(result.replacement, registry_path=registry_path, today=today)
+        if repl.status == "active":
+            for change in repl.breaking_changes:
+                if change not in breaking_changes:
+                    breaking_changes.append(change)
+            return {
+                "queried_model": model,
+                "resolved": result.replacement,
+                "chain": chain + [result.replacement],
+                "breaking_changes": breaking_changes,
+            }
+        current = result.replacement
+
+    resolved = resolve(model, registry_path=registry_path, today=today)
+    return {
+        "queried_model": model,
+        "resolved": resolved,
+        "chain": chain,
+        "breaking_changes": breaking_changes,
+    }
+
+
 def _retired_message(
     model: str,
     entry: dict,

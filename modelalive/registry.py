@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from datetime import date, datetime
 from functools import lru_cache
 from importlib import resources
@@ -21,14 +22,35 @@ def _dev_registry_path() -> Path:
     return Path(__file__).resolve().parent.parent / "registry" / _REGISTRY_FILENAME
 
 
-@lru_cache(maxsize=1)
-def load_registry(path: str | Path | None = None) -> dict[str, Any]:
+def _read_registry_text(path: str | Path | None = None) -> str:
     if path is not None:
-        return json.loads(Path(path).read_text(encoding="utf-8"))
+        return Path(path).read_text(encoding="utf-8")
+
+    env_path = os.environ.get("MODELALIVE_REGISTRY_PATH", "").strip()
+    if env_path:
+        return Path(env_path).read_text(encoding="utf-8")
+
+    env_url = os.environ.get("MODELALIVE_REGISTRY_URL", "").strip()
+    if env_url:
+        try:
+            import httpx
+        except ImportError as exc:
+            raise RuntimeError(
+                "MODELALIVE_REGISTRY_URL requires httpx — pip install modelalive[http]"
+            ) from exc
+        response = httpx.get(env_url, timeout=15.0, follow_redirects=True)
+        response.raise_for_status()
+        return response.text
+
     try:
-        return json.loads(_bundled_registry_text())
+        return _bundled_registry_text()
     except (FileNotFoundError, OSError, TypeError):
-        return json.loads(_dev_registry_path().read_text(encoding="utf-8"))
+        return _dev_registry_path().read_text(encoding="utf-8")
+
+
+@lru_cache(maxsize=8)
+def load_registry(path: str | Path | None = None) -> dict[str, Any]:
+    return json.loads(_read_registry_text(path))
 
 
 def clear_registry_cache() -> None:
@@ -67,6 +89,26 @@ def get_source(source_key: str, *, registry_path: str | Path | None = None) -> d
 
 def registry_version(*, registry_path: str | Path | None = None) -> str | None:
     return load_registry(registry_path).get("version")
+
+
+def registry_hash(*, registry_path: str | Path | None = None) -> str:
+    """Stable short hash of registry version + model count for ETag headers."""
+    import hashlib
+
+    registry = load_registry(registry_path)
+    payload = f"{registry.get('version')}:{len(registry.get('models', {}))}"
+    return hashlib.sha256(payload.encode()).hexdigest()[:16]
+
+
+def oldest_source_age_days(*, registry_path: str | Path | None = None, today: date | None = None) -> int | None:
+    """Days since the oldest provider source was checked."""
+    current = today or date.today()
+    ages: list[int] = []
+    for meta in load_registry(registry_path).get("sources", {}).values():
+        checked = parse_date(meta.get("checked_at"))
+        if checked:
+            ages.append((current - checked).days)
+    return max(ages) if ages else None
 
 
 def list_models(

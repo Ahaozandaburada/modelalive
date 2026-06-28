@@ -3,7 +3,7 @@
   "info": {
     "title": "Model Alive",
     "description": "Pre-flight API: is this LLM model ID still alive?",
-    "version": "0.5.0"
+    "version": "0.6.0"
   },
   "paths": {
     "/v1/health": {
@@ -16,16 +16,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": {
-                    "anyOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "type": "integer"
-                      }
-                    ]
-                  },
+                  "additionalProperties": true,
                   "type": "object",
                   "title": "Response Health V1 Health Get"
                 }
@@ -63,7 +54,7 @@
             "schema": {
               "type": "string",
               "minLength": 1,
-              "maxLength": 128,
+              "maxLength": 256,
               "title": "Model"
             }
           }
@@ -138,7 +129,7 @@
             "schema": {
               "type": "string",
               "minLength": 1,
-              "maxLength": 128,
+              "maxLength": 256,
               "title": "Model"
             }
           }
@@ -177,7 +168,7 @@
             "schema": {
               "type": "string",
               "minLength": 1,
-              "maxLength": 128,
+              "maxLength": 256,
               "title": "Model"
             }
           },
@@ -199,6 +190,77 @@
               "type": "boolean",
               "default": false,
               "title": "Strict Unknown"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Post Ensure",
+        "operationId": "post_ensure_v1_ensure_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnsureRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/models/{model_id}": {
+      "get": {
+        "summary": "Get Model",
+        "operationId": "get_model_v1_models__model_id__get",
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Model Id"
             }
           }
         ],
@@ -260,10 +322,10 @@
                   "type": "null"
                 }
               ],
-              "description": "anthropic, openai, google",
+              "description": "anthropic, openai, google, groq, mistral, bedrock",
               "title": "Provider"
             },
-            "description": "anthropic, openai, google"
+            "description": "anthropic, openai, google, groq, mistral, bedrock"
           }
         ],
         "responses": {
@@ -380,6 +442,31 @@
           "models"
         ],
         "title": "BatchRequest"
+      },
+      "EnsureRequest": {
+        "properties": {
+          "model": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Model"
+          },
+          "warn_deprecated": {
+            "type": "boolean",
+            "title": "Warn Deprecated",
+            "default": false
+          },
+          "strict_unknown": {
+            "type": "boolean",
+            "title": "Strict Unknown",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "model"
+        ],
+        "title": "EnsureRequest"
       },
       "HTTPValidationError": {
         "properties": {

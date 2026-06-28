@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.6.0
+
+- **`gate()`** context manager + **`require_alive`** decorator
+- **`resolve_detail()`** — replacement chain + merged `breaking_changes`
+- **Bedrock** model ID aliases (`anthropic.claude-*-v1:0`)
+- **Mistral** provider seed (4 models)
+- **Fine-tuned** OpenAI IDs (`ft:gpt-4o-mini:...` → base model lookup)
+- **`MODELALIVE_REGISTRY_PATH`** / **`MODELALIVE_REGISTRY_URL`** env overrides
+- API: `X-Model-Status`, `X-Replacement`, `ETag`, `GET /v1/models/{id}`, `POST /v1/ensure`
+- API: `application/problem+json` for unknown models, stale registry health warning
+- **88 tests** (+25), Hypothesis property tests
+- `docs/QUICKSTART.md`, `SECURITY.md`, `registry/CHANGELOG.md`
+- LangChain + LiteLLM integration examples
+
 ## 0.5.0
 
 - **119 models** (+3 Groq) — seed merge now syncs provider sources

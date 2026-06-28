@@ -4,6 +4,8 @@ Pre-flight check before every LLM API call: **is this model ID still alive?**
 
 Hardcoded model IDs break silently until production fails. Anthropic retired Claude Sonnet 4 and Opus 4 on **June 15, 2026**. Mythos Preview retires **June 30, 2026**. Model Alive answers in one call — with **source links** and **breaking change** notes.
 
+**[60-second quickstart →](docs/QUICKSTART.md)**
+
 ## Install
 
 ```bash
@@ -44,6 +46,10 @@ import modelalive
 # Pre-flight: auto-replace retired models
 model_id = modelalive.ensure("claude-sonnet-4-20250514")
 # → "claude-sonnet-4-6"
+
+# Context manager for call sites
+with modelalive.gate("gemini-2.0-flash") as safe:
+    call_api(safe)  # → gemini-3.5-flash
 
 result = modelalive.alive("claude-mythos-preview")
 print(result.days_until_retirement)  # 2 (as of 2026-06-28)

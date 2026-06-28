@@ -1,0 +1,49 @@
+{
+  "sources": {
+    "mistral": {
+      "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "checked_at": "2026-06-28"
+    }
+  },
+  "aliases": {
+    "mistral-large-latest": "mistral-large-2411",
+    "mistral-small-latest": "mistral-small-2506"
+  },
+  "models": {
+    "mistral-large-2411": {
+      "provider": "mistral",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "source": "mistral"
+    },
+    "mistral-small-2506": {
+      "provider": "mistral",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "source": "mistral"
+    },
+    "open-mistral-nemo": {
+      "provider": "mistral",
+      "status": "deprecated",
+      "deprecated_at": "2026-03-01",
+      "retired_at": "2026-09-01",
+      "replacement": "mistral-small-2506",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "source": "mistral"
+    },
+    "mistral-medium-2312": {
+      "provider": "mistral",
+      "status": "retired",
+      "retired_at": "2025-12-01",
+      "replacement": "mistral-large-2411",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "source": "mistral"
+    }
+  }
+}

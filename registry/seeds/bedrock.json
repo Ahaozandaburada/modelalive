@@ -1,0 +1,31 @@
+{
+  "sources": {
+    "bedrock": {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "checked_at": "2026-06-28"
+    }
+  },
+  "aliases": {
+    "anthropic.claude-sonnet-4-6-v1:0": "claude-sonnet-4-6",
+    "anthropic.claude-sonnet-4-20250514-v1:0": "claude-sonnet-4-20250514",
+    "anthropic.claude-opus-4-8-v1:0": "claude-opus-4-8",
+    "anthropic.claude-opus-4-20250514-v1:0": "claude-opus-4-20250514",
+    "anthropic.claude-3-5-sonnet-20241022-v2:0": "claude-3-5-sonnet-20241022",
+    "anthropic.claude-3-5-haiku-20241022-v1:0": "claude-3-5-haiku-20241022",
+    "anthropic.claude-3-opus-20240229-v1:0": "claude-3-opus-20240229",
+    "us.anthropic.claude-sonnet-4-6-v1:0": "claude-sonnet-4-6",
+    "eu.anthropic.claude-sonnet-4-6-v1:0": "claude-sonnet-4-6",
+    "amazon.titan-text-premier-v1:0": "amazon.titan-text-premier-v1"
+  },
+  "models": {
+    "amazon.titan-text-premier-v1": {
+      "provider": "bedrock",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Bedrock-native model ID (alias strips :0 suffix)"
+    }
+  }
+}

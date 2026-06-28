@@ -17,6 +17,14 @@
     "groq": {
       "url": "https://console.groq.com/docs/deprecations",
       "checked_at": "2026-06-28"
+    },
+    "bedrock": {
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "checked_at": "2026-06-28"
+    },
+    "mistral": {
+      "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "checked_at": "2026-06-28"
     }
   },
   "aliases": {
@@ -25,7 +33,19 @@
     "claude-3-opus-latest": "claude-3-opus-20240229",
     "gemini-2.0-flash-latest": "gemini-2.0-flash",
     "gpt-4-turbo-preview": "gpt-4-0125-preview",
-    "gpt-4-turbo-preview-completions": "gpt-4-0125-preview"
+    "gpt-4-turbo-preview-completions": "gpt-4-0125-preview",
+    "anthropic.claude-sonnet-4-6-v1:0": "claude-sonnet-4-6",
+    "anthropic.claude-sonnet-4-20250514-v1:0": "claude-sonnet-4-20250514",
+    "anthropic.claude-opus-4-8-v1:0": "claude-opus-4-8",
+    "anthropic.claude-opus-4-20250514-v1:0": "claude-opus-4-20250514",
+    "anthropic.claude-3-5-sonnet-20241022-v2:0": "claude-3-5-sonnet-20241022",
+    "anthropic.claude-3-5-haiku-20241022-v1:0": "claude-3-5-haiku-20241022",
+    "anthropic.claude-3-opus-20240229-v1:0": "claude-3-opus-20240229",
+    "us.anthropic.claude-sonnet-4-6-v1:0": "claude-sonnet-4-6",
+    "eu.anthropic.claude-sonnet-4-6-v1:0": "claude-sonnet-4-6",
+    "amazon.titan-text-premier-v1:0": "amazon.titan-text-premier-v1",
+    "mistral-large-latest": "mistral-large-2411",
+    "mistral-small-latest": "mistral-small-2506"
   },
   "models": {
     "claude-opus-4-8": {
@@ -1139,6 +1159,50 @@
       "breaking_changes": [],
       "migrate_url": "https://console.groq.com/docs/deprecations",
       "source": "groq"
+    },
+    "amazon.titan-text-premier-v1": {
+      "provider": "bedrock",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "source": "bedrock",
+      "notes": "Bedrock-native model ID (alias strips :0 suffix)"
+    },
+    "mistral-large-2411": {
+      "provider": "mistral",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "source": "mistral"
+    },
+    "mistral-small-2506": {
+      "provider": "mistral",
+      "status": "active",
+      "replacement": null,
+      "breaking_changes": [],
+      "migrate_url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "source": "mistral"
+    },
+    "open-mistral-nemo": {
+      "provider": "mistral",
+      "status": "deprecated",
+      "deprecated_at": "2026-03-01",
+      "retired_at": "2026-09-01",
+      "replacement": "mistral-small-2506",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "source": "mistral"
+    },
+    "mistral-medium-2312": {
+      "provider": "mistral",
+      "status": "retired",
+      "retired_at": "2025-12-01",
+      "replacement": "mistral-large-2411",
+      "breaking_changes": [],
+      "migrate_url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+      "source": "mistral"
     }
   }
 }

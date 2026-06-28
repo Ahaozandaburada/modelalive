@@ -1,6 +1,6 @@
 """Model Alive — pre-flight check for LLM model IDs."""
 
-from modelalive.check import alive, check, check_many, ensure, resolve
+from modelalive.check import alive, check, check_many, ensure, resolve, resolve_detail
 from modelalive.exceptions import (
     ModelDeprecatedError,
     ModelExpiringSoonError,
@@ -8,6 +8,7 @@ from modelalive.exceptions import (
     ModelUnknownError,
 )
 from modelalive.expiring import list_expiring
+from modelalive.gate import gate, require_alive
 from modelalive.scan import scan_path
 from modelalive.types import AliveResult
 from modelalive.validate import assert_registry_valid, validate_registry
@@ -18,6 +19,9 @@ __all__ = [
     "check_many",
     "ensure",
     "resolve",
+    "resolve_detail",
+    "gate",
+    "require_alive",
     "list_expiring",
     "scan_path",
     "AliveResult",
@@ -28,4 +32,4 @@ __all__ = [
     "validate_registry",
     "assert_registry_valid",
 ]
-__version__ = "0.5.0"
+__version__ = "0.6.0"
