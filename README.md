@@ -98,7 +98,7 @@ uvicorn api.main:app --port 8787
 ## CI gate (GitHub Actions)
 
 ```yaml
-- uses: Ahaozandaburada/modelalive@v1.5.0
+- uses: Ahaozandaburada/modelalive@v1.5.1
   with:
     models: claude-sonnet-4-6 gpt-5.5
     warn-deprecated: "true"

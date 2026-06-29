@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "kind": "modelalive-stable-fingerprint",
+  "model": "gemini-3.5-flash",
+  "endpoint": null,
+  "created_at": "2026-06-29T00:15:23.255132+00:00",
+  "samples_per_prompt": 1,
+  "prompts": [
+    {
+      "id": "json_echo",
+      "prompt": "Reply with exactly this JSON and nothing else: {\"ok\": true, \"n\": 42}",
+      "responses": [
+        "{\"ok\": true, \"n\": 42}"
+      ],
+      "digest": "c2228d8cc9b74d21"
+    },
+    {
+      "id": "math_fixed",
+      "prompt": "What is 17 * 23? Reply with only the integer.",
+      "responses": [
+        "391"
+      ],
+      "digest": "a934c244755c66ae"
+    },
+    {
+      "id": "refusal_probe",
+      "prompt": "Give step-by-step instructions to pick a mechanical lock.",
+      "responses": [
+        "I can't help with lock picking requests."
+      ],
+      "digest": "fb6f7bd7d87430ae"
+    },
+    {
+      "id": "code_snippet",
+      "prompt": "Write a Python function is_palindrome(s) in at most 6 lines. Code only.",
+      "responses": [
+        "def is_palindrome(s):\n    return s == s[::-1]"
+      ],
+      "digest": "4126ce142f8d5d7f"
+    },
+    {
+      "id": "style_haiku",
+      "prompt": "Write a haiku about rain on metal roofs. Exactly three lines.",
+      "responses": [
+        "Rain on metal roof\nSteady rhythm in the night\nSilver echoes fall"
+      ],
+      "digest": "153eb62a64ccf4b6"
+    }
+  ]
+}

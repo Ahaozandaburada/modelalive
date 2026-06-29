@@ -74,7 +74,7 @@ Install: `pip install modelalive` · Docs: https://github.com/Ahaozandaburada/mo
 
 ## GitHub Actions (copy-paste)
 
-Pin the action to a release tag in production (`@v1.5.0`), not `@main`.
+Pin the action to a release tag in production (`@v1.5.1`), not `@main`.
 
 ### 1. Basic gate — fail on retired models
 
@@ -88,7 +88,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: Ahaozandaburada/modelalive@v1.5.0
+      - uses: Ahaozandaburada/modelalive@v1.5.1
         with:
           models: claude-sonnet-4-6 gpt-5.5
           warn-deprecated: "true"
@@ -97,7 +97,7 @@ jobs:
 ### 2. Strict production — fail on unknown IDs too
 
 ```yaml
-      - uses: Ahaozandaburada/modelalive@v1.5.0
+      - uses: Ahaozandaburada/modelalive@v1.5.1
         with:
           models: ${{ vars.LLM_MODEL }}
           strict-unknown: "true"
@@ -168,7 +168,7 @@ jobs:
           - gpt-5.5
           - gemini-3.5-flash
     steps:
-      - uses: Ahaozandaburada/modelalive@v1.5.0
+      - uses: Ahaozandaburada/modelalive@v1.5.1
         with:
           models: ${{ matrix.model }}
           strict-unknown: "true"
@@ -244,7 +244,7 @@ patch_litellm()  # validates model on each completion call
 Catch silent backend changes under the same model ID:
 
 ```yaml
-- uses: Ahaozandaburada/modelalive@v1.5.0
+- uses: Ahaozandaburada/modelalive@v1.5.1
   with:
     models: claude-sonnet-4-6
     stable-baseline: .modelalive/stable.json
@@ -261,7 +261,7 @@ Record baselines once, commit `.modelalive/*.json`, re-check in CI. Full guide: 
 
 1. Star the repo and link `modelalive check` in your README
 2. Add the Cursor rule + skill to your main app repo
-3. Pin `Ahaozandaburada/modelalive@v1.5.0` in CI
+3. Pin `Ahaozandaburada/modelalive@v1.5.1` in CI
 4. Open a PR on agent templates (LangChain, CrewAI, etc.) pointing here
 
 Questions or missing provider? [Open an issue](https://github.com/Ahaozandaburada/modelalive/issues).

@@ -67,4 +67,6 @@ def test_stable_compare_drift():
     response = client.post("/v1/stable/compare", json={"baseline": b, "current": c, "threshold": 0.25})
     assert response.status_code == 409
     assert response.headers["X-Stable"] == "false"
-    assert response.json()["stable"] is False
+    body = response.json()
+    assert body["type"] == "https://modelalive.dev/errors/stable-drift"
+    assert body["report"]["stable"] is False

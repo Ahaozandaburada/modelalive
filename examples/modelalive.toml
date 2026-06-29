@@ -1,0 +1,21 @@
+models = [
+  "claude-sonnet-4-6",
+  "gpt-4o",
+]
+
+[ci]
+strict_unknown = true
+warn_deprecated = true
+
+[stable_defaults]
+threshold = 0.25
+
+[[stable]]
+model = "claude-sonnet-4-6"
+baseline = "examples/baselines/claude-sonnet-4-6.json"
+provider = "anthropic"
+
+[[stable]]
+model = "gpt-4o"
+baseline = "examples/baselines/gpt-4o.json"
+provider = "openai"

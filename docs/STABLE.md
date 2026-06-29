@@ -71,7 +71,7 @@ modelalive stable diff baseline.json current.json --threshold 0.25
 Lifecycle + behavioral gate:
 
 ```yaml
-- uses: Ahaozandaburada/modelalive@v1.5.0
+- uses: Ahaozandaburada/modelalive@v1.5.1
   with:
     models: claude-sonnet-4-6
     strict-unknown: "true"

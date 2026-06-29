@@ -470,12 +470,12 @@ def get_validate():
     }
 
 
-@app.get("/v1/stable/prompts")
+@app.get("/v1/stable/prompts", tags=["stable"])
 def get_stable_prompts():
     return {"count": len(list_stable_prompts()), "prompts": list_stable_prompts()}
 
 
-@app.post("/v1/stable/fingerprint")
+@app.post("/v1/stable/fingerprint", tags=["stable"])
 def post_stable_fingerprint(body: StableFingerprintRequest):
     fp = fingerprint_from_responses(
         body.model,
@@ -487,14 +487,29 @@ def post_stable_fingerprint(body: StableFingerprintRequest):
     return payload
 
 
-@app.post("/v1/stable/compare")
+@app.post("/v1/stable/compare", tags=["stable"])
 def post_stable_compare(body: StableCompareRequest):
     baseline = Fingerprint.from_dict(body.baseline)
     current = Fingerprint.from_dict(body.current)
     report = compare_fingerprints(baseline, current, threshold=body.threshold)
     payload = report.to_dict()
-    status = 409 if not report.stable else 200
-    response = JSONResponse(content=payload, status_code=status)
+    if report.stable:
+        response = JSONResponse(content=payload, status_code=200)
+    else:
+        response = JSONResponse(
+            status_code=409,
+            content={
+                "type": "https://modelalive.dev/errors/stable-drift",
+                "title": "Behavioral drift detected",
+                "detail": (
+                    f"Mean distance {report.mean_distance:.4f} exceeds threshold {body.threshold} "
+                    f"for model {report.model}"
+                ),
+                "status": 409,
+                "report": payload,
+            },
+            media_type="application/problem+json",
+        )
     response.headers["X-Stable"] = "true" if report.stable else "false"
     response.headers["X-Mean-Distance"] = str(report.mean_distance)
     return response

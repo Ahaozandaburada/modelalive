@@ -26,3 +26,17 @@ go get github.com/Ahaozandaburada/modelalive/go/modelalive@latest
 ```
 
 Registry is embedded in the module — no network required at runtime.
+
+## Stable (behavioral drift)
+
+```go
+prompts, _ := modelalive.ListStablePrompts()
+responses := map[string][]string{}
+for _, p := range prompts {
+    responses[p.ID] = []string{"fixture-response"}
+}
+base, _ := modelalive.FingerprintFromResponses("gpt-4o", responses, nil, 1)
+cur, _ := modelalive.FingerprintFromResponses("gpt-4o", responses, nil, 1)
+report := modelalive.CompareFingerprints(base, cur, 0.25)
+// report.Stable == true
+```

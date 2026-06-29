@@ -13,6 +13,9 @@ TARGET = ROOT / "modelalive" / "data" / "models.json"
 GO_TARGET = ROOT / "go" / "modelalive" / "registry.json"
 PROVIDERS_SRC = ROOT / "registry" / "providers.json"
 PROVIDERS_DST = ROOT / "modelalive" / "data" / "providers.json"
+STABLE_SRC = ROOT / "modelalive" / "data" / "stable_prompts.json"
+JS_STABLE = ROOT / "js" / "stable_prompts.json"
+GO_STABLE = ROOT / "go" / "modelalive" / "stable_prompts.json"
 
 
 def main() -> int:
@@ -28,6 +31,10 @@ def main() -> int:
     if PROVIDERS_SRC.exists():
         shutil.copy2(PROVIDERS_SRC, PROVIDERS_DST)
         print(f"Synced {PROVIDERS_SRC} -> {PROVIDERS_DST}")
+    if STABLE_SRC.exists():
+        shutil.copy2(STABLE_SRC, JS_STABLE)
+        shutil.copy2(STABLE_SRC, GO_STABLE)
+        print(f"Synced {STABLE_SRC} -> {JS_STABLE}, {GO_STABLE}")
     return 0
 
 

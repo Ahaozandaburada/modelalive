@@ -7,18 +7,18 @@ from typing import Any, Literal
 
 from modelalive.stable import list_stable_prompts
 
-ProbeBackend = Literal["anthropic", "google", "openai"]
+ProbeBackend = Literal["anthropic", "google", "openai", "bedrock", "openrouter"]
 
 
 def resolve_probe_backend(model: str, provider: str | None = None) -> ProbeBackend:
     if provider:
         normalized = provider.strip().lower()
-        if normalized in {"anthropic", "google", "openai"}:
+        if normalized in {"anthropic", "google", "openai", "bedrock", "openrouter"}:
             return normalized  # type: ignore[return-value]
         raise ValueError(f"Unknown probe provider: {provider}")
 
     forced = os.environ.get("MODELALIVE_PROBE_PROVIDER", "").strip().lower()
-    if forced in {"anthropic", "google", "openai"}:
+    if forced in {"anthropic", "google", "openai", "bedrock", "openrouter"}:
         return forced  # type: ignore[return-value]
 
     try:
@@ -29,12 +29,18 @@ def resolve_probe_backend(model: str, provider: str | None = None) -> ProbeBacke
             return "anthropic"
         if entry.provider == "google":
             return "google"
+        if entry.provider == "bedrock":
+            return "bedrock"
     except Exception:
         pass
 
     lowered = model.lower()
-    if lowered.startswith("claude") or lowered.startswith("anthropic."):
+    if lowered.startswith("claude"):
         return "anthropic"
+    if lowered.startswith("openai/") or lowered.startswith("meta-llama/"):
+        return "openrouter"
+    if lowered.startswith("anthropic.") or lowered.startswith("amazon."):
+        return "bedrock"
     if lowered.startswith("gemini") or lowered.startswith("google/"):
         return "google"
     return "openai"
@@ -75,6 +81,26 @@ def probe_config(backend: ProbeBackend | None = None, model: str = "") -> tuple[
                 "Set MODELALIVE_PROBE_API_KEY or GOOGLE_API_KEY to probe Gemini."
             )
         return base, key, resolved
+
+    if resolved == "openrouter":
+        base = (
+            os.environ.get("MODELALIVE_PROBE_BASE_URL", "").strip()
+            or os.environ.get("OPENROUTER_BASE_URL", "").strip()
+            or "https://openrouter.ai/api/v1"
+        ).rstrip("/")
+        key = (
+            os.environ.get("MODELALIVE_PROBE_API_KEY", "").strip()
+            or os.environ.get("OPENROUTER_API_KEY", "").strip()
+        )
+        if not key:
+            raise RuntimeError(
+                "Set MODELALIVE_PROBE_API_KEY or OPENROUTER_API_KEY to probe OpenRouter."
+            )
+        return base, key, resolved
+
+    if resolved == "bedrock":
+        region = os.environ.get("AWS_REGION", os.environ.get("AWS_DEFAULT_REGION", "us-east-1")).strip()
+        return region, "", resolved
 
     base = (
         os.environ.get("MODELALIVE_PROBE_BASE_URL", "").strip()
@@ -150,6 +176,22 @@ def _probe_once(
         response.raise_for_status()
         return _extract_google_content(response.json())
 
+    if backend == "openrouter":
+        headers = {
+            "Authorization": f"Bearer {key}",
+            "Content-Type": "application/json",
+            "HTTP-Referer": os.environ.get("OPENROUTER_REFERER", "https://modelalive.dev"),
+        }
+        payload = {
+            "model": model,
+            "messages": [{"role": "user", "content": message}],
+            "temperature": temperature,
+            "max_tokens": max_tokens,
+        }
+        response = client.post(f"{base}/chat/completions", headers=headers, json=payload)
+        response.raise_for_status()
+        return _extract_openai_content(response.json())
+
     headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
     payload = {
         "model": model,
@@ -160,6 +202,32 @@ def _probe_once(
     response = client.post(f"{base}/chat/completions", headers=headers, json=payload)
     response.raise_for_status()
     return _extract_openai_content(response.json())
+
+
+def _probe_bedrock(
+    model: str,
+    message: str,
+    *,
+    region: str,
+    temperature: float,
+    max_tokens: int,
+) -> str:
+    try:
+        import boto3
+    except ImportError as exc:
+        raise RuntimeError("Bedrock probe requires boto3 — pip install modelalive[bedrock]") from exc
+
+    client = boto3.client("bedrock-runtime", region_name=region)
+    response = client.converse(
+        modelId=model,
+        messages=[{"role": "user", "content": [{"text": message}]}],
+        inferenceConfig={"maxTokens": max_tokens, "temperature": temperature},
+    )
+    blocks = response.get("output", {}).get("message", {}).get("content") or []
+    for block in blocks:
+        if "text" in block:
+            return str(block["text"]).strip()
+    return ""
 
 
 def probe_responses(
@@ -178,6 +246,23 @@ def probe_responses(
 
     base, key, backend = probe_config(resolve_probe_backend(model, provider), model)
     out: dict[str, list[str]] = {}
+
+    if backend == "bedrock":
+        for spec in list_stable_prompts():
+            pid = spec["id"]
+            message = spec["message"]
+            out[pid] = []
+            for _ in range(max(1, samples)):
+                out[pid].append(
+                    _probe_bedrock(
+                        model,
+                        message,
+                        region=base,
+                        temperature=temperature,
+                        max_tokens=max_tokens,
+                    )
+                )
+        return out
 
     with httpx.Client(timeout=timeout) as client:
         for spec in list_stable_prompts():

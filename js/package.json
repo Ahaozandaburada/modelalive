@@ -1,6 +1,6 @@
 {
   "name": "modelalive",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Pre-flight check: is this LLM model ID still alive?",
   "type": "module",
   "main": "dist/index.js",
@@ -11,11 +11,11 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": ["dist", "registry.json"],
+  "files": ["dist", "registry.json", "stable_prompts.json"],
   "scripts": {
-    "build": "tsc && cp ../registry/models.json registry.json",
-    "prebuild": "cp ../registry/models.json registry.json",
-    "test": "npm run build && node --test dist/smoke.test.js dist/parity.test.js"
+    "build": "tsc && cp ../registry/models.json registry.json && cp ../modelalive/data/stable_prompts.json stable_prompts.json",
+    "prebuild": "cp ../registry/models.json registry.json && cp ../modelalive/data/stable_prompts.json stable_prompts.json",
+    "test": "npm run build && node --test dist/smoke.test.js dist/parity.test.js dist/stable.test.js"
   },
   "keywords": ["llm", "anthropic", "openai", "gemini", "deprecation", "model-id"],
   "license": "MIT",

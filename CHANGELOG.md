@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.5.1 — Stable 10/10 completion
+
+- **JS + Go SDK** — `compareFingerprints`, `CompareFingerprints`, stable prompts bundle
+- **Probe backends** — Bedrock (boto3), OpenRouter, Anthropic, Gemini, OpenAI-compatible
+- **`modelalive.toml` [[stable]]** — `check-config` runs lifecycle + stable gates
+- **RFC 7807** — `/v1/stable/compare` returns `application/problem+json` on drift (409)
+- **Status page** — stable prompt count + endpoints
+- **Example baselines** — `examples/baselines/*.json` + offline CI workflow
+- **`stable validate`** CLI + pre-commit hook
+- **195+ tests**, STATUS.md updated to 10/10 Stable
+
 ## 1.5.0 — Behavioral stability (ghost drift)
 
 - **`modelalive stable`** — baseline, check, diff for silent endpoint behavior changes

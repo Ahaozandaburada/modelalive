@@ -1,0 +1,38 @@
+name: Stable offline validation
+
+on:
+  pull_request:
+    paths:
+      - examples/baselines/**
+      - modelalive/data/stable_prompts.json
+      - modelalive/stable.py
+  schedule:
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+jobs:
+  stable-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install "modelalive==1.5.1"
+
+      - name: Validate example baselines
+        run: |
+          for f in examples/baselines/*.json; do
+            modelalive stable validate "$f"
+          done
+
+      - name: Self-compare baselines (must be stable)
+        run: |
+          for f in examples/baselines/*.json; do
+            modelalive stable diff "$f" "$f" --threshold 0.25
+          done
+
+      - name: check-config offline (no probe)
+        run: MODELALIVE_STABLE_SKIP_PROBE=1 modelalive check-config --file examples/modelalive.toml

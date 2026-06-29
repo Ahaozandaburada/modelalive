@@ -238,3 +238,33 @@ def assert_stable(
             f"Shifted prompts: {shifted}"
         )
     return report
+
+
+def validate_fingerprint(data: dict[str, Any]) -> list[str]:
+    """Return validation errors for a fingerprint JSON object."""
+    errors: list[str] = []
+    if data.get("kind") != "modelalive-stable-fingerprint":
+        errors.append("kind must be 'modelalive-stable-fingerprint'")
+    if not data.get("model"):
+        errors.append("model is required")
+    prompts = data.get("prompts")
+    if not isinstance(prompts, list) or not prompts:
+        errors.append("prompts must be a non-empty list")
+        return errors
+    expected = {p["id"] for p in _load_prompts()}
+    seen: set[str] = set()
+    for idx, row in enumerate(prompts):
+        if not isinstance(row, dict):
+            errors.append(f"prompts[{idx}] must be an object")
+            continue
+        pid = row.get("id")
+        if not pid:
+            errors.append(f"prompts[{idx}] missing id")
+            continue
+        seen.add(str(pid))
+        if not row.get("responses"):
+            errors.append(f"prompts[{idx}] ({pid}) missing responses")
+    missing = expected - seen
+    if missing:
+        errors.append(f"missing prompt ids: {', '.join(sorted(missing))}")
+    return errors

@@ -167,3 +167,19 @@ export {
   defaultWarnDays,
   defaultWarnDeprecated,
 } from "./settings.js";
+export {
+  assertStable,
+  compareFingerprints,
+  fingerprintFromDict,
+  fingerprintFromResponses,
+  listStablePrompts,
+  responseDistance,
+  StableShiftError,
+} from "./stable.js";
+export type {
+  Fingerprint,
+  PromptFingerprint,
+  PromptShift,
+  StabilityReport,
+  StablePrompt,
+} from "./stable.js";

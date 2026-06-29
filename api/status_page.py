@@ -36,7 +36,13 @@ def status_payload() -> dict[str, object]:
         "endpoints": {
             "health": "/v1/health",
             "alive": "/v1/alive?model=",
+            "stable": "/v1/stable/prompts",
             "docs": "/docs",
+        },
+        "stable": {
+            "prompt_count": len(__import__("modelalive.stable", fromlist=["list_stable_prompts"]).list_stable_prompts()),
+            "providers": ["anthropic", "google", "openai", "bedrock", "openrouter"],
+            "cli": "modelalive stable check",
         },
     }
 
@@ -66,15 +72,16 @@ def status_html(payload: dict[str, object]) -> str:
 <body>
   <p class="badge">{state.upper()}</p>
   <h1>Model Alive</h1>
-  <p>Universal LLM model lifecycle pre-flight API</p>
+  <p>Universal LLM model lifecycle + behavioral stability API</p>
   <div class="grid">
     <div class="card"><div class="label">Version</div><div class="value">{payload.get("version")}</div></div>
     <div class="card"><div class="label">Models tracked</div><div class="value">{payload.get("model_count")}</div></div>
-    <div class="card"><div class="label">Providers</div><div class="value">{payload.get("provider_count")}</div></div>
+    <div class="card"><div class="label">Stable prompts</div><div class="value">{(payload.get("stable") or {}).get("prompt_count", "—")}</div></div>
     <div class="card"><div class="label">Registry age (days)</div><div class="value">{payload.get("oldest_source_age_days", "—")}</div></div>
   </div>
   <p style="margin-top:1.5rem">
     <a href="/v1/health">JSON health</a> ·
+    <a href="/v1/stable/prompts">Stable prompts</a> ·
     <a href="/docs">API docs</a> ·
     <a href="https://github.com/Ahaozandaburada/modelalive">GitHub</a>
   </p>

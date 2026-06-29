@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -97,7 +98,7 @@ def main(argv: list[str] | None = None) -> int:
     stable_baseline.add_argument("model", help="Model ID to probe")
     stable_baseline.add_argument("-o", "--output", default=".modelalive/stable.json")
     stable_baseline.add_argument("--samples", type=int, default=1)
-    stable_baseline.add_argument("--provider", choices=["anthropic", "google", "openai"], default=None)
+    stable_baseline.add_argument("--provider", choices=["anthropic", "google", "openai", "bedrock", "openrouter"], default=None)
     stable_baseline.add_argument("--from-json", dest="from_json", help="Use saved responses JSON instead of live probe")
 
     stable_check = stable_sub.add_parser("check", help="Compare live fingerprint to baseline")
@@ -105,7 +106,7 @@ def main(argv: list[str] | None = None) -> int:
     stable_check.add_argument("-b", "--baseline", default=".modelalive/stable.json")
     stable_check.add_argument("--threshold", type=float, default=0.25)
     stable_check.add_argument("--samples", type=int, default=1)
-    stable_check.add_argument("--provider", choices=["anthropic", "google", "openai"], default=None)
+    stable_check.add_argument("--provider", choices=["anthropic", "google", "openai", "bedrock", "openrouter"], default=None)
     stable_check.add_argument("--from-json", dest="from_json", help="Use saved responses JSON instead of live probe")
     stable_check.add_argument("--json", action="store_true")
 
@@ -114,6 +115,10 @@ def main(argv: list[str] | None = None) -> int:
     stable_diff.add_argument("current", help="Current fingerprint JSON")
     stable_diff.add_argument("--threshold", type=float, default=0.25)
     stable_diff.add_argument("--json", action="store_true")
+
+    stable_validate = stable_sub.add_parser("validate", help="Validate a fingerprint JSON file")
+    stable_validate.add_argument("path", help="Fingerprint JSON path")
+    stable_validate.add_argument("--json", action="store_true")
 
     args = parser.parse_args(argv)
 
@@ -387,22 +392,84 @@ def _cmd_stable(args: argparse.Namespace) -> int:
                 print(f"  shifted {shift.prompt_id}: {shift.distance:.3f}")
         return 0 if report.stable else 1
 
+    if args.stable_command == "validate":
+        from modelalive.stable import validate_fingerprint
+
+        data = json.loads(Path(args.path).read_text(encoding="utf-8"))
+        errors = validate_fingerprint(data)
+        if args.json:
+            print(json.dumps({"valid": not errors, "errors": errors}, indent=2))
+        elif errors:
+            for err in errors:
+                print(f"INVALID: {err}", file=sys.stderr)
+        else:
+            print(f"Valid fingerprint for {data.get('model')}")
+        return 1 if errors else 0
+
     return 1
 
 
 def _cmd_check_config(args: argparse.Namespace) -> int:
     config = load_config(args.file)
-    if not config.models:
-        print(f"No models in {args.file}", file=sys.stderr)
+    if not config.models and not config.stable:
+        print(f"No models or [[stable]] entries in {args.file}", file=sys.stderr)
         return 1
-    check_args = argparse.Namespace(
-        models=config.models,
-        warn_deprecated=_flag(config.warn_deprecated, default_warn_deprecated),
-        strict_unknown=_flag(config.strict_unknown, default_strict_unknown),
-        warn_days=config.warn_days if config.warn_days is not None else default_warn_days(),
-        json=False,
-    )
-    return _cmd_check(check_args)
+    exit_code = 0
+    if config.models:
+        check_args = argparse.Namespace(
+            models=config.models,
+            warn_deprecated=_flag(config.warn_deprecated, default_warn_deprecated),
+            strict_unknown=_flag(config.strict_unknown, default_strict_unknown),
+            warn_days=config.warn_days if config.warn_days is not None else default_warn_days(),
+            json=False,
+        )
+        exit_code = max(exit_code, _cmd_check(check_args))
+
+    if config.stable:
+        from modelalive.stable import (
+            Fingerprint,
+            compare_fingerprints,
+            fingerprint_from_responses,
+            validate_fingerprint,
+        )
+
+        skip_probe = os.environ.get("MODELALIVE_STABLE_SKIP_PROBE", "").strip().lower() in {"1", "true", "yes"}
+        for entry in config.stable:
+            baseline_path = Path(entry.baseline)
+            if not baseline_path.exists():
+                print(f"Missing stable baseline: {baseline_path}", file=sys.stderr)
+                exit_code = 1
+                continue
+            data = json.loads(baseline_path.read_text(encoding="utf-8"))
+            errors = validate_fingerprint(data)
+            if errors:
+                print(f"Invalid baseline {baseline_path}: {errors[0]}", file=sys.stderr)
+                exit_code = 1
+                continue
+            baseline = Fingerprint.from_dict(data)
+            threshold = entry.threshold if entry.threshold is not None else (config.stable_threshold or 0.25)
+            if skip_probe:
+                print(f"Stable baseline OK (offline): {entry.model} → {baseline_path}")
+                continue
+            probe_args = argparse.Namespace(
+                from_json=None,
+                samples=1,
+                provider=entry.provider,
+            )
+            try:
+                responses = _load_probe_responses(probe_args, entry.model)
+            except RuntimeError as exc:
+                print(f"Stable probe skipped for {entry.model}: {exc}", file=sys.stderr)
+                exit_code = 1
+                continue
+            current = fingerprint_from_responses(entry.model, responses)
+            report = compare_fingerprints(baseline, current, threshold=threshold)
+            if report.stable:
+                print(f"STABLE: {entry.model} mean={report.mean_distance:.3f}")
+            else:
+                print(f"DRIFT: {entry.model} mean={report.mean_distance:.3f}", file=sys.stderr)
+                exit_code = 1
+    return exit_code
 
 
 if __name__ == "__main__":
