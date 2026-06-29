@@ -32,9 +32,10 @@ def main() -> int:
         shutil.copy2(PROVIDERS_SRC, PROVIDERS_DST)
         print(f"Synced {PROVIDERS_SRC} -> {PROVIDERS_DST}")
     if STABLE_SRC.exists():
-        shutil.copy2(STABLE_SRC, JS_STABLE)
-        shutil.copy2(STABLE_SRC, GO_STABLE)
-        print(f"Synced {STABLE_SRC} -> {JS_STABLE}, {GO_STABLE}")
+        for target in (JS_STABLE, GO_STABLE):
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(STABLE_SRC, target)
+            print(f"Synced {STABLE_SRC} -> {target}")
     return 0
 
 
