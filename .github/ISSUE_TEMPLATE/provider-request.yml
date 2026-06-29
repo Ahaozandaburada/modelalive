@@ -1,0 +1,41 @@
+name: Request provider
+description: Add a new inference provider or host to the registry
+title: "[provider] "
+labels:
+  - registry
+  - enhancement
+body:
+  - type: markdown
+    value: |
+      New providers need a seed file under `registry/seeds/` and an entry in `registry/providers.json`.
+
+  - type: input
+    id: provider_name
+    attributes:
+      label: Provider / host name
+      placeholder: cerebras
+    validations:
+      required: true
+
+  - type: input
+    id: deprecation_url
+    attributes:
+      label: Official deprecation or model lifecycle URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: model_id_examples
+    attributes:
+      label: Example model IDs (one per line)
+      placeholder: |
+        meta-llama/Llama-3.3-70B-Instruct
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: willing_pr
+    attributes:
+      label: Contribution
+      options:
+        - label: I can open a PR with a seed file if you point me to the format

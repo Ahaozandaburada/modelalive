@@ -1,0 +1,34 @@
+name: False positive / incorrect status
+description: Report a wrong retired/active status or bad replacement
+title: "[accuracy] "
+labels:
+  - accuracy
+body:
+  - type: input
+    id: model_id
+    attributes:
+      label: Model ID
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What Model Alive returns today
+      placeholder: status=retired, replacement=...
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What should be correct (with source link)
+    validations:
+      required: true
+
+  - type: input
+    id: source_url
+    attributes:
+      label: Official provider URL proving the correct status
+    validations:
+      required: true

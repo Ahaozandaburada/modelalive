@@ -1,5 +1,27 @@
 # Model Alive
 
+**Pre-flight gate before every LLM call** — catch retired model IDs (Alive) and silent behavior changes (Stable).
+
+```bash
+pip install modelalive
+npm install modelalive
+```
+
+```bash
+$ modelalive check claude-sonnet-4-20250514
+# exit 1 — retired
+
+$ modelalive ensure claude-sonnet-4-20250514
+claude-sonnet-4-6
+
+$ modelalive check ollama/llama3.2:latest
+# → active (universal resolve)
+```
+
+[![PyPI](https://img.shields.io/pypi/v/modelalive)](https://pypi.org/project/modelalive/)
+[![npm](https://img.shields.io/npm/v/modelalive)](https://www.npmjs.com/package/modelalive)
+· [Quickstart examples](examples/) · [Show HN draft](docs/marketing/show-hn.md) · [Live API](https://modelalive.fly.dev/status)
+
 **765 models · 22 providers · 190+ aliases** — OpenAI, Anthropic, Google, Qwen, DeepSeek, Llama, Groq, Together, Fireworks, **Bedrock**, **Azure**, **OpenRouter (live sync)**, Ollama, Hugging Face, and more. See [docs/UNIVERSAL.md](docs/UNIVERSAL.md).
 
 Hardcoded model IDs break silently until production fails. Model Alive answers in one call — with **source links**, **breaking change** notes, and **host-aware** lifecycle status.

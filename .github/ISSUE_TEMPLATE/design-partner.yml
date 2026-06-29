@@ -1,0 +1,48 @@
+name: Design partner
+description: Integrate Model Alive in your stack — priority registry support
+title: "[partner] "
+labels:
+  - adoption
+body:
+  - type: markdown
+    value: |
+      First design partners get priority registry updates for their providers/models.
+
+  - type: input
+    id: org
+    attributes:
+      label: Project / company (optional)
+
+  - type: textarea
+    id: stack
+    attributes:
+      label: Stack
+      description: Framework, hosting, how you call LLMs
+      placeholder: FastAPI + LiteLLM + OpenRouter
+    validations:
+      required: true
+
+  - type: textarea
+    id: models
+    attributes:
+      label: Model IDs you use in production
+    validations:
+      required: true
+
+  - type: dropdown
+    id: interest
+    attributes:
+      label: Primary interest
+      options:
+        - Alive (lifecycle / retired IDs)
+        - Stable (behavioral drift)
+        - Both
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: contact
+    attributes:
+      label: Follow-up
+      options:
+        - label: I'm open to a 15-minute feedback call

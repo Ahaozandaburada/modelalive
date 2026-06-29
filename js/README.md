@@ -1,5 +1,7 @@
 # modelalive (JavaScript)
 
+Universal LLM pre-flight gate — **Alive** (lifecycle) + **Stable** (behavioral drift) for 765+ models.
+
 TypeScript/JavaScript SDK for [Model Alive](https://github.com/Ahaozandaburada/modelalive).
 
 ## Install
@@ -8,31 +10,20 @@ TypeScript/JavaScript SDK for [Model Alive](https://github.com/Ahaozandaburada/m
 npm install modelalive
 ```
 
-Build from source (monorepo):
-
-```bash
-npm install
-npm run build
-```
-
 ## Usage
 
 ```typescript
-import { alive, check, ensure, resolve } from "modelalive";
+import { alive, ensure, resolve } from "modelalive";
+import { compareFingerprints, assertStable } from "modelalive";
 
-// Non-throwing check
-const result = alive("claude-sonnet-4-20250514");
-console.log(result.status);       // "retired"
-console.log(result.replacement); // "claude-sonnet-4-6"
+// Lifecycle gate
+ensure("openrouter/anthropic/claude-sonnet-4-6"); // → "claude-sonnet-4-6"
 
-// Pre-flight before API call
-const safe = ensure("claude-sonnet-4-20250514"); // "claude-sonnet-4-6"
-
-// Full replacement chain
-resolve("gemini-2.0-flash"); // "gemini-3.5-flash"
-
-// Strict mode (throws on unknown)
-check("unknown-model", { strictUnknown: true });
+// Behavioral drift (Stable)
+const report = compareFingerprints(baseline, current, 0.25);
+assertStable(baseline, current);
 ```
 
-Registry is bundled at build time from `registry/models.json`.
+See [docs/STABLE.md](https://github.com/Ahaozandaburada/modelalive/blob/main/docs/STABLE.md) and [docs/UNIVERSAL.md](https://github.com/Ahaozandaburada/modelalive/blob/main/docs/UNIVERSAL.md).
+
+Registry + stable prompts bundled at build time.

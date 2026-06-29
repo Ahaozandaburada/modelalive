@@ -79,3 +79,19 @@ Every behavior change needs a test. Registry additions should include at least o
 ## Accuracy policy
 
 See [ACCURACY.md](ACCURACY.md). Always link to an official provider source URL with `checked_at` date.
+
+## Adoption & launch
+
+- **Examples:** [examples/README.md](../examples/README.md) — FastAPI quickstart, Stable CI, GitHub Actions
+- **Marketing copy:** [docs/marketing/](../marketing/) — Show HN, Reddit, X thread (copy-paste)
+- **Terminal demo:** `bash scripts/record_demo.sh` or `bash scripts/record_demo.sh --cast`
+- **Design partners:** [marketing/design-partner.md](../marketing/design-partner.md)
+
+## Issue templates
+
+| Template | Use |
+|----------|-----|
+| [add-model.yml](../../.github/ISSUE_TEMPLATE/add-model.yml) | New model or status fix |
+| [provider-request.yml](../../.github/ISSUE_TEMPLATE/provider-request.yml) | New provider/host |
+| [false-positive.yml](../../.github/ISSUE_TEMPLATE/false-positive.yml) | Wrong lifecycle data |
+| [design-partner.yml](../../.github/ISSUE_TEMPLATE/design-partner.yml) | Integration feedback |

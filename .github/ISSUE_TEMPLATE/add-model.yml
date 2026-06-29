@@ -1,0 +1,78 @@
+name: Add or update model
+description: Request a model ID in the registry (or fix status/replacement)
+title: "[model] "
+labels:
+  - registry
+body:
+  - type: markdown
+    value: |
+      Thanks! We need an **official provider source** (deprecation page or model docs).
+      See [CONTRIBUTING.md](https://github.com/Ahaozandaburada/modelalive/blob/main/docs/CONTRIBUTING.md).
+
+  - type: input
+    id: model_id
+    attributes:
+      label: Model ID
+      description: Exact string your app sends to the API
+      placeholder: claude-sonnet-4-20250514
+    validations:
+      required: true
+
+  - type: dropdown
+    id: provider
+    attributes:
+      label: Provider
+      options:
+        - openai
+        - anthropic
+        - google
+        - groq
+        - together
+        - fireworks
+        - bedrock
+        - azure
+        - openrouter
+        - ollama
+        - huggingface
+        - mistral
+        - deepseek
+        - other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options:
+        - active
+        - deprecated
+        - retired
+        - unknown
+    validations:
+      required: true
+
+  - type: input
+    id: replacement
+    attributes:
+      label: Replacement model (if deprecated/retired)
+      placeholder: claude-sonnet-4-6
+
+  - type: input
+    id: retired_at
+    attributes:
+      label: Retirement date (YYYY-MM-DD, if known)
+
+  - type: input
+    id: source_url
+    attributes:
+      label: Official source URL
+      placeholder: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context
+      description: Breaking changes, host-specific paths, aliases you use

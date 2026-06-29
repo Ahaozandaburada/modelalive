@@ -8,6 +8,8 @@ Make every LLM integration verify model IDs **before** production breaks — lif
 | **GitHub Actions** | [Workflow examples](#github-actions-copy-paste) — lifecycle + optional `stable-baseline` |
 | **Local dev** | [Pre-commit](#pre-commit) + `modelalive.toml` |
 | **Any agent framework** | [AGENTS.md snippet](#agentsmd-for-any-repo) |
+| **Launch / distribution** | [Marketing copy](marketing/README.md) — Show HN, Reddit, X |
+| **Runnable demo** | [examples/quickstart-fastapi/](../examples/quickstart-fastapi/) |
 
 Install once:
 
