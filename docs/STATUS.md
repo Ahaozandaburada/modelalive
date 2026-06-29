@@ -1,6 +1,6 @@
 # Model Alive — Quality scorecard
 
-Last updated: **v1.6.0**
+Last updated: **v1.6.1**
 
 **Top tier: Production-ready** — shippable, documented, tested, and suitable for CI/production gates.  
 **Universal (v1.6):** one normalization + resolution path for all major inference surfaces — see [UNIVERSAL.md](UNIVERSAL.md).  

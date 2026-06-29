@@ -1,6 +1,6 @@
 {
   "name": "modelalive",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Universal LLM pre-flight gate — Alive (lifecycle) + Stable (behavioral drift) before every inference call.",
   "type": "module",
   "main": "dist/index.js",

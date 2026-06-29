@@ -35,7 +35,7 @@ Stable → same ID, different behavior? (ghost drift)
 CI in 3 lines:
 
 ```yaml
-- uses: Ahaozandaburada/modelalive@v1.6.0
+- uses: Ahaozandaburada/modelalive@v1.6.1
   with:
     models: claude-sonnet-4-6
     strict-unknown: "true"

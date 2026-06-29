@@ -43,7 +43,7 @@ Works with OpenRouter, Ollama, Bedrock, Azure paths — one normalization pipeli
 GitHub Action (3 lines in CI):
 
 ```yaml
-- uses: Ahaozandaburada/modelalive@v1.6.0
+- uses: Ahaozandaburada/modelalive@v1.6.1
   with:
     models: claude-sonnet-4-6 gpt-4o
     strict-unknown: "true"
@@ -51,7 +51,7 @@ GitHub Action (3 lines in CI):
 
 **Honest limits:** Registry can lag providers by days; unknown models pass by default unless `--strict-unknown`. Stable is not a full Stability Monitor replacement — it's a lightweight CI probe.
 
-Shipped v1.6.0 yesterday. Feedback welcome — especially missing providers or false positives.
+Shipped v1.6.1 yesterday. Feedback welcome — especially missing providers or false positives.
 
 ---
 

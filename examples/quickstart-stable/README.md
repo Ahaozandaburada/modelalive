@@ -17,7 +17,7 @@ git add .modelalive/stable.json
 See [`../github-actions/stable-check.yml`](../github-actions/stable-check.yml):
 
 ```yaml
-- uses: Ahaozandaburada/modelalive@v1.6.0
+- uses: Ahaozandaburada/modelalive@v1.6.1
   with:
     models: gpt-4o
     stable-baseline: .modelalive/stable.json

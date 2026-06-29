@@ -18,7 +18,7 @@ jobs:
           - gemini-3.5-flash
           - llama-3.3-70b-versatile
     steps:
-      - uses: Ahaozandaburada/modelalive@v1.6.0
+      - uses: Ahaozandaburada/modelalive@v1.6.1
         with:
           models: ${{ matrix.model }}
           strict-unknown: "true"

@@ -1,0 +1,2 @@
+{"version":3,"term":{"cols":80,"rows":24},"timestamp":1782744013,"command":"CI=1 bash 'scripts/record_demo.sh'","title":"Model Alive demo","env":{"SHELL":"/bin/zsh"}}
+[0.010, "x", "1"]

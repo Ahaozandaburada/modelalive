@@ -20,7 +20,11 @@ $ modelalive check ollama/llama3.2:latest
 
 [![PyPI](https://img.shields.io/pypi/v/modelalive)](https://pypi.org/project/modelalive/)
 [![npm](https://img.shields.io/npm/v/modelalive)](https://www.npmjs.com/package/modelalive)
-· [Quickstart examples](examples/) · [Show HN draft](docs/marketing/show-hn.md) · [Live API](https://modelalive.fly.dev/status)
+· [Quickstart examples](examples/) · [Terminal demo](docs/marketing/demo-output.txt) · [Show HN draft](docs/marketing/show-hn.md) · [Live API](https://modelalive.fly.dev/status)
+
+```bash
+bash scripts/record_demo.sh    # replay in terminal
+```
 
 **765 models · 22 providers · 190+ aliases** — OpenAI, Anthropic, Google, Qwen, DeepSeek, Llama, Groq, Together, Fireworks, **Bedrock**, **Azure**, **OpenRouter (live sync)**, Ollama, Hugging Face, and more. See [docs/UNIVERSAL.md](docs/UNIVERSAL.md).
 
@@ -139,7 +143,7 @@ uvicorn api.main:app --port 8787
 ## CI gate (GitHub Actions)
 
 ```yaml
-- uses: Ahaozandaburada/modelalive@v1.6.0
+- uses: Ahaozandaburada/modelalive@v1.6.1
   with:
     models: claude-sonnet-4-6 gpt-5.5
     warn-deprecated: "true"

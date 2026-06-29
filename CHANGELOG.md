@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.1 — Adoption kit
+
+- **Quickstart examples** — FastAPI + Stable CI (`examples/quickstart-fastapi/`, `quickstart-stable/`)
+- **Marketing copy** — Show HN, Reddit, X drafts (`docs/marketing/`)
+- **Issue templates** — add model, provider, false positive, design partner
+- **Terminal demo** — `scripts/record_demo.sh`
+- **README hero** — PyPI/npm badges, 60-second demo block
+
 ## 1.6.0 — Universal resolution
 
 - **`universal_resolve()`** — one path for OpenRouter, Ollama, HF, Bedrock regional, LiteLLM prefixes

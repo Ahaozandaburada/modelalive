@@ -52,4 +52,4 @@ __all__ = [
     "provider_label",
     "universal_resolve",
 ]
-__version__ = "1.6.0"
+__version__ = "1.6.1"

@@ -17,7 +17,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install modelalive
-        run: pip install "modelalive==1.6.0"
+        run: pip install "modelalive==1.6.1"
 
       - name: Validate pinned models
         run: modelalive check-config
