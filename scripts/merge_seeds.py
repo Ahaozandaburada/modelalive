@@ -34,6 +34,11 @@ def main() -> int:
         for key, meta in seed.get("sources", {}).items():
             sources[key] = meta
         for model_id, entry in seed.get("models", {}).items():
+            if seed_file.name == "openrouter.json":
+                if model_id not in models:
+                    added += 1
+                models[model_id] = entry
+                continue
             if seed_file.name in SKIP_PARSED and model_id in models:
                 continue  # manual seed wins over parsed drift
             if model_id not in models:
@@ -44,9 +49,16 @@ def main() -> int:
         for alias, target in seed.get("aliases", {}).items():
             if alias == target:
                 continue
-            if target in aliases and target not in models:
-                continue
             aliases[alias] = target
+        if seed_file.name == "openrouter.json":
+            stale = [
+                model_id
+                for model_id, entry in list(models.items())
+                if entry.get("provider") == "openrouter" and entry.get("source") == "openrouter"
+            ]
+            for model_id in stale:
+                if model_id not in seed.get("models", {}):
+                    del models[model_id]
 
     registry["aliases"] = aliases
 

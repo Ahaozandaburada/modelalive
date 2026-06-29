@@ -15,8 +15,8 @@ from modelalive.registry import (
     get_model_entry,
     get_source,
     registry_version,
-    resolve_alias,
 )
+from modelalive.universal import universal_resolve
 from modelalive.settings import (
     default_strict_unknown,
     default_warn_days,
@@ -35,8 +35,10 @@ def alive(
 ) -> AliveResult:
     """Return lifecycle status for a model ID without raising."""
     queried = normalize_model(model)
-    canonical, alias_chain = resolve_alias(queried, registry_path=registry_path)
-    aliased = len(alias_chain) > 1
+    resolved = universal_resolve(model, registry_path=registry_path)
+    canonical = resolved.resolved
+    alias_chain = resolved.chain
+    aliased = canonical != queried or len(alias_chain) > 1
     version = registry_version(registry_path=registry_path)
 
     entry = get_model_entry(canonical, registry_path=registry_path)

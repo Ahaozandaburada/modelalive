@@ -1,8 +1,15 @@
 # Quickstart (60 seconds)
 
-**Behavioral drift:** [docs/STABLE.md](docs/STABLE.md) — `modelalive stable check` catches ghost changes under the same model ID.
+Model Alive has **two gates** — use both in production:
 
-**Agents & CI:** see [ADOPTION.md](ADOPTION.md) for Cursor rules, skills, and GitHub Action templates.
+| Gate | Command |
+|------|---------|
+| **Alive** (lifecycle) | `modelalive check` / `modelalive ensure` |
+| **Stable** (behavioral drift) | `modelalive stable check` |
+
+**Universal IDs:** OpenRouter, Ollama, Bedrock, Azure — see [UNIVERSAL.md](UNIVERSAL.md).  
+**Behavioral drift:** [STABLE.md](STABLE.md) — baseline once, compare in CI.  
+**Agents & CI:** [ADOPTION.md](ADOPTION.md) for Cursor rules, skills, and GitHub Action templates.
 
 ## Install
 

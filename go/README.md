@@ -1,6 +1,6 @@
 # Model Alive — Go SDK
 
-Pre-flight check: is this LLM model ID still alive?
+Universal LLM pre-flight gate — **Alive** (lifecycle) + **Stable** (behavioral drift) for 765+ models across 22 providers.
 
 ```go
 import (

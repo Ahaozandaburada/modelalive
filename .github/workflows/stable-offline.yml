@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - run: pip install "modelalive==1.5.1"
+      - run: pip install "modelalive==1.6.0"
 
       - name: Validate example baselines
         run: |

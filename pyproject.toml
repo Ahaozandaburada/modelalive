@@ -4,13 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "modelalive"
-version = "1.5.1"
-description = "Pre-flight check: is this LLM model ID still alive?"
+version = "1.6.0"
+description = "Universal LLM pre-flight gate — Alive (lifecycle) + Stable (behavioral drift) before every inference call."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
 authors = [{ name = "ModelAlive" }]
-keywords = ["llm", "openai", "anthropic", "google", "gemini", "deprecation", "model-id"]
+keywords = ["llm", "openai", "anthropic", "google", "gemini", "deprecation", "model-id", "stable", "drift", "openrouter", "ollama"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",

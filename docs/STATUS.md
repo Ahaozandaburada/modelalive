@@ -1,16 +1,18 @@
 # Model Alive — Quality scorecard
 
-Last updated: **v1.5.1**
+Last updated: **v1.6.0**
 
 **Top tier: Production-ready** — shippable, documented, tested, and suitable for CI/production gates.  
-**Not claimed:** flawless detection, 100% model coverage, or zero false positives/negatives.
+**Universal (v1.6):** one normalization + resolution path for all major inference surfaces — see [UNIVERSAL.md](UNIVERSAL.md).  
+**Not claimed:** flawless detection, 100% of every model on earth, or zero false positives/negatives.
 
 | Area | Status | Evidence |
 |------|--------|----------|
-| **Alive (lifecycle)** | **Production-ready** | 517 models, drift CI, Python + TS + Go SDK, source links |
+| **Alive (lifecycle)** | **Production-ready** | 765 models, drift CI, Python + TS + Go SDK, source links |
+| **Universal resolution** | **Production-ready** | OpenRouter live sync, Ollama/HF/Bedrock/Azure/LiteLLM paths |
 | **Stable (behavioral drift)** | **Production-ready** | 5-prompt fingerprint, 5 probe backends, CLI + API + Action |
-| **Core SDK + CLI** | Production-ready | Python CLI + 195 tests |
-| **Registry coverage** | Production-ready | 517 models, 21 providers, Bedrock/Azure host entries |
+| **Core SDK + CLI** | Production-ready | Python CLI + 188 tests |
+| **Registry coverage** | Production-ready | 765 models, 22 providers, OpenRouter + host entries |
 | **HTTP API** | Production-ready | ETag/304, RFC 7807 stable-drift, `/status` + stable endpoints |
 | **Ecosystem** | Production-ready | GitHub Action (lifecycle + stable), pre-commit, adoption kit |
 

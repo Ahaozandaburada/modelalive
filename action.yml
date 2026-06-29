@@ -11,7 +11,7 @@ inputs:
   version:
     description: modelalive package version to install
     required: false
-    default: "1.5.1"
+    default: "1.6.0"
   warn-deprecated:
     description: Fail when models are deprecated (not just retired)
     required: false

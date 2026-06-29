@@ -1,6 +1,6 @@
 # Agent instructions
 
-When this repository or a consumer app touches **LLM model IDs**, use [Model Alive](https://github.com/Ahaozandaburada/modelalive).
+When this repository or a consumer app touches **LLM model IDs**, use [Model Alive](https://github.com/Ahaozandaburada/modelalive) — **Alive** (lifecycle) + **Stable** (behavioral drift), universal resolution for OpenRouter/Ollama/Bedrock/Azure paths.
 
 ## Required workflow
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.6.0 — Universal resolution
+
+- **`universal_resolve()`** — one path for OpenRouter, Ollama, HF, Bedrock regional, LiteLLM prefixes
+- **Enhanced `normalize_model()`** — strips `openrouter/`, `ollama/`, `:latest` tags, `ft:`, `us.` Bedrock prefix
+- **OpenRouter live sync** — `fetch_openrouter_models.py` pulls 339 routes daily; 114 crosswalk aliases
+- **Registry** — 765 models, 193 aliases, 22 providers (HF + Replicate hosts)
+- **Docs** — [docs/UNIVERSAL.md](docs/UNIVERSAL.md) with honest scope
+- **188 tests**, registry validate strict OK
+
 ## 1.5.1 — Stable 10/10 completion
 
 - **JS + Go SDK** — `compareFingerprints`, `CompareFingerprints`, stable prompts bundle

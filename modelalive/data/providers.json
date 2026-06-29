@@ -21,6 +21,8 @@
     "ai21": {"name": "AI21 Labs", "kind": "first_party", "api_style": "openai"},
     "qwen": {"name": "Alibaba Qwen (DashScope)", "kind": "first_party", "api_style": "openai"},
     "nvidia": {"name": "NVIDIA NIM", "kind": "inference_host", "api_style": "openai"},
-    "ollama": {"name": "Ollama (local)", "kind": "local_runtime", "api_style": "openai"}
+    "ollama": {"name": "Ollama (local)", "kind": "local_runtime", "api_style": "openai"},
+    "huggingface": {"name": "Hugging Face Inference", "kind": "inference_host", "api_style": "openai"},
+    "replicate": {"name": "Replicate", "kind": "inference_host", "api_style": "openai"}
   }
 }

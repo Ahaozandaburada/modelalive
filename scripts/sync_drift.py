@@ -24,6 +24,7 @@ def main() -> int:
         [sys.executable, str(ROOT / "scripts" / "parse_fireworks_changelog.py"), "--write"],
         [sys.executable, str(ROOT / "scripts" / "parse_groq_deprecations.py"), "--write", "--offline"],
         [sys.executable, str(ROOT / "scripts" / "parse_mistral_deprecations.py"), "--write", "--offline"],
+        [sys.executable, str(ROOT / "scripts" / "fetch_openrouter_models.py")],
         [sys.executable, str(ROOT / "scripts" / "generate_openrouter_crosswalk.py")],
         [sys.executable, str(ROOT / "scripts" / "merge_seeds.py")],
         [sys.executable, str(ROOT / "scripts" / "generate_host_seeds.py")],

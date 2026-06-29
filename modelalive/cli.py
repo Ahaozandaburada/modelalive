@@ -26,7 +26,7 @@ from modelalive.validate import assert_registry_valid, validate_registry
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="modelalive",
-        description="Pre-flight check: is this LLM model ID still alive?",
+        description="Universal LLM pre-flight gate — Alive (lifecycle) + Stable (behavioral drift)",
     )
     sub = parser.add_subparsers(dest="command", required=True)
 

@@ -1,10 +1,26 @@
 # Model Alive
 
-**517 models · 21 providers · 130+ aliases** — OpenAI, Anthropic, Google, Qwen, DeepSeek, Llama, Groq, Together, Fireworks, **Bedrock**, **Azure**, OpenRouter, Ollama, and more.
+**765 models · 22 providers · 190+ aliases** — OpenAI, Anthropic, Google, Qwen, DeepSeek, Llama, Groq, Together, Fireworks, **Bedrock**, **Azure**, **OpenRouter (live sync)**, Ollama, Hugging Face, and more. See [docs/UNIVERSAL.md](docs/UNIVERSAL.md).
 
 Hardcoded model IDs break silently until production fails. Model Alive answers in one call — with **source links**, **breaking change** notes, and **host-aware** lifecycle status.
 
-**Alive + Stable: production-ready** pre-flight gates ([scorecard →](docs/STATUS.md)) · **[Adoption →](docs/ADOPTION.md)** · **[Quickstart →](docs/QUICKSTART.md)**
+## Two-layer gate (Alive + Stable)
+
+| Layer | Question | Command |
+|-------|----------|---------|
+| **Alive** | Is this model ID officially retired or deprecated? | `modelalive check` |
+| **Stable** | Same ID, different behavior (ghost drift)? | `modelalive stable check` |
+
+```bash
+# Lifecycle gate (universal IDs: OpenRouter, Ollama, Bedrock, Azure, …)
+modelalive check openrouter/anthropic/claude-sonnet-4-6 --strict-unknown
+
+# Behavioral drift gate (after baseline recorded)
+modelalive stable baseline gpt-4o -o .modelalive/stable.json
+modelalive stable check gpt-4o -b .modelalive/stable.json
+```
+
+**Alive + Stable: production-ready** pre-flight gates ([scorecard →](docs/STATUS.md)) · **[Stable →](docs/STABLE.md)** · **[Universal →](docs/UNIVERSAL.md)** · **[Adoption →](docs/ADOPTION.md)**
 
 ## Install
 
@@ -93,16 +109,21 @@ uvicorn api.main:app --port 8787
 | GET | `/v1/validate` | Registry integrity report |
 | GET | `/v1/expiring?days=` | Models retiring within N days |
 | GET | `/openapi.json` | OpenAPI 3 schema |
+| GET | `/v1/stable/prompts` | Stable probe prompt set |
+| GET | `/v1/stable/fingerprint?model=` | Live behavioral fingerprint |
+| POST | `/v1/stable/compare` | Compare baseline vs current (409 on drift) |
 | GET | `/v1/health` | Version + model count |
 
 ## CI gate (GitHub Actions)
 
 ```yaml
-- uses: Ahaozandaburada/modelalive@v1.5.1
+- uses: Ahaozandaburada/modelalive@v1.6.0
   with:
     models: claude-sonnet-4-6 gpt-5.5
     warn-deprecated: "true"
     strict-unknown: "true"
+    stable-baseline: .modelalive/stable.json   # optional behavioral drift gate
+    stable-threshold: "0.25"
 ```
 
 Copy-paste workflows, Cursor rules, and agent skills: **[docs/ADOPTION.md](docs/ADOPTION.md)** · [`examples/github-actions/`](examples/github-actions/)
@@ -167,7 +188,9 @@ See [docs/ACCURACY.md](docs/ACCURACY.md) for source policy and error reporting.
 
 Unknown models return `status: unknown`, `confidence: unknown`, `alive: true` — we never block what we haven't verified.
 
-**Behavioral drift:** see [docs/STABLE.md](docs/STABLE.md) — `modelalive stable check` for ghost changes under the same model ID.
+**Stable (behavioral drift):** [docs/STABLE.md](docs/STABLE.md) — `modelalive stable check` catches ghost changes under the same model ID (5-prompt fingerprint, 5 probe backends, CLI + API + GitHub Action).
+
+**Universal resolution:** [docs/UNIVERSAL.md](docs/UNIVERSAL.md) — one path for OpenRouter, Ollama, Hugging Face, Bedrock regional, LiteLLM prefixes.
 
 ## Docker (self-host API)
 

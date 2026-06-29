@@ -1,7 +1,7 @@
 {
   "name": "modelalive",
-  "version": "1.5.1",
-  "description": "Pre-flight check: is this LLM model ID still alive?",
+  "version": "1.6.0",
+  "description": "Universal LLM pre-flight gate — Alive (lifecycle) + Stable (behavioral drift) before every inference call.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,7 +17,7 @@
     "prebuild": "cp ../registry/models.json registry.json && cp ../modelalive/data/stable_prompts.json stable_prompts.json",
     "test": "npm run build && node --test dist/smoke.test.js dist/parity.test.js dist/stable.test.js"
   },
-  "keywords": ["llm", "anthropic", "openai", "gemini", "deprecation", "model-id"],
+  "keywords": ["llm", "anthropic", "openai", "gemini", "deprecation", "model-id", "stable", "drift", "openrouter"],
   "license": "MIT",
   "repository": {
     "type": "git",

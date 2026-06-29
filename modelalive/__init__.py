@@ -19,7 +19,7 @@ from modelalive.stable import (
     fingerprint_from_responses,
     list_stable_prompts,
 )
-from modelalive.types import AliveResult
+from modelalive.universal import universal_resolve
 from modelalive.providers import list_provider_keys, provider_label
 from modelalive.validate import assert_registry_valid, validate_registry
 
@@ -50,5 +50,6 @@ __all__ = [
     "assert_registry_valid",
     "list_provider_keys",
     "provider_label",
+    "universal_resolve",
 ]
-__version__ = "1.5.1"
+__version__ = "1.6.0"
