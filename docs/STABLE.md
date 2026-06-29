@@ -1,5 +1,7 @@
 # Stable — behavioral drift (ghost changes)
 
+**Status: Production-ready** — use in CI after recording a baseline. Not a full Stability Monitor replacement.
+
 Model Alive answers two different questions:
 
 | Command | Question |
@@ -118,7 +120,8 @@ Lifecycle first, behavior second.
 
 ## Limits (honest)
 
-- 5 fixed prompts, trigram distribution distance — not a full Stability Monitor replica
+- **Production-ready**, not perfect — 5 fixed prompts, trigram distance; tune `--threshold` for your model
 - Live probe costs ~5 API calls per check
-- Stochastic models may false-positive at low thresholds — tune `--threshold` or increase `--samples`
-- Complements lifecycle checks; does not replace eval suites or golden tests
+- Stochastic models may false-positive; subtle drift may false-negative
+- Complements lifecycle checks — run **Alive first**, then Stable
+- For legal/compliance-grade monitoring, add eval suites and dedicated stability tooling

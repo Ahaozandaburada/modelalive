@@ -4,7 +4,7 @@
 
 Hardcoded model IDs break silently until production fails. Model Alive answers in one call — with **source links**, **breaking change** notes, and **host-aware** lifecycle status.
 
-**[Quality scorecard →](docs/STATUS.md)** · **[Adoption (agents + CI) →](docs/ADOPTION.md)** · **[Quickstart →](docs/QUICKSTART.md)**
+**Alive + Stable: production-ready** pre-flight gates ([scorecard →](docs/STATUS.md)) · **[Adoption →](docs/ADOPTION.md)** · **[Quickstart →](docs/QUICKSTART.md)**
 
 ## Install
 

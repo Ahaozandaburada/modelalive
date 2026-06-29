@@ -2,6 +2,9 @@
 
 Model Alive is a **pre-flight advisory** service. We optimize for speed, source transparency, and low false-positive rates — not legal guarantees.
 
+**Production-ready** (Alive + Stable): suitable for CI and production deploy gates — tested, documented, multi-SDK.  
+**Not flawless**: registry lag, unknown models, and simplified drift metrics apply. See [STATUS.md](STATUS.md).
+
 ## Sources
 
 Every verified registry entry maps to an official provider deprecation page:
