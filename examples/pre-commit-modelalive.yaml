@@ -4,7 +4,7 @@ repos:
     hooks:
       - id: modelalive-check-config
         name: modelalive check-config
-        entry: bash -c 'pip install -q "modelalive==1.4.1" && modelalive check-config'
+        entry: bash -c 'pip install -q "modelalive==1.5.0" && modelalive check-config'
         language: system
         pass_filenames: false
         files: modelalive.toml
@@ -14,7 +14,7 @@ repos:
     hooks:
       - id: modelalive-env-example
         name: modelalive check .env.example LLM_MODEL
-        entry: bash -c 'pip install -q "modelalive==1.4.1" && modelalive check "${LLM_MODEL:-claude-sonnet-4-6}"'
+        entry: bash -c 'pip install -q "modelalive==1.5.0" && modelalive check "${LLM_MODEL:-claude-sonnet-4-6}"'
         language: system
         pass_filenames: false
         files: \.env\.example$

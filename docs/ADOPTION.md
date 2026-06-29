@@ -74,7 +74,7 @@ Install: `pip install modelalive` · Docs: https://github.com/Ahaozandaburada/mo
 
 ## GitHub Actions (copy-paste)
 
-Pin the action to a release tag in production (`@v1.4.1`), not `@main`.
+Pin the action to a release tag in production (`@v1.5.0`), not `@main`.
 
 ### 1. Basic gate — fail on retired models
 
@@ -88,7 +88,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: Ahaozandaburada/modelalive@v1.4.1
+      - uses: Ahaozandaburada/modelalive@v1.5.0
         with:
           models: claude-sonnet-4-6 gpt-5.5
           warn-deprecated: "true"
@@ -97,7 +97,7 @@ jobs:
 ### 2. Strict production — fail on unknown IDs too
 
 ```yaml
-      - uses: Ahaozandaburada/modelalive@v1.4.1
+      - uses: Ahaozandaburada/modelalive@v1.5.0
         with:
           models: ${{ vars.LLM_MODEL }}
           strict-unknown: "true"
@@ -125,7 +125,7 @@ warn_days = 14
 Workflow:
 
 ```yaml
-      - run: pip install "modelalive==1.4.1"
+      - run: pip install "modelalive==1.5.0"
 
       - run: modelalive check-config
 ```
@@ -135,7 +135,7 @@ Full example: [`examples/github-actions/check-config.yml`](../examples/github-ac
 ### 4. Scan PR for hidden model strings
 
 ```yaml
-      - run: pip install "modelalive==1.4.1"
+      - run: pip install "modelalive==1.5.0"
 
       - name: Scan for model IDs
         run: |
@@ -168,7 +168,7 @@ jobs:
           - gpt-5.5
           - gemini-3.5-flash
     steps:
-      - uses: Ahaozandaburada/modelalive@v1.4.1
+      - uses: Ahaozandaburada/modelalive@v1.5.0
         with:
           models: ${{ matrix.model }}
           strict-unknown: "true"
@@ -202,7 +202,7 @@ repos:
     hooks:
       - id: modelalive-check-config
         name: modelalive check-config
-        entry: bash -c 'pip install -q "modelalive==1.4.1" && modelalive check-config'
+        entry: bash -c 'pip install -q "modelalive==1.5.0" && modelalive check-config'
         language: system
         pass_filenames: false
         files: modelalive.toml
@@ -239,11 +239,29 @@ patch_litellm()  # validates model on each completion call
 
 ---
 
+## Behavioral stability (ghost drift)
+
+Catch silent backend changes under the same model ID:
+
+```yaml
+- uses: Ahaozandaburada/modelalive@v1.5.0
+  with:
+    models: claude-sonnet-4-6
+    stable-baseline: .modelalive/stable.json
+    stable-threshold: "0.25"
+  env:
+    ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+```
+
+Record baselines once, commit `.modelalive/*.json`, re-check in CI. Full guide: [STABLE.md](STABLE.md).
+
+---
+
 ## Spread the rule
 
 1. Star the repo and link `modelalive check` in your README
 2. Add the Cursor rule + skill to your main app repo
-3. Pin `Ahaozandaburada/modelalive@v1.4.1` in CI
+3. Pin `Ahaozandaburada/modelalive@v1.5.0` in CI
 4. Open a PR on agent templates (LangChain, CrewAI, etc.) pointing here
 
 Questions or missing provider? [Open an issue](https://github.com/Ahaozandaburada/modelalive/issues).

@@ -14,7 +14,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - run: pip install "modelalive==1.4.1"
+      - run: pip install "modelalive==1.5.0"
 
       - name: Scan for stale model IDs
         run: |

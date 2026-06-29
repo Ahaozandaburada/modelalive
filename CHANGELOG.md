@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.0 — Behavioral stability (ghost drift)
+
+- **`modelalive stable`** — baseline, check, diff for silent endpoint behavior changes
+- **Multi-provider probe** — Anthropic Messages, Google Gemini, OpenAI-compatible
+- **HTTP API** — `/v1/stable/prompts`, `/v1/stable/fingerprint`, `/v1/stable/compare`
+- **GitHub Action** — optional `stable-baseline` + `stable-threshold` inputs
+- **Docs** — [docs/STABLE.md](docs/STABLE.md), workflow example, 15+ new tests
+
 ## 1.4.1 — Agent & CI adoption kit
 
 - **Adoption guide** — `docs/ADOPTION.md` with copy-paste GitHub Actions, pre-commit, AGENTS.md

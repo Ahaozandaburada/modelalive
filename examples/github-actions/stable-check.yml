@@ -1,0 +1,36 @@
+# Lifecycle + behavioral stability gate
+name: Model Alive — lifecycle and stable
+
+on:
+  pull_request:
+
+jobs:
+  lifecycle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: Ahaozandaburada/modelalive@v1.5.0
+        with:
+          models: claude-sonnet-4-6 gpt-4o
+          strict-unknown: "true"
+          warn-deprecated: "true"
+
+  stable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install "modelalive[http]==1.5.0"
+
+      - name: Behavioral drift check
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          modelalive stable check claude-sonnet-4-6 -b .modelalive/stable.json --threshold 0.25
+          modelalive stable check gpt-4o -b .modelalive/gpt-4o-stable.json --threshold 0.25

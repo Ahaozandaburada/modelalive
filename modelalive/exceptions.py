@@ -31,3 +31,7 @@ class ModelUnknownError(ModelLifecycleError):
 
 class ModelExpiringSoonError(ModelLifecycleError):
     """Raised when a model retires within the configured warn_days window."""
+
+
+class StableShiftError(Exception):
+    """Raised when behavioral fingerprint drift exceeds the stability threshold."""

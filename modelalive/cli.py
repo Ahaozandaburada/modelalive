@@ -13,6 +13,7 @@ from modelalive.exceptions import (
     ModelExpiringSoonError,
     ModelRetiredError,
     ModelUnknownError,
+    StableShiftError,
 )
 from modelalive.expiring import list_expiring
 from modelalive.registry import list_models, load_registry
@@ -86,6 +87,34 @@ def main(argv: list[str] | None = None) -> int:
     config_cmd = sub.add_parser("check-config", help="Check models listed in modelalive.toml")
     config_cmd.add_argument("--file", default="modelalive.toml")
 
+    stable_cmd = sub.add_parser("stable", help="Behavioral stability — detect ghost endpoint drift")
+    stable_sub = stable_cmd.add_subparsers(dest="stable_command", required=True)
+
+    stable_prompts = stable_sub.add_parser("prompts", help="List fingerprint probe prompts")
+    stable_prompts.add_argument("--json", action="store_true")
+
+    stable_baseline = stable_sub.add_parser("baseline", help="Record behavioral fingerprint baseline")
+    stable_baseline.add_argument("model", help="Model ID to probe")
+    stable_baseline.add_argument("-o", "--output", default=".modelalive/stable.json")
+    stable_baseline.add_argument("--samples", type=int, default=1)
+    stable_baseline.add_argument("--provider", choices=["anthropic", "google", "openai"], default=None)
+    stable_baseline.add_argument("--from-json", dest="from_json", help="Use saved responses JSON instead of live probe")
+
+    stable_check = stable_sub.add_parser("check", help="Compare live fingerprint to baseline")
+    stable_check.add_argument("model", help="Model ID to probe")
+    stable_check.add_argument("-b", "--baseline", default=".modelalive/stable.json")
+    stable_check.add_argument("--threshold", type=float, default=0.25)
+    stable_check.add_argument("--samples", type=int, default=1)
+    stable_check.add_argument("--provider", choices=["anthropic", "google", "openai"], default=None)
+    stable_check.add_argument("--from-json", dest="from_json", help="Use saved responses JSON instead of live probe")
+    stable_check.add_argument("--json", action="store_true")
+
+    stable_diff = stable_sub.add_parser("diff", help="Compare two fingerprint files offline")
+    stable_diff.add_argument("baseline", help="Baseline fingerprint JSON")
+    stable_diff.add_argument("current", help="Current fingerprint JSON")
+    stable_diff.add_argument("--threshold", type=float, default=0.25)
+    stable_diff.add_argument("--json", action="store_true")
+
     args = parser.parse_args(argv)
 
     commands = {
@@ -99,6 +128,7 @@ def main(argv: list[str] | None = None) -> int:
         "expiring": lambda: _cmd_expiring(args),
         "scan": lambda: _cmd_scan(args),
         "check-config": lambda: _cmd_check_config(args),
+        "stable": lambda: _cmd_stable(args),
     }
     return commands[args.command]()
 
@@ -269,6 +299,95 @@ def _cmd_scan(args: argparse.Namespace) -> int:
 
 def _flag(value: bool | None, default_fn) -> bool:
     return value if value is not None else default_fn()
+
+
+def _load_probe_responses(args: argparse.Namespace, model: str) -> dict[str, list[str]]:
+    if args.from_json:
+        data = json.loads(Path(args.from_json).read_text(encoding="utf-8"))
+        if isinstance(data, dict) and "responses" in data:
+            return data["responses"]
+        return data
+    from modelalive.probe import probe_responses
+
+    return probe_responses(model, samples=args.samples, provider=getattr(args, "provider", None))
+
+
+def _cmd_stable(args: argparse.Namespace) -> int:
+    from modelalive.stable import Fingerprint, compare_fingerprints, fingerprint_from_responses, list_stable_prompts
+
+    if args.stable_command == "prompts":
+        prompts = list_stable_prompts()
+        if args.json:
+            print(json.dumps(prompts, indent=2))
+        else:
+            for item in prompts:
+                preview = item["message"][:72]
+                suffix = "..." if len(item["message"]) > 72 else ""
+                print(f"{item['id']}: {preview}{suffix}")
+        return 0
+
+    if args.stable_command == "baseline":
+        responses = _load_probe_responses(args, args.model)
+        endpoint = None
+        if not args.from_json:
+            try:
+                from modelalive.probe import probe_config, resolve_probe_backend
+
+                endpoint, _, backend = probe_config(resolve_probe_backend(args.model, args.provider), args.model)
+                print(f"Probed via {backend} → {endpoint}")
+            except RuntimeError:
+                pass
+        fp = fingerprint_from_responses(
+            args.model,
+            responses,
+            endpoint=endpoint,
+            samples_per_prompt=args.samples,
+        )
+        path = fp.save(args.output)
+        print(f"Baseline saved → {path} ({len(fp.prompts)} prompts)")
+        return 0
+
+    if args.stable_command == "check":
+        baseline = Fingerprint.load(args.baseline)
+        responses = _load_probe_responses(args, args.model)
+        endpoint = baseline.endpoint
+        if not args.from_json:
+            try:
+                from modelalive.probe import probe_config, resolve_probe_backend
+
+                endpoint, _, _backend = probe_config(resolve_probe_backend(args.model, args.provider), args.model)
+            except RuntimeError:
+                pass
+        current = fingerprint_from_responses(
+            args.model,
+            responses,
+            endpoint=endpoint,
+            samples_per_prompt=args.samples,
+        )
+        report = compare_fingerprints(baseline, current, threshold=args.threshold)
+        if args.json:
+            print(json.dumps(report.to_dict(), indent=2))
+        else:
+            status = "STABLE" if report.stable else "DRIFT"
+            print(f"{status}: {args.model}  mean={report.mean_distance:.3f}  max={report.max_distance:.3f}")
+            for shift in report.prompt_shifts:
+                print(f"  shifted {shift.prompt_id}: {shift.distance:.3f}")
+        return 0 if report.stable else 1
+
+    if args.stable_command == "diff":
+        baseline = Fingerprint.load(args.baseline)
+        current = Fingerprint.load(args.current)
+        report = compare_fingerprints(baseline, current, threshold=args.threshold)
+        if args.json:
+            print(json.dumps(report.to_dict(), indent=2))
+        else:
+            status = "STABLE" if report.stable else "DRIFT"
+            print(f"{status}: mean={report.mean_distance:.3f}  max={report.max_distance:.3f}")
+            for shift in report.prompt_shifts:
+                print(f"  shifted {shift.prompt_id}: {shift.distance:.3f}")
+        return 0 if report.stable else 1
+
+    return 1
 
 
 def _cmd_check_config(args: argparse.Namespace) -> int:

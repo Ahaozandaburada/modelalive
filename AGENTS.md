@@ -4,8 +4,8 @@ When this repository or a consumer app touches **LLM model IDs**, use [Model Ali
 
 ## Required workflow
 
-1. `modelalive check <id>` before hardcoding a model string
-2. `modelalive ensure <id>` when wiring API clients (auto-replaces retired IDs)
+1. `modelalive check <id>` or `modelalive ensure <id>`
+2. `modelalive stable baseline` / `stable check` for ghost drift — [docs/STABLE.md](docs/STABLE.md)
 3. `modelalive scan .` when hunting stale IDs across a codebase
 4. `modelalive check-config` when `modelalive.toml` exists
 

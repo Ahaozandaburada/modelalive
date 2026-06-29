@@ -1,5 +1,5 @@
 name: Model Alive Check
-description: Fail CI if an LLM model ID is retired or deprecated
+description: Fail CI if an LLM model ID is retired, deprecated, or behaviorally drifted
 branding:
   icon: activity
   color: red
@@ -11,7 +11,7 @@ inputs:
   version:
     description: modelalive package version to install
     required: false
-    default: "1.4.1"
+    default: "1.5.0"
   warn-deprecated:
     description: Fail when models are deprecated (not just retired)
     required: false
@@ -20,15 +20,23 @@ inputs:
     description: Fail when models are not in the registry
     required: false
     default: "false"
+  stable-baseline:
+    description: Path to stable fingerprint JSON (behavioral drift gate; requires provider API key in env)
+    required: false
+    default: ""
+  stable-threshold:
+    description: Drift threshold for stable check (0-1)
+    required: false
+    default: "0.25"
 
 runs:
   using: composite
   steps:
     - name: Install modelalive
       shell: bash
-      run: pip install "modelalive==${{ inputs.version }}"
+      run: pip install "modelalive[http]==${{ inputs.version }}"
 
-    - name: Check models
+    - name: Check models (lifecycle)
       shell: bash
       run: |
         set -e
@@ -40,3 +48,14 @@ runs:
           ARGS="$ARGS --strict-unknown"
         fi
         modelalive check $ARGS ${{ inputs.models }}
+
+    - name: Check models (behavioral stability)
+      if: inputs.stable-baseline != ''
+      shell: bash
+      run: |
+        set -e
+        for MODEL in ${{ inputs.models }}; do
+          modelalive stable check "$MODEL" \
+            -b "${{ inputs.stable-baseline }}" \
+            --threshold "${{ inputs.stable-threshold }}"
+        done

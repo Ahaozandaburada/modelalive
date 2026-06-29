@@ -20,6 +20,7 @@ modelalive ensure MODEL_ID      # prints safe ID
 modelalive resolve MODEL_ID     # best ID + breaking changes
 modelalive info MODEL_ID        # full lifecycle JSON
 modelalive scan .               # find hardcoded IDs in repo
+modelalive stable check MODEL -b .modelalive/stable.json  # ghost drift
 modelalive expiring --days 30   # upcoming retirements
 ```
 

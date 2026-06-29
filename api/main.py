@@ -5,7 +5,7 @@ from typing import Annotated
 
 from fastapi import FastAPI, Query, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 from pydantic import BaseModel, Field
 
 from modelalive import __version__
@@ -19,6 +19,12 @@ from modelalive.registry import (
 )
 from modelalive.providers import list_provider_keys, provider_label
 from modelalive.validate import validate_registry
+from modelalive.stable import (
+    Fingerprint,
+    compare_fingerprints,
+    fingerprint_from_responses,
+    list_stable_prompts,
+)
 
 from api.middleware import RateLimitMiddleware, RequestIDMiddleware
 from api.auth import APIKeyMiddleware
@@ -76,6 +82,19 @@ class EnsureRequest(BaseModel):
     strict_unknown: bool | None = None
 
 
+class StableCompareRequest(BaseModel):
+    baseline: dict
+    current: dict
+    threshold: float = Field(default=0.25, ge=0.0, le=1.0)
+
+
+class StableFingerprintRequest(BaseModel):
+    model: str = Field(..., min_length=1, max_length=256)
+    responses: dict[str, list[str]]
+    endpoint: str | None = None
+    samples_per_prompt: int = Field(default=1, ge=1, le=8)
+
+
 def _problem(status: int, title: str, detail: str, *, type_suffix: str = "error") -> JSONResponse:
     return JSONResponse(
         status_code=status,
@@ -99,6 +118,11 @@ def _alive_response(result, *, status_code: int | None = None) -> JSONResponse:
     response.headers["X-Registry-Version"] = result.registry_version or "unknown"
     response.headers["ETag"] = f'"{registry_hash()}"'
     return response
+
+
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse(url="/status", status_code=307)
 
 
 @app.get("/openapi.json", include_in_schema=False)
@@ -444,3 +468,33 @@ def get_validate():
         "warning_count": len(issues) - len(errors),
         "issues": [{"level": i.level, "path": i.path, "message": i.message} for i in issues],
     }
+
+
+@app.get("/v1/stable/prompts")
+def get_stable_prompts():
+    return {"count": len(list_stable_prompts()), "prompts": list_stable_prompts()}
+
+
+@app.post("/v1/stable/fingerprint")
+def post_stable_fingerprint(body: StableFingerprintRequest):
+    fp = fingerprint_from_responses(
+        body.model,
+        body.responses,
+        endpoint=body.endpoint,
+        samples_per_prompt=body.samples_per_prompt,
+    )
+    payload = fp.to_dict()
+    return payload
+
+
+@app.post("/v1/stable/compare")
+def post_stable_compare(body: StableCompareRequest):
+    baseline = Fingerprint.from_dict(body.baseline)
+    current = Fingerprint.from_dict(body.current)
+    report = compare_fingerprints(baseline, current, threshold=body.threshold)
+    payload = report.to_dict()
+    status = 409 if not report.stable else 200
+    response = JSONResponse(content=payload, status_code=status)
+    response.headers["X-Stable"] = "true" if report.stable else "false"
+    response.headers["X-Mean-Distance"] = str(report.mean_distance)
+    return response

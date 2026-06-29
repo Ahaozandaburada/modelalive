@@ -6,10 +6,19 @@ from modelalive.exceptions import (
     ModelExpiringSoonError,
     ModelRetiredError,
     ModelUnknownError,
+    StableShiftError,
 )
 from modelalive.expiring import list_expiring
 from modelalive.gate import gate, require_alive
 from modelalive.scan import scan_path
+from modelalive.stable import (
+    Fingerprint,
+    StabilityReport,
+    assert_stable,
+    compare_fingerprints,
+    fingerprint_from_responses,
+    list_stable_prompts,
+)
 from modelalive.types import AliveResult
 from modelalive.providers import list_provider_keys, provider_label
 from modelalive.validate import assert_registry_valid, validate_registry
@@ -25,14 +34,21 @@ __all__ = [
     "require_alive",
     "list_expiring",
     "scan_path",
+    "Fingerprint",
+    "StabilityReport",
+    "assert_stable",
+    "compare_fingerprints",
+    "fingerprint_from_responses",
+    "list_stable_prompts",
     "AliveResult",
     "ModelRetiredError",
     "ModelDeprecatedError",
     "ModelUnknownError",
     "ModelExpiringSoonError",
+    "StableShiftError",
     "validate_registry",
     "assert_registry_valid",
     "list_provider_keys",
     "provider_label",
 ]
-__version__ = "1.4.1"
+__version__ = "1.5.0"

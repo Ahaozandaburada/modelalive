@@ -98,7 +98,7 @@ uvicorn api.main:app --port 8787
 ## CI gate (GitHub Actions)
 
 ```yaml
-- uses: Ahaozandaburada/modelalive@v1.4.1
+- uses: Ahaozandaburada/modelalive@v1.5.0
   with:
     models: claude-sonnet-4-6 gpt-5.5
     warn-deprecated: "true"
@@ -166,6 +166,8 @@ Sources (as of 2026-06-28):
 See [docs/ACCURACY.md](docs/ACCURACY.md) for source policy and error reporting.
 
 Unknown models return `status: unknown`, `confidence: unknown`, `alive: true` — we never block what we haven't verified.
+
+**Behavioral drift:** see [docs/STABLE.md](docs/STABLE.md) — `modelalive stable check` for ghost changes under the same model ID.
 
 ## Docker (self-host API)
 

@@ -1,5 +1,7 @@
 # Quickstart (60 seconds)
 
+**Behavioral drift:** [docs/STABLE.md](docs/STABLE.md) — `modelalive stable check` catches ghost changes under the same model ID.
+
 **Agents & CI:** see [ADOPTION.md](ADOPTION.md) for Cursor rules, skills, and GitHub Action templates.
 
 ## Install
